@@ -69,6 +69,10 @@ body {
   margin-top: 44px;
 }
 
+.carousel {
+  z-index: -1;
+}
+
 .slider .carousel-indicators [data-bs-target] {
   height: 6px;
   width: 6px;
@@ -304,11 +308,17 @@ body {
   padding-bottom: 30px;
 }
 
+.become-teacher img {
+  width: 100%;
+}
+
+.become-teacher .col-md-6 {
+  padding: 0;
+}
 .become-teacher .right {
   background-color: #222222;
   color: white;
-  width: 587px;
-  padding: 45px 30px;
+  padding: 14px 30px;
 }
 
 .become-teacher .outer {
@@ -437,4 +447,12 @@ body {
   position: fixed;
   bottom: 100px;
   right: 50px;
+}
+
+.modal-backdrop {
+  z-index: 0;
+}
+
+.modal-body {
+  color: #ffffff;
 }
