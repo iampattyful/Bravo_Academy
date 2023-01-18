@@ -13,6 +13,9 @@ npm install express-session
 npm install -D @types/express-session
 npm install formidable @types/formidable
 npm install jsonfile @types/jsonfile
+npm install socket.io
+npm install bcryptjs @types/bcryptjs
+
 npm start
 
 # touch .gitignore
