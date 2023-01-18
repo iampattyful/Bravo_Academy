@@ -1,0 +1,16 @@
+.selection {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0px 300px 0 300px;
+    
+}
+
+.selection > div {
+    border:  1px solid white;
+    color: white;
+    border-radius: 49px;
+    padding:10px 40px 10px 40px;
+    margin:20px;
+  
+ 
+}
