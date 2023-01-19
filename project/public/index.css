@@ -1,0 +1,440 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+input,
+span {
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+body {
+  background-color: black;
+}
+
+/* navbar */
+.bg-body-tertiary {
+  background-color: black !important;
+}
+
+.navbar {
+  padding: 5px 15px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+.navbar a {
+  color: white;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.navbar .collapse {
+  justify-content: flex-end;
+}
+
+.navbar .login {
+  display: flex;
+  width: 83px;
+  height: 32px;
+  left: 1327px;
+  top: 8px;
+  background: #30a57b;
+  border-radius: 25px;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+.navbar .time p {
+  color: white;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  margin: 0;
+  padding: 8px;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+/* slider */
+.slider {
+  margin-top: 44px;
+}
+
+.slider .carousel-indicators [data-bs-target] {
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+}
+
+.slider .carousel-caption {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.slider h3 {
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 70px;
+}
+
+.slider p {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+}
+
+/* hot course */
+.hot-course {
+  margin-bottom: 30px;
+}
+
+.hot-course h5 {
+  margin: 30px 0;
+  font-size: 32px;
+  color: white;
+}
+
+.hot-course .row {
+  gap: 30px;
+  justify-content: center;
+}
+.selected-course {
+  width: 299px;
+  height: 540px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  position: relative;
+}
+
+.course1 {
+  background-image: url(./assets/Rectangle\ 5.jpg);
+  background-position: center;
+}
+
+.course2 {
+  background-image: url(./assets/Rectangle\ 3.jpg);
+  background-position: center;
+}
+
+.course3 {
+  background-image: url(./assets/Rectangle\ 4.jpg);
+  background-position: center;
+}
+
+.course4 {
+  background-image: url(./assets/Rectangle\ 4.jpg);
+  background-position: center;
+}
+
+.selected-course .title {
+  position: absolute;
+  top: 400px;
+  bottom: 30px;
+  right: 30px;
+  left: 40px;
+}
+
+.selected-course .title .upper {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 35px;
+  text-align: center;
+  color: white;
+}
+
+.selected-course .title .lower {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  text-align: center;
+  margin-top: 15px;
+  color: #cccccc;
+}
+
+/* learning reason */
+.learning-reason {
+  background-color: white;
+  padding-bottom: 30px;
+}
+
+.learning-reason h5 {
+  margin: 30px 0;
+  font-size: 32px;
+  color: black;
+}
+
+.learning-reason .box {
+  width: 300px;
+  height: 232px;
+  background: rgba(48, 165, 123, 0.05);
+  border-radius: 16px;
+  padding: 0 20px;
+}
+
+.learning-reason .row {
+  gap: 30px;
+}
+
+.learning-reason .upper {
+  text-align: left;
+}
+
+.learning-reason .lower {
+  text-align: left;
+}
+
+.learning-reason i {
+  color: #30a57b;
+  font-size: 80px;
+  text-align: left;
+}
+
+.learning-reason .reasons span {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 35px;
+}
+
+.learning-reason .reasons p {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  color: #888888;
+  margin-top: 10px;
+}
+
+/* how to use */
+.how-to-use h5 {
+  margin: 30px 0;
+  font-size: 32px;
+  color: white;
+}
+
+.how-to-use {
+  margin-bottom: 30px;
+}
+
+.how-to-use .lower {
+  margin-top: 20px;
+}
+
+.how-to-use .lower span {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 35px;
+  color: #ffffff;
+}
+
+.how-to-use .lower p {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  color: #888888;
+  margin-top: 15px;
+}
+
+.how-to-use .upper img {
+  width: 100%;
+  border-radius: 16px;
+}
+
+/* rating */
+.rating h5 {
+  margin: 30px 0;
+  font-size: 32px;
+  color: black;
+}
+
+.rating {
+  background-color: #ffffff;
+  padding-bottom: 30px;
+}
+
+.rating .upper iframe {
+  border-radius: 16px;
+}
+
+.rating .lower h6 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 35px;
+  margin-bottom: 20px;
+}
+
+.rating .lower span {
+  width: 116px;
+  height: 28px;
+  background: #30a57b;
+  border-radius: 50px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  color: #ffffff;
+  padding: 5px 10px 6px;
+}
+
+.rating .lower p {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  color: #888888;
+  margin-top: 20px;
+}
+
+/* become teacher */
+.become-teacher {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.become-teacher .right {
+  background-color: #222222;
+  color: white;
+  width: 587px;
+  padding: 45px 30px;
+}
+
+.become-teacher .outer {
+  display: flex;
+}
+
+.btn {
+  background: #30a57b;
+  border-radius: 25px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 14px 50px 15px;
+  color: #ffffff;
+}
+
+.become-teacher h6 {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 46px;
+}
+
+.become-teacher p {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  color: #888888;
+}
+
+.become-teacher li {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 35px;
+  margin-bottom: 5px;
+}
+
+.become-teacher ul {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+/* contact */
+.contact-us h5 {
+  margin: 30px 0;
+  font-size: 32px;
+  color: black;
+}
+
+.contact-us {
+  padding-bottom: 30px;
+  background-color: #ffffff;
+}
+
+.contact-us .btn {
+  margin-top: 20px;
+}
+
+/* footer */
+.footer {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-top: 1px solid #333333;
+}
+
+.footer span {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+}
+
+.footer .outer {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 30px;
+}
+
+.footer .outer ul {
+  list-style: none;
+  color: #ffffff;
+  padding: 0;
+  margin-top: 30px;
+}
+
+.footer .outer li {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  margin-bottom: 10px;
+}
+
+.end {
+  border-top: 1px solid #333333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.end span {
+  color: #888888;
+}
+
+.social-media {
+  display: flex;
+  gap: 20px;
+}
+
+.social-media i {
+  display: flex;
+  color: #888888;
+}
+
+.scroll-to-top {
+  width: 48px;
+  height: 48px;
+  background: #30a57b;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  position: fixed;
+  bottom: 100px;
+  right: 50px;
+}
