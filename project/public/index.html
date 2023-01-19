@@ -110,9 +110,8 @@
                             >
                             <input
                               type="email"
-                              name="username"
+                              name="email"
                               class="form-control"
-                              id="exampleInputEmail1"
                               aria-describedby="emailHelp"
                             />
                           </div>
@@ -126,7 +125,6 @@
                               type="password"
                               name="password"
                               class="form-control"
-                              id="exampleInputPassword1"
                             />
                           </div>
                           <input
@@ -140,8 +138,159 @@
                   </div>
                 </div>
               </li>
-              <li class="nav-item login">
-                <a class="nav-link" href="#">註冊</a>
+              <li>
+                <div
+                  id="white"
+                  type="button"
+                  class="nav-item login"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
+                >
+                  註冊
+                </div>
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="staticBackdrop"
+                  data-bs-backdrop="static"
+                  data-bs-keyboard="false"
+                  tabindex="-1"
+                  aria-labelledby="staticBackdropLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                          用戶登記
+                        </h1>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <form id="signUp">
+                          <div class="mb-3">
+                            <label class="form-label"
+                              >選擇身份</label
+                            >
+                            <select class="form-select" id='role' name='roleId' aria-label="Default select example">
+                              <option class='teachers'value="1">老師</option>
+                              <option class='students'value="2">學生</option>
+                            </select>
+                          </div>
+                          <div class="mb-3" id='subjects'>
+                            <label class="form-label"
+                              >選擇科目</label
+                            >
+                            <select class="form-select" aria-label="Default select example" name="subjectId">
+                              <option value="1">中文</option>
+                              <option value="2">英文</option>
+                              <option value="3">法文</option>
+                              <option value="4">日文</option>
+                            </select>
+                          </div>
+                          <div class="mb-3">
+                            <label  class="form-label"
+                              >電郵地址</label
+                            >
+                            <input
+                              type="email"
+                              name="email"
+                              class="form-control"
+                              aria-describedby="emailHelp"
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <label
+                              for="exampleInputPassword1"
+                              class="form-label"
+                              >輸入密碼</label
+                            >
+                            <input
+                              type="password"
+                              name="password"
+                              class="form-control"
+                            />
+                          </div>
+                          <div class="flex">
+                            <div class="mb-3">
+                              <label
+                                class="form-label"
+                                >姓名</label
+                              >
+                              <input
+                                type="username"
+                                name="username"
+                                class="form-control"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label
+                                class="form-label"
+                                >電話</label
+                              >
+                              <input
+                                type="phone"
+                                name="phone"
+                                class="form-control"
+                              />
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                              <label
+                                class="form-label"
+                                >選擇相片</label
+                              >
+                               <input type="file" name="image"/>
+                            </div>
+                          <div class="mb-3">
+                            <label
+                              class="form-label"
+                              >簡介</label
+                            >
+                             <textarea
+                              class="form-control"
+                              name="description"
+                              placeholder="輸入簡介"
+                              style="height: 150px"
+                            ></textarea>
+                          </div>
+                          <div class="flex priceandtime">
+                            <div class="mb-3">
+                              <label
+                                class="form-label"
+                                >收費</label
+                              >
+                              <input
+                                name="price"
+                                class="form-control"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label
+                                class="form-label"
+                                >時間</label
+                              >
+                              <input
+                                name="duration"
+                                class="form-control"
+                              />
+                            </div>
+                          </div>
+                          <input
+                            type="submit"
+                            class="btn btn-primary"
+                            value="完成"
+                          />
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li class="nav-item time">
                 <p>11 : 00AM</p>
@@ -503,7 +652,6 @@
                   type="email"
                   name="username"
                   class="form-control"
-                  id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                 />
                 <div id="emailHelp" class="form-text">
@@ -513,14 +661,14 @@
               <div class="form-floating">
                 <textarea
                   class="form-control"
-                  name="content"
+                  name="message"
                   placeholder="Leave a comment here"
                   id="floatingTextarea2"
                   style="height: 100px"
                 ></textarea>
                 <label for="floatingTextarea2">訊息</label>
               </div>
-              <button type="submit" class="btn">提交</button>
+              <input type="submit" class="btn" value="提交"></input>
             </form>
           </div>
         </div>

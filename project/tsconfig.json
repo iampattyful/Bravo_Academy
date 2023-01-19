@@ -4,7 +4,7 @@
     "target": "es2021",
     "lib": ["es2021", "dom"],
     "outDir": "./build",
-    "rootDir": "./src",
+    "rootDir": ".",
     "sourceMap": true,
     "allowJs": true,
     "jsx": "react",
@@ -17,5 +17,5 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true
   },
-  "exclude": ["node_modules", "build", "scripts", "index.js"]
+  "exclude": ["node_modules", "build", "scripts", "public/index.js"]
 }
