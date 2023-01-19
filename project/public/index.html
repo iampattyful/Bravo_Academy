@@ -21,7 +21,7 @@
       rel="stylesheet"
     />
     <link rel="icon" href="./assets/B.png" type="image/icon type" />
-    <link rel="stylesheet" href="./home.css" />
+    <link rel="stylesheet" href="./index.css" />
     <title>Bravo Academy</title>
   </head>
   <body>
@@ -72,13 +72,16 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">成為老師</a>
               </li>
-              <li
-                class="nav-item login"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-              >
-                <a class="nav-link" href="#">登入</a>
-
+              <li>
+                <div
+                  id="white"
+                  type="button"
+                  class="nav-item login"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  登入
+                </div>
                 <div
                   class="modal fade"
                   id="exampleModal"
@@ -100,13 +103,14 @@
                         ></button>
                       </div>
                       <div class="modal-body">
-                        <form>
+                        <form id="login">
                           <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label"
                               >登入電郵</label
                             >
                             <input
                               type="email"
+                              name="username"
                               class="form-control"
                               id="exampleInputEmail1"
                               aria-describedby="emailHelp"
@@ -120,13 +124,16 @@
                             >
                             <input
                               type="password"
+                              name="password"
                               class="form-control"
                               id="exampleInputPassword1"
                             />
                           </div>
-                          <button type="submit" class="btn btn-primary">
-                            登入
-                          </button>
+                          <input
+                            type="submit"
+                            class="btn btn-primary"
+                            value="登入"
+                          />
                         </form>
                       </div>
                     </div>
