@@ -127,7 +127,6 @@ img {
   justify-content: center;
   align-items: center;
   padding: 14px 50px 15px;
-
   width: 323px;
   height: 49px;
   background: #30a57b;
@@ -242,4 +241,62 @@ p > button {
   color: #ffffff;
   width: 100%;
   text-align: center;
+}
+
+@media only screen and (max-width: 960px) {
+  .teacherPic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .teacherPriceContact {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    background: #000;
+    width: 100%;
+    height: 100%;
+    margin-top: 0px;
+  }
+  .teacherPrice {
+    background-color: #fff;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 10px;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+  }
+  .teacherContact {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+  }
+  .sns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: #888888;
+    font-size: 30px;
+    text-align: right;
+  }
+  .sns > .sns-icon {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    justify-content: space-around;
+    align-items: center;
+  }
 }
