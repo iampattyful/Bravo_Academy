@@ -1,21 +1,25 @@
 CREATE TABLE users
 (
   user_id     SERIAL  NOT NULL,
-  username    VARCHAR NOT NULL,
+  email       VARCHAR NOT NULL,
   password    VARCHAR NOT NULL,
-  description VARCHAR,
+  username    VARCHAR NOT NULL,
+  phone       INTEGER NOT NULL,
+  description VARCHAR     ,
   price       INTEGER NOT NULL DEFAULT 100,
   duration    INTEGER NOT NULL DEFAULT 60,
   subject     VARCHAR NOT NULL,
-  image       VARCHAR ,     
-  role_id     INTEGER ,
+  image       VARCHAR      ,
+  role_id     INTEGER      ,
+  subject_id  INTEGER  ,
   PRIMARY KEY (user_id)
 );
 
-CREATE TABLE role
+
+CREATE TABLE subject
 (
-  id        SERIAL  NOT NULL,
-  role_name VARCHAR NOT NULL,
+  id           SERIAL  NOT NULL,
+  subject_name VARCHAR NOT NULL,
   PRIMARY KEY (id)
 );
 
@@ -25,6 +29,20 @@ ALTER TABLE users
     FOREIGN KEY (role_id)
     REFERENCES role (id);
 
-INSERT INTO users (username, password, description, subject, role_id ) VALUES ('jojo','jojo','This is jojo','English',1)
+ALTER TABLE users
+  ADD CONSTRAINT FK_subject_TO_users
+    FOREIGN KEY (subject_id)
+    REFERENCES subject (id);
 
-UPDATE users SET username = 'jojo@gmail.com' WHERE username = 'jojo'
+
+
+INSERT INTO subject (subject_name) VALUES ('chinese')
+INSERT INTO subject (subject_name) VALUES ('english');
+INSERT INTO subject (subject_name) VALUES ('french');
+INSERT INTO subject (subject_name) VALUES ('japanese');
+
+
+INSERT INTO users (email, password, username, phone, role_id) VALUES ('jojo@gmail.com','$2a$10$X6ZJGYd2rNZlU2QfqcLSu.Ps4rxVJrz7Fs0Ti/4g2zsNxKjuvRcZu','jojo',12345678,2 );
+
+
+UPDATE subject SET subject_name = 'chinese' WHERE id = '1'

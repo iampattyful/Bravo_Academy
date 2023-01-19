@@ -59,9 +59,25 @@ body {
   padding: 8px;
 }
 
+::-webkit-file-upload-button {
+  color: white;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  padding: 8px;
+  background: #30a57b;
+  border-radius: 25px;
+  border: none;
+}
+
 .navbar-nav {
   display: flex;
   align-items: center;
+}
+
+.navbar .flex {
+  justify-content: space-between;
+  display: flex;
 }
 
 /* slider */
@@ -463,4 +479,8 @@ body {
   font-size: 12px;
   line-height: 17px;
   padding: 8px;
+}
+
+.hide {
+  display: none !important;
 }
