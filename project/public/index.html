@@ -72,8 +72,76 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">成為老師</a>
               </li>
+              <li>
+                <div
+                  id="white"
+                  type="button"
+                  class="nav-item login"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  登入
+                </div>
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                          用戶登入
+                        </h1>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <form id="login">
+                          <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label"
+                              >登入電郵</label
+                            >
+                            <input
+                              type="email"
+                              name="username"
+                              class="form-control"
+                              id="exampleInputEmail1"
+                              aria-describedby="emailHelp"
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <label
+                              for="exampleInputPassword1"
+                              class="form-label"
+                              >密碼</label
+                            >
+                            <input
+                              type="password"
+                              name="password"
+                              class="form-control"
+                              id="exampleInputPassword1"
+                            />
+                          </div>
+                          <input
+                            type="submit"
+                            class="btn btn-primary"
+                            value="登入"
+                          />
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
               <li class="nav-item login">
-                <a class="nav-link" href="#">登入/註冊</a>
+                <a class="nav-link" href="#">註冊</a>
               </li>
               <li class="nav-item time">
                 <p>11 : 00AM</p>
@@ -394,19 +462,21 @@
     <section class="become-teacher">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-6">
             <div class="outer">
               <img src="./assets/Rectangle 12.jpg" />
-              <div class="right">
-                <h6>成為Bravo Academy 線上老師</h6>
-                <p>讓生活變得更自由同時賺取穩定收入</p>
-                <ul>
-                  <li>自訂收費 隨你調整</li>
-                  <li>授課時間 由你作主</li>
-                  <li>在家工作 兼顧生活</li>
-                </ul>
-                <button type="button" class="btn btn-success">成為老師</button>
-              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right">
+              <h6>成為Bravo Academy 線上老師</h6>
+              <p>讓生活變得更自由同時賺取穩定收入</p>
+              <ul>
+                <li>自訂收費 隨你調整</li>
+                <li>授課時間 由你作主</li>
+                <li>在家工作 兼顧生活</li>
+              </ul>
+              <button type="button" class="btn btn-success">成為老師</button>
             </div>
           </div>
         </div>
@@ -516,5 +586,6 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
+    <script src="./index.js"></script>
   </body>
 </html>
