@@ -87,3 +87,7 @@ INSERT INTO subject (subject_name) VALUES ('chinese')
 INSERT INTO subject (subject_name) VALUES ('english');
 INSERT INTO subject (subject_name) VALUES ('french');
 INSERT INTO subject (subject_name) VALUES ('japanese');
+INSERT INTO subject (subject_name) VALUES ('student');
+
+INSERT INTO role (role_name) VALUES ('teacher');
+INSERT INTO role (role_name) VALUES ('student');
