@@ -48,6 +48,7 @@ body {
   border-radius: 25px;
   justify-content: center;
   margin: 0 10px;
+  cursor: pointer;
 }
 
 .navbar .time p {

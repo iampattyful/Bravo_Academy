@@ -8,6 +8,7 @@ CREATE TABLE users
   description VARCHAR     ,
   price       INTEGER NOT NULL DEFAULT 100,
   duration    INTEGER NOT NULL DEFAULT 60,
+  subject     VARCHAR NOT NULL,
   image       VARCHAR      ,
   role_id     INTEGER      ,
   subject_id  INTEGER  ,
@@ -22,13 +23,6 @@ CREATE TABLE subject
   PRIMARY KEY (id)
 );
 
-CREATE TABLE role
-(
-  id          SERIAL  NOT NULL,
-  role_name   VARCHAR NOT NULL,
-  description VARCHAR NOT NULL,
-  PRIMARY KEY (id)
-);
 
 ALTER TABLE users
   ADD CONSTRAINT FK_role_TO_users
@@ -42,7 +36,13 @@ ALTER TABLE users
 
 
 
-INSERT INTO subject (subject_name) VALUES ('chinese');
+INSERT INTO subject (subject_name) VALUES ('chinese')
 INSERT INTO subject (subject_name) VALUES ('english');
 INSERT INTO subject (subject_name) VALUES ('french');
 INSERT INTO subject (subject_name) VALUES ('japanese');
+
+
+INSERT INTO users (email, password, username, phone, role_id) VALUES ('jojo@gmail.com','$2a$10$X6ZJGYd2rNZlU2QfqcLSu.Ps4rxVJrz7Fs0Ti/4g2zsNxKjuvRcZu','jojo',12345678,2 );
+
+
+UPDATE subject SET subject_name = 'chinese' WHERE id = '1'
