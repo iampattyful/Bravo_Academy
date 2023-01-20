@@ -14,7 +14,6 @@ CREATE TABLE users
   PRIMARY KEY (user_id)
 );
 
-
 CREATE TABLE subject
 (
   id           SERIAL  NOT NULL,
