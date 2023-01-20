@@ -498,3 +498,7 @@ body {
 .end a {
   text-decoration-line: none;
 }
+
+.dropdown-menu {
+  cursor: pointer;
+}
