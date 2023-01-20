@@ -58,9 +58,9 @@
                   探索課程
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">中文</a></li>
-                  <li><a class="dropdown-item" href="#">英文</a></li>
-                  <li><a class="dropdown-item" href="#">法文</a></li>
+                  <li><a class="dropdown-item" href="./teacher_page.html">中文</a></li>
+                  <li><a class="dropdown-item" href="./teacher_page.html">英文</a></li>
+                  <li><a class="dropdown-item" href="./teacher_page.html">法文</a></li>
                   <li>
                     <a class="dropdown-item" href="#">日文</a>
                   </li>
@@ -69,12 +69,12 @@
               <li class="nav-item">
                 <a class="nav-link" href="#contactUs">聯絡我們</a>
               </li>
-              <li class="nav-item login hide">
+              <li class="nav-item login hide" id="logout">
                 <a class="nav-link" >登出</a>
               </li>
               <li>
                 <div
-                  id="login"
+                  id="loginShow"
                   type="button"
                   class="nav-item login white"
                   data-bs-toggle="modal"
@@ -129,8 +129,9 @@
                           </div>
                           <input
                             type="submit"
-                            class="btn btn-primary"
+                            class="btn btn-primary loginBtn"
                             value="登入"
+                            data-bs-dismiss="modal" 
                           />
                         </form>
                       </div>
@@ -140,7 +141,7 @@
               </li>
               <li>
                 <div
-                  id="signup"
+                  id="signUpShow"
                   type="button"
                   class="nav-item login white"
                   data-bs-toggle="modal"
@@ -293,7 +294,7 @@
                 </div>
               </li>
               <li class="nav-item time">
-                <p>11 : 00AM</p>
+                <p class="clock">00:00</p>
               </li>
             </ul>
           </div>
@@ -625,8 +626,12 @@
                 <li>授課時間 由你作主</li>
                 <li>在家工作 兼顧生活</li>
               </ul>
-              <button type="button" class="btn btn-success">成為老師</button>
-            </div>
+              <button id="signUpShow"
+                  type="button"
+                  class="btn btn-success"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop" >成為老師
+              </button>
           </div>
         </div>
       </div>
@@ -682,24 +687,24 @@
             <span>熱門</span>
             <div class="outer">
               <ul>
-                <li>線上英文</li>
-                <li>英文補習</li>
-                <li>English Tutor</li>
+                <li><a href="#">線上英文</a></li>
+                <li><a href="#">英文補習</a></li>
+                <li><a href="#">English Tutor</a></li>
               </ul>
               <ul>
-                <li>オンライン英会話</li>
-                <li>Online English Tutor</li>
-                <li>Online Tutor</li>
+                <li><a href="#">オンライン英会話</a></li>
+                <li><a href="#">Online English Tutor</a></li>
+                <li><a href="#">Online Tutor</a></li>
               </ul>
               <ul>
-                <li>線上家教</li>
-                <li>網上課程</li>
-                <li>オンラインレッスン</li>
+                <li><a href="#">線上家教</a></li>
+                <li><a href="#">網上課程</a></li>
+                <li><a href="#">オンラインレッスン</a></li>
               </ul>
               <ul>
-                <li>線上家教</li>
-                <li>網上課程</li>
-                <li>オンラインレッスン</li>
+                <li><a href="#">線上家教</a></li>
+                <li><a href="#">網上課程</a></li>
+                <li><a href="#">オンラインレッスン</a></li>
               </ul>
             </div>
           </div>
@@ -707,7 +712,7 @@
             <span>其他</span>
             <div class="outer">
               <ul>
-                <li>成為導師</li>
+                <li><a href="#">成為老師</a></li>
                 <li>關於我們</li>
               </ul>
             </div>
@@ -718,9 +723,9 @@
       <section class="end">
         <span>© 2023 Bravo Academy.</span>
         <div class="social-media">
-          <div><i class="bi bi-instagram"></i></div>
-          <div><i class="bi bi-facebook"></i></div>
-          <div><i class="bi bi-twitter"></i></div>
+          <div><a href="#"><i class="bi bi-instagram"></i></a></div>
+          <div><a href="#"><i class="bi bi-facebook"></i></a></div>
+          <div><a href="#"><i class="bi bi-twitter"></i></a></div>
         </div>
       </section>
     </section>
@@ -735,5 +740,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="./index.js"></script>
+    <script src="./clock.js"></script>
   </body>
 </html>

@@ -17,6 +17,10 @@ const form = formidable({
 });
 export const signupRoutes = express.Router();
 
+//express session
+import { expressSessionRoutes } from "./expressSessionRoutes";
+signupRoutes.use("/", expressSessionRoutes);
+
 signupRoutes.post("/signup", async (req: Request, res: Response) => {
   form.parse(req, async (err, fields, files) => {
     try {
@@ -28,9 +32,7 @@ signupRoutes.post("/signup", async (req: Request, res: Response) => {
         fields.subjectId = "5";
       }
 
-      console.log(fields);
-
-      let newUser = await client.query(
+      await client.query(
         "INSERT INTO users (email, password, username, phone, description, price, duration, image, role_id, subject_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)",
         [
           fields.email,
@@ -45,14 +47,23 @@ signupRoutes.post("/signup", async (req: Request, res: Response) => {
           fields.subjectId,
         ]
       );
-      res
-        .status(200)
-        .json({ result: true, message: "success", newUser: newUser.rows });
+
+      let newUserCreated = await client.query(
+        "SELECT * from users where username = $1",
+        [fields.username]
+      );
+      console.log(newUserCreated.rows);
+
+      res.status(200).json({
+        result: true,
+        message: "success",
+        newUser: newUserCreated.rows,
+      });
     } catch (err) {
       console.log(err);
       res.status(500).json({
         result: false,
-        message: "success",
+        message: "fail",
       });
     }
   });
