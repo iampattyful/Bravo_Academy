@@ -12,6 +12,10 @@ import { client } from "./client";
 
 export const loginRoutes = express.Router();
 
+//express session
+import { expressSessionRoutes } from "./expressSessionRoutes";
+loginRoutes.use("/", expressSessionRoutes);
+
 const uploadDir = "uploads";
 fs.mkdirSync(uploadDir, { recursive: true });
 
@@ -50,7 +54,6 @@ loginRoutes.post("/login", async (req: Request, res: Response) => {
 
     if (found) {
       let users = await client.query("SELECT * from users");
-      console.table(users.rows);
       res.status(200).json({
         result: true,
         message: "success",
@@ -58,7 +61,7 @@ loginRoutes.post("/login", async (req: Request, res: Response) => {
       });
       return;
     } else {
-      res.status(401).send("User not found");
+      res.status(401).json({ result: false, message: "fail", users });
       return;
     }
   });

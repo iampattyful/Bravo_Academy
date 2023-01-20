@@ -54,7 +54,7 @@ body {
 .navbar .time p {
   color: white;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 18px;
   line-height: 17px;
   margin: 0;
   padding: 8px;
@@ -484,4 +484,17 @@ body {
 
 .hide {
   display: none !important;
+}
+
+.footer li a {
+  text-decoration-line: none;
+  color: #ffffff;
+}
+
+.footer li :hover {
+  color: #30a57b;
+}
+
+.end a {
+  text-decoration-line: none;
 }
