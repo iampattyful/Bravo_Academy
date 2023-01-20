@@ -3,8 +3,8 @@
     "version": "2.2.11",
     "width": 2000,
     "height": 2000,
-    "scrollTop": -151.50000000000063,
-    "scrollLeft": -1,
+    "scrollTop": -83.83333333333346,
+    "scrollLeft": -266.6666666666669,
     "zoomLevel": 1,
     "show": {
       "tableComment": true,
@@ -19,7 +19,7 @@
     },
     "database": "MySQL",
     "databaseName": "",
-    "canvasType": "@vuerd/builtin-sql-ddl",
+    "canvasType": "ERD",
     "language": "GraphQL",
     "tableCase": "pascalCase",
     "columnCase": "camelCase",
@@ -327,7 +327,7 @@
           "active": false,
           "left": 27,
           "top": 168.25,
-          "zIndex": 7,
+          "zIndex": 6,
           "widthName": 60,
           "widthComment": 60
         },
@@ -525,7 +525,7 @@
         "comment": "",
         "columns": [
           {
-            "name": "user_id",
+            "name": "student_id",
             "comment": "student remarks teachers",
             "dataType": "SERIAL",
             "default": "",
@@ -540,7 +540,7 @@
               "pk": false,
               "fk": true,
               "pfk": false,
-              "widthName": 60,
+              "widthName": 61.99169921875,
               "widthComment": 120,
               "widthDataType": 60,
               "widthDefault": 60
@@ -548,7 +548,7 @@
             "id": "30828871-3343-4115-a90d-b15882a8649a"
           },
           {
-            "name": "user_id",
+            "name": "teacher_id",
             "comment": "a teacher can be remarked by many students",
             "dataType": "SERIAL",
             "default": "",
@@ -563,7 +563,7 @@
               "pk": false,
               "fk": true,
               "pfk": false,
-              "widthName": 60,
+              "widthName": 62.708984375,
               "widthComment": 120,
               "widthDataType": 60,
               "widthDefault": 60
@@ -572,10 +572,10 @@
           }
         ],
         "ui": {
-          "active": false,
+          "active": true,
           "left": 652.5,
-          "top": 160.25,
-          "zIndex": 3,
+          "top": 159.25,
+          "zIndex": 15,
           "widthName": 94.498046875,
           "widthComment": 60
         },
@@ -723,7 +723,7 @@
             "30828871-3343-4115-a90d-b15882a8649a"
           ],
           "x": 652.5,
-          "y": 187.75,
+          "y": 186.75,
           "direction": "left"
         },
         "constraintName": "fk_users_to_bookmark_table",
@@ -749,7 +749,7 @@
             "f6d434da-fdcb-42fb-a27f-4162edadd35b"
           ],
           "x": 652.5,
-          "y": 242.75,
+          "y": 241.75,
           "direction": "left"
         },
         "constraintName": "fk_users_to_bookmark_table",
