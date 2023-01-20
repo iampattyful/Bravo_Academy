@@ -328,6 +328,7 @@ p > button {
     justify-content: center;
   }
   .teacherPriceContact {
+    margin-top: 100px;
     position: static;
     display: flex;
     flex-direction: column;
