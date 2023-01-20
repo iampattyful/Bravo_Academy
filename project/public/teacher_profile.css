@@ -6,17 +6,13 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  /* justify-content: center;
-  align-items: center; */
-  background: #000;
-  width: 100%;
-  height: 100%;
-  margin: 50px;
+  margin-top: 50px;
 }
 
 .teacherHeader {
-  background: #000;
   align-items: center;
+  padding-top: 5px;
+  margin-right: 20px;
 }
 
 .teacherPic {
@@ -27,6 +23,17 @@ body {
   overflow: hidden;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.profileTag {
+  background: #30a57b;
+  border-radius: 25px;
+  font-weight: 500;
+  font-size: 24px;
+  text-align: center;
+  margin: 5px;
 }
 
 img {
@@ -125,7 +132,7 @@ img {
   padding-left: 3px;
 }
 
-#contactText {
+#contactBtn {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -135,6 +142,66 @@ img {
   height: 49px;
   background: #30a57b;
   border-radius: 25px;
+  font-size: 24px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 10px;
+  border: 1px solid #888;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+}
+
+.modal-content > p {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  font-size: 24px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .selfIntro {
@@ -248,22 +315,26 @@ p > button {
   text-align: center;
 }
 
-@media only screen and (max-width: 960px) {
+@media screen and (max-width: 960px) {
+  .teacherHeader {
+    align-items: center;
+    padding-top: 5px;
+    margin-right: 5px;
+    justify-content: center;
+  }
   .teacherPic {
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .teacherPriceContact {
+    margin-top: 100px;
     position: static;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-self: center;
     background: #000;
-    width: 100%;
-    height: 100%;
-    margin-top: 0px;
   }
   .teacherPrice {
     background-color: #fff;
@@ -278,7 +349,7 @@ p > button {
     width: 100%;
     height: 100%;
   }
-  .teacherContact {
+  #contactBtn {
     width: 100%;
     height: 100%;
     display: flex;
@@ -286,7 +357,7 @@ p > button {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 5px;
+    margin-bottom: 5px;
   }
   .sns {
     display: flex;
@@ -296,6 +367,7 @@ p > button {
     color: #888888;
     font-size: 30px;
     text-align: right;
+    margin-bottom: 10px;
   }
   .sns > .sns-icon {
     display: flex;
@@ -303,5 +375,11 @@ p > button {
     padding: 5px;
     justify-content: space-around;
     align-items: center;
+  }
+  .selfIntro h3 {
+    color: #fff;
+    font-weight: 600;
+    font-size: 32px;
+    margin: 50px 0px 20px 0px;
   }
 }
