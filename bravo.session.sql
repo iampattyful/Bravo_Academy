@@ -32,8 +32,8 @@ CREATE TABLE role
         
 CREATE TABLE bookmark_table
 (
-  user_id INTEGER,
-  user_id INTEGER 
+  student_id INTEGER,
+  teacher_id INTEGER 
 );
 
 CREATE TABLE comments
@@ -49,9 +49,6 @@ CREATE TABLE user_comment_table
   comment_id INTEGER 
 );
 
-
-
-
 ALTER TABLE user_comment_table
   ADD CONSTRAINT FK_users_TO_user_comment_table
     FOREIGN KEY (user_id)
@@ -64,12 +61,12 @@ ALTER TABLE user_comment_table
 
 ALTER TABLE bookmark_table
   ADD CONSTRAINT FK_users_TO_bookmark_table
-    FOREIGN KEY (user_id)
+    FOREIGN KEY (student_id)
     REFERENCES users (user_id);
 
 ALTER TABLE bookmark_table
   ADD CONSTRAINT FK_users_TO_bookmark_table1
-    FOREIGN KEY (user_id)
+    FOREIGN KEY (teacher_id)
     REFERENCES users (user_id);
 
 
