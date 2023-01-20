@@ -8,6 +8,7 @@ CREATE TABLE users
   description VARCHAR     ,
   price       INTEGER NOT NULL DEFAULT 100,
   duration    INTEGER NOT NULL DEFAULT 60,
+  subject     VARCHAR NOT NULL,
   image       VARCHAR      ,
   role_id     INTEGER      ,
   subject_id  INTEGER  ,
@@ -21,54 +22,6 @@ CREATE TABLE subject
   subject_name VARCHAR NOT NULL,
   PRIMARY KEY (id)
 );
-
-CREATE TABLE role
-(
-  id        SERIAL  NOT NULL,
-  role_name VARCHAR NOT NULL,
-  PRIMARY KEY (id)
-);
-
-        
-CREATE TABLE bookmark_table
-(
-  student_id INTEGER,
-  teacher_id INTEGER 
-);
-
-CREATE TABLE comments
-(
-  comment_id SERIAL NOT NULL,
-  user_id    INTEGER,
-  PRIMARY KEY (comment_id)
-);
-
-CREATE TABLE user_comment_table
-(
-  user_id    INTEGER,
-  comment_id INTEGER 
-);
-
-ALTER TABLE user_comment_table
-  ADD CONSTRAINT FK_users_TO_user_comment_table
-    FOREIGN KEY (user_id)
-    REFERENCES users (user_id);
-
-ALTER TABLE user_comment_table
-  ADD CONSTRAINT FK_comments_TO_user_comment_table
-    FOREIGN KEY (comment_id)
-    REFERENCES comments (comment_id);
-
-ALTER TABLE bookmark_table
-  ADD CONSTRAINT FK_users_TO_bookmark_table
-    FOREIGN KEY (student_id)
-    REFERENCES users (user_id);
-
-ALTER TABLE bookmark_table
-  ADD CONSTRAINT FK_users_TO_bookmark_table1
-    FOREIGN KEY (teacher_id)
-    REFERENCES users (user_id);
-
 
 
 ALTER TABLE users

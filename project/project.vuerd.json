@@ -3,8 +3,8 @@
     "version": "2.2.11",
     "width": 2000,
     "height": 2000,
-    "scrollTop": -83.83333333333346,
-    "scrollLeft": -266.6666666666669,
+    "scrollTop": -151.50000000000063,
+    "scrollLeft": -1,
     "zoomLevel": 1,
     "show": {
       "tableComment": true,
@@ -19,7 +19,7 @@
     },
     "database": "MySQL",
     "databaseName": "",
-    "canvasType": "ERD",
+    "canvasType": "@vuerd/builtin-sql-ddl",
     "language": "GraphQL",
     "tableCase": "pascalCase",
     "columnCase": "camelCase",
@@ -327,7 +327,7 @@
           "active": false,
           "left": 27,
           "top": 168.25,
-          "zIndex": 6,
+          "zIndex": 7,
           "widthName": 60,
           "widthComment": 60
         },
@@ -525,7 +525,7 @@
         "comment": "",
         "columns": [
           {
-            "name": "student_id",
+            "name": "user_id",
             "comment": "student remarks teachers",
             "dataType": "SERIAL",
             "default": "",
@@ -540,7 +540,7 @@
               "pk": false,
               "fk": true,
               "pfk": false,
-              "widthName": 61.99169921875,
+              "widthName": 60,
               "widthComment": 120,
               "widthDataType": 60,
               "widthDefault": 60
@@ -548,7 +548,7 @@
             "id": "30828871-3343-4115-a90d-b15882a8649a"
           },
           {
-            "name": "teacher_id",
+            "name": "user_id",
             "comment": "a teacher can be remarked by many students",
             "dataType": "SERIAL",
             "default": "",
@@ -563,7 +563,7 @@
               "pk": false,
               "fk": true,
               "pfk": false,
-              "widthName": 62.708984375,
+              "widthName": 60,
               "widthComment": 120,
               "widthDataType": 60,
               "widthDefault": 60
@@ -572,10 +572,10 @@
           }
         ],
         "ui": {
-          "active": true,
+          "active": false,
           "left": 652.5,
-          "top": 159.25,
-          "zIndex": 15,
+          "top": 160.25,
+          "zIndex": 3,
           "widthName": 94.498046875,
           "widthComment": 60
         },
@@ -658,18 +658,14 @@
         "startRelationshipType": "Dash",
         "start": {
           "tableId": "e64f142b-ff4a-4108-a30d-9601424ca37d",
-          "columnIds": [
-            "274367d1-0030-4be0-be63-b3aec925353d"
-          ],
+          "columnIds": ["274367d1-0030-4be0-be63-b3aec925353d"],
           "x": 425.22119140625,
           "y": 430.75,
           "direction": "right"
         },
         "end": {
           "tableId": "4e443b40-2f04-4882-9a8e-da582855eb2b",
-          "columnIds": [
-            "56061494-7fba-4f09-afe4-9a7b8f57278b"
-          ],
+          "columnIds": ["56061494-7fba-4f09-afe4-9a7b8f57278b"],
           "x": 851.25,
           "y": 634.5,
           "direction": "left"
@@ -684,18 +680,14 @@
         "startRelationshipType": "Dash",
         "start": {
           "tableId": "248f8f25-984a-4182-b8a4-2d360c31adf2",
-          "columnIds": [
-            "54ac570a-fbff-4240-ba03-d4194ca042fa"
-          ],
+          "columnIds": ["54ac570a-fbff-4240-ba03-d4194ca042fa"],
           "x": 882.404052734375,
           "y": 411.25,
           "direction": "bottom"
         },
         "end": {
           "tableId": "4e443b40-2f04-4882-9a8e-da582855eb2b",
-          "columnIds": [
-            "4d6a2926-0646-4f9f-b1e5-cb6ab59d63ec"
-          ],
+          "columnIds": ["4d6a2926-0646-4f9f-b1e5-cb6ab59d63ec"],
           "x": 1031.154052734375,
           "y": 579.5,
           "direction": "top"
@@ -710,20 +702,16 @@
         "startRelationshipType": "Dash",
         "start": {
           "tableId": "e64f142b-ff4a-4108-a30d-9601424ca37d",
-          "columnIds": [
-            "274367d1-0030-4be0-be63-b3aec925353d"
-          ],
+          "columnIds": ["274367d1-0030-4be0-be63-b3aec925353d"],
           "x": 425.22119140625,
           "y": 220.75,
           "direction": "right"
         },
         "end": {
           "tableId": "f34ecf88-85ce-4a17-9f5c-e74517c3b30c",
-          "columnIds": [
-            "30828871-3343-4115-a90d-b15882a8649a"
-          ],
+          "columnIds": ["30828871-3343-4115-a90d-b15882a8649a"],
           "x": 652.5,
-          "y": 186.75,
+          "y": 187.75,
           "direction": "left"
         },
         "constraintName": "fk_users_to_bookmark_table",
@@ -736,20 +724,16 @@
         "startRelationshipType": "Dash",
         "start": {
           "tableId": "e64f142b-ff4a-4108-a30d-9601424ca37d",
-          "columnIds": [
-            "274367d1-0030-4be0-be63-b3aec925353d"
-          ],
+          "columnIds": ["274367d1-0030-4be0-be63-b3aec925353d"],
           "x": 425.22119140625,
           "y": 325.75,
           "direction": "right"
         },
         "end": {
           "tableId": "f34ecf88-85ce-4a17-9f5c-e74517c3b30c",
-          "columnIds": [
-            "f6d434da-fdcb-42fb-a27f-4162edadd35b"
-          ],
+          "columnIds": ["f6d434da-fdcb-42fb-a27f-4162edadd35b"],
           "x": 652.5,
-          "y": 241.75,
+          "y": 242.75,
           "direction": "left"
         },
         "constraintName": "fk_users_to_bookmark_table",
@@ -762,18 +746,14 @@
         "startRelationshipType": "Ring",
         "start": {
           "tableId": "6d708c99-d1fb-45ff-8fe2-d9f2949017a9",
-          "columnIds": [
-            "542cb70e-d7ca-4c12-a5f5-b283a54c0ca8"
-          ],
+          "columnIds": ["542cb70e-d7ca-4c12-a5f5-b283a54c0ca8"],
           "x": 228.0166015625,
           "y": 634,
           "direction": "top"
         },
         "end": {
           "tableId": "e64f142b-ff4a-4108-a30d-9601424ca37d",
-          "columnIds": [
-            "b1658460-1436-4de4-93fa-f5bc46009f16"
-          ],
+          "columnIds": ["b1658460-1436-4de4-93fa-f5bc46009f16"],
           "x": 126.5552978515625,
           "y": 483.25,
           "direction": "bottom"
@@ -788,18 +768,14 @@
         "startRelationshipType": "Dash",
         "start": {
           "tableId": "8fe1612c-a904-46af-8b89-a789f853ad7e",
-          "columnIds": [
-            "d4006015-4788-460c-9a44-e13178626378"
-          ],
+          "columnIds": ["d4006015-4788-460c-9a44-e13178626378"],
           "x": 523,
           "y": 665.1667,
           "direction": "left"
         },
         "end": {
           "tableId": "e64f142b-ff4a-4108-a30d-9601424ca37d",
-          "columnIds": [
-            "145802b0-7cd4-4a2a-b8b2-d3a13e111f10"
-          ],
+          "columnIds": ["145802b0-7cd4-4a2a-b8b2-d3a13e111f10"],
           "x": 325.6658935546875,
           "y": 483.25,
           "direction": "bottom"
