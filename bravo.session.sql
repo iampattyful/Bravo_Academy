@@ -83,7 +83,7 @@ ALTER TABLE users
 
 
 
-INSERT INTO subject (subject_name) VALUES ('chinese')
+INSERT INTO subject (subject_name) VALUES ('chinese');
 INSERT INTO subject (subject_name) VALUES ('english');
 INSERT INTO subject (subject_name) VALUES ('french');
 INSERT INTO subject (subject_name) VALUES ('japanese');
