@@ -15,7 +15,7 @@ login.addEventListener("submit", async (event) => {
   if (json.result) {
     // login.innerHTML = "WELCOME";
     window.location = "/";
-    document.querySelector;
+    document.querySelector();
     return;
   } else {
     window.location = "/404.html";
