@@ -1,31 +1,14 @@
 import express from "express";
 import { Request, Response } from "express";
-import expressSession from "express-session";
 export const logoutRoutes = express.Router();
 
-logoutRoutes.use(
-  expressSession({
-    secret: "testingABC",
-    resave: true,
-    saveUninitialized: true,
-  })
-);
-
-declare module "express-session" {
-  interface SessionData {
-    counter?: number;
-    user?: {
-      id?: string;
-      username?: string;
-      role_id?: string;
-      subject_id?: string;
-    };
-  }
-}
+//express session
+import { expressSessionRoutes } from "./expressSessionRoutes";
+logoutRoutes.use("/", expressSessionRoutes);
 
 //logout
 logoutRoutes.post("/logout", async (req: Request, res: Response) => {
-  if (req.session) {
+  if (req.session.user) {
     delete req.session.user;
     console.log(req.session.user);
     console.log(1);

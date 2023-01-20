@@ -1,4 +1,24 @@
-//AJAX login
+window.onload = async function () {
+  checkLogin();
+};
+
+const checkLogin = async () => {
+  const res = await fetch("/checkLogin", {
+    method: "GET",
+  });
+  const json = await res.json();
+  console.log(json.result);
+  if (json.result) {
+    document.querySelector("#loginShow").classList.add("hide");
+    document.querySelector("#signUpShow").classList.add("hide");
+    document.querySelector("#logout").classList.remove("hide");
+    document.querySelector(".become-teacher").classList.add("hide");
+
+    return;
+  }
+};
+
+//login
 const login = document.querySelector("#login");
 login.addEventListener("submit", async (event) => {
   event.preventDefault(); // To prevent the form from submitting synchronously

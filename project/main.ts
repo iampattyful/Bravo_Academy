@@ -18,6 +18,14 @@ app.use("/", signupRoutes);
 import { logoutRoutes } from "./src/logoutRoutes";
 app.use("/", logoutRoutes);
 
+//check login
+import { checkLoginRoutes } from "./src/checkLoginRoutes";
+app.use("/", checkLoginRoutes);
+
+//loadTeacher
+import { loadTeacherRoutes } from "./src/loadTeacherRoutes";
+app.use("/", loadTeacherRoutes);
+
 app.use(express.static("public"));
 
 const PORT = 8080;
