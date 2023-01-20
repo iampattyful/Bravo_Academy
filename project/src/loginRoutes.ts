@@ -1,9 +1,15 @@
-import { Request, Response } from "express";
-import { client } from "./client";
-import { checkPassword } from "./hash";
-import formidable from "formidable";
-import fs from "fs";
 import express from "express";
+
+import { Request, Response } from "express";
+
+import formidable from "formidable";
+
+import fs from "fs";
+
+import { checkPassword } from "./hash";
+
+import { client } from "./client";
+
 export const loginRoutes = express.Router();
 
 const uploadDir = "uploads";
@@ -17,6 +23,7 @@ const form = formidable({
   filter: (part) => part.mimetype?.startsWith("image/") || false,
 });
 
+//login
 loginRoutes.post("/login", async (req: Request, res: Response) => {
   form.parse(req, async (err, fields, files) => {
     let found = false;
