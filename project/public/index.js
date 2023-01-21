@@ -80,9 +80,8 @@ signUp.addEventListener("submit", async (event) => {
     // login.innerHTML = "WELCOME";
     window.location = "/";
     return;
-    // } else {
-    //   window.location = "/";
-    // }
+  } else {
+    alert("Please fill in the blank.");
   }
 });
 
