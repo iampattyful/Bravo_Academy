@@ -502,3 +502,124 @@ body {
 .dropdown-menu {
   cursor: pointer;
 }
+
+@media only screen and (max-width: 390px) {
+  .navbar {
+    padding-right: 15px;
+  }
+
+  li {
+    margin-bottom: 5px;
+  }
+  .slider {
+    display: none;
+  }
+  .hot-course {
+    margin-top: 40px;
+  }
+
+  .selected-course {
+    height: 358px;
+  }
+  .selected-course .title {
+    top: 218px;
+  }
+  .reasons .row {
+    justify-content: center;
+  }
+
+  .how-to-use .outer {
+    margin: 30px;
+  }
+
+  iframe {
+    width: -webkit-fill-available;
+  }
+
+  .video {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .video .lower {
+    margin-bottom: 30px;
+  }
+
+  .become-teacher {
+    padding: 0;
+  }
+
+  .asTeacher {
+    display: none;
+  }
+
+  .scroll-to-top {
+    bottom: 90px;
+    right: 7px;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  li {
+    margin-bottom: 5px;
+  }
+  /* .slider {
+    display: none;
+  } */
+  .hot-course {
+    margin-top: 40px;
+  }
+
+  .selected-course {
+    height: 358px;
+  }
+  .selected-course .title {
+    top: 218px;
+  }
+  .reasons .row {
+    justify-content: center;
+  }
+
+  .how-to-use .outer {
+    margin: 0px;
+  }
+
+  .col-md-4.teacherVideoSize {
+    width: 100%;
+  }
+
+  iframe {
+    width: -webkit-fill-available;
+  }
+
+  .video .lower {
+    margin-bottom: 30px;
+  }
+
+  .become-teacher {
+    padding: 0;
+  }
+
+  .become-teacher h6 {
+    font-size: 18px;
+    line-height: 25px;
+  }
+  .become-teacher p {
+    font-size: 13px;
+    line-height: 14px;
+  }
+
+  .become-teacher ul {
+    margin: 15px 0;
+  }
+
+  .become-teacher li {
+    margin: 12px 0;
+    font-size: 18px;
+    line-height: 17px;
+  }
+
+  .asTeacher {
+    display: none;
+  }
+}
