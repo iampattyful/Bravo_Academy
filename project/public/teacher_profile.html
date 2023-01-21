@@ -24,10 +24,9 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="./assets/Bravo Academy.png" width="145" height="24" /></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <a class="navbar-brand" href="/"><img src="./assets/Bravo Academy.png" width="164" height="24" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -38,31 +37,144 @@
                                 探索課程
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">中文</a></li>
-                                <li><a class="dropdown-item" href="#">英文</a></li>
-                                <li><a class="dropdown-item" href="#">法文</a></li>
-                                <li>
-                                    <a class="dropdown-item" href="#">日文</a>
-                                </li>
+                                <li><a class="dropdown-item" id="chinese" href="/teacher_page.html">中文</a></li>
+                                <li><a class="dropdown-item" id="english" href="/teacher_page.html">英文</a></li>
+                                <li><a class="dropdown-item" id="french" href="/teacher_page.html">法文</a></li>
+                                <li><a class="dropdown-item" id="japanese" href="/teacher_page.html">日文</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">聯絡我們</a>
+                            <a class="nav-link" href="#contactUs">聯絡我們</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">成為老師</a>
+                        <li class="nav-item login hide" id="logout">
+                            <a class="nav-link">登出</a>
                         </li>
-                        <li class="nav-item login">
-                            <a class="nav-link" href="#">登入/註冊</a>
+                        <li>
+                            <div id="loginShow" type="button" class="nav-item login white" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                登入
+                            </div>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                用戶登入
+                                            </h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="login">
+                                                <div class="mb-3">
+                                                    <label for="exampleInputEmail1" class="form-label">登入電郵</label>
+                                                    <input type="email" name="email" class="form-control"
+                                                        aria-describedby="emailHelp" />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleInputPassword1" class="form-label">密碼</label>
+                                                    <input type="password" name="password" class="form-control" />
+                                                </div>
+                                                <input type="submit" class="btn btn-primary loginBtn" value="登入"
+                                                    data-bs-dismiss="modal" />
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="signUpShow" type="button" class="nav-item login white" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
+                                註冊
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                                用戶登記
+                                            </h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="signUp">
+                                                <div class="mb-3">
+                                                    <label class="form-label">選擇身份</label>
+                                                    <select class="form-select" id='role' name='roleId'
+                                                        aria-label="Default select example">
+                                                        <option class='teachers' value="1">老師</option>
+                                                        <option class='students' value="2">學生</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3" id='subjects'>
+                                                    <label class="form-label">選擇科目</label>
+                                                    <select class="form-select" aria-label="Default select example"
+                                                        name="subjectId">
+                                                        <option value="1">中文</option>
+                                                        <option value="2">英文</option>
+                                                        <option value="3">法文</option>
+                                                        <option value="4">日文</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">電郵地址</label>
+                                                    <input type="email" name="email" class="form-control"
+                                                        aria-describedby="emailHelp" />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleInputPassword1" class="form-label">輸入密碼</label>
+                                                    <input type="password" name="password" class="form-control" />
+                                                </div>
+                                                <div class="flex">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">姓名</label>
+                                                        <input type="username" name="username" class="form-control" />
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">電話</label>
+                                                        <input type="phone" name="phone" class="form-control" />
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">選擇相片</label>
+                                                    <input type="file" name="image" />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">自我介紹</label>
+                                                    <textarea class="form-control" name="description" placeholder="輸入自我介紹"
+                                                        style="height: 150px"></textarea>
+                                                </div>
+                                                <div class="flex priceandtime">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">收費</label>
+                                                        <input name="price" class="form-control" />
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">時間</label>
+                                                        <input name="duration" class="form-control" />
+                                                    </div>
+                                                </div>
+                                                <input type="submit" class="btn btn-primary" value="完成" />
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li class="nav-item time">
-                            <p>11 : 00AM</p>
+                            <p class="clock">00:00</p>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="teacherProfile">
         <div class="container">
             <div class="row teacherHeader">
@@ -72,7 +184,7 @@
                     </div>
                     <div class="profileTag">英文老師</div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <div class="teacherInfo">
                         <h1>Mr Adam Chan</h1>
                         <div class="teacherStat">
@@ -102,7 +214,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="teacherPriceContact">
                         <div class="teacherPrice">
                             <div id="priceText">HK$110</div>
@@ -141,7 +253,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-10">
+                <div class="col-md-9">
                     <div class="selfIntro">
                         <h3>自我介紹</h3>
                         <div class="selfIntroInnerText">
@@ -251,7 +363,7 @@
 
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                 </div>
             </div>
         </div>
@@ -263,24 +375,24 @@
                     <span>熱門</span>
                     <div class="outer">
                         <ul>
-                            <li>線上英文</li>
-                            <li>英文補習</li>
-                            <li>English Tutor</li>
+                            <li><a href="#">線上英文</a></li>
+                            <li><a href="#">英文補習</a></li>
+                            <li><a href="#">English Tutor</a></li>
                         </ul>
                         <ul>
-                            <li>オンライン英会話</li>
-                            <li>Online English Tutor</li>
-                            <li>Online Tutor</li>
+                            <li><a href="#">オンライン英会話</a></li>
+                            <li><a href="#">Online English Tutor</a></li>
+                            <li><a href="#">Online Tutor</a></li>
                         </ul>
                         <ul>
-                            <li>線上家教</li>
-                            <li>網上課程</li>
-                            <li>オンラインレッスン</li>
+                            <li><a href="#">線上家教</a></li>
+                            <li><a href="#">網上課程</a></li>
+                            <li><a href="#">オンラインレッスン</a></li>
                         </ul>
                         <ul>
-                            <li>線上家教</li>
-                            <li>網上課程</li>
-                            <li>オンラインレッスン</li>
+                            <li><a href="#">線上家教</a></li>
+                            <li><a href="#">網上課程</a></li>
+                            <li><a href="#">オンラインレッスン</a></li>
                         </ul>
                     </div>
                 </div>
@@ -288,23 +400,28 @@
                     <span>其他</span>
                     <div class="outer">
                         <ul>
-                            <li>成為導師</li>
+                            <li><a href="#">成為老師</a></li>
                             <li>關於我們</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-
+    
         <section class="end">
             <span>© 2023 Bravo Academy.</span>
             <div class="social-media">
-                <div><i class="bi bi-instagram"></i></div>
-                <div><i class="bi bi-facebook"></i></div>
-                <div><i class="bi bi-twitter"></i></div>
+                <div><a href="#"><i class="bi bi-instagram"></i></a></div>
+                <div><a href="#"><i class="bi bi-facebook"></i></a></div>
+                <div><a href="#"><i class="bi bi-twitter"></i></a></div>
             </div>
         </section>
     </section>
+    
+    <a href="#">
+        <div class="scroll-to-top"><i class="bi bi-chevron-compact-up"></i></div>
+    </a>
+
 
     <a href="#">
         <div class="scroll-to-top"><i class="bi bi-chevron-compact-up"></i></div>
@@ -317,7 +434,8 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
     <script src="./index.js"></script>
-    <script src="teacher_profile.js"></script>
+    <script src="./clock.js"></script>
+    <script src="./teacher_profile.js"></script>
 
 </body>
 
