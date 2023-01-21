@@ -9,6 +9,16 @@
       "database": "bravo",
       "username": "herman",
       "password": "herman"
+    },
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "askForPassword": true,
+      "driver": "PostgreSQL",
+      "name": "Patty",
+      "database": "bravo",
+      "username": "postgres"
     }
   ]
 }
