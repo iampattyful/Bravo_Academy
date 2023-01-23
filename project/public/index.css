@@ -81,6 +81,11 @@ body {
   display: flex;
 }
 
+.nav-link.userProfile {
+  color: #30a57b;
+  padding: 8px;
+}
+
 /* slider */
 .slider {
   margin-top: 44px;

@@ -4,14 +4,21 @@ window.onload = async function () {
 };
 
 //teacher list Template
-const teacherListTemplate = (img, teacherName, description, price, min) =>
+const teacherListTemplate = (
+  img,
+  userId,
+  teacherName,
+  description,
+  price,
+  min
+) =>
   ` 
         <div class="picture">
           <img src="../uploads/${img}">
           <div><a href="#">聯絡老師</a></div>
         </div>
         <div class="description">
-          <div class="des-head">${teacherName}</div>
+          <div class="des-head" data-id=${userId}>${teacherName}</div>
           <div class="des-icon">
             <div><i class="fa-regular fa-bookmark"></i></div>
             <div><i class="fa-regular fa-heart"></i></div>
@@ -29,24 +36,23 @@ const teacherListTemplate = (img, teacherName, description, price, min) =>
 
 // load teacher list
 const loadTeacher = async (event) => {
-  let id;
+  let subjectId;
 
   if (event.currentTarget.id == "chinese") {
-    id = 1;
+    subjectId = 1;
   } else if (event.currentTarget.id == "english") {
-    id = 2;
+    subjectId = 2;
   } else if (event.currentTarget.id == "french") {
-    id = 3;
+    subjectId = 3;
   } else if (event.currentTarget.id == "japanese") {
-    id = 4;
+    subjectId = 4;
   }
 
-  console.log(id);
-  const res = await fetch(`/teachers/${id}`, {
+  console.log(subjectId);
+  const res = await fetch(`/teachers/${subjectId}`, {
     method: "POST",
   });
   let json = await res.json();
-  console.log(json);
   teacherResult(json);
 };
 
@@ -70,6 +76,7 @@ async function teacherResult(json) {
 
       teacher.innerHTML = teacherListTemplate(
         json.teachers[i].image,
+        json.teachers[i].user_id,
         json.teachers[i].username,
         json.teachers[i].description,
         json.teachers[i].price,
