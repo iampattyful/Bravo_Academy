@@ -2,9 +2,30 @@ body {
   padding-top: 44px;
 }
 
-img {
-  width: 100%;
-}
+ @media  (max-width: 390px)  {
+  .inner-column {
+    display: flex;
+    flex-direction: column;
+    margin:20px;
+  }
+  .word-inside-image > {
+  justify-content: center;
+  }
+  .picture{
+    display: flex;
+    flex-direction: column;
+  }
+  .description > div {
+    font-size: 15px;
+  }
+  .description div > p1 {
+    font-size: 15px;
+  }
+  .scroll-to-top {
+    display: none;
+  }
+}  
+
 .word-inside-image {
   height: 580px;
   background-image: url("./assets/Rectangle2-2.jpg");
@@ -13,6 +34,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .middle-content {
@@ -48,8 +70,7 @@ h2 {
 }
 
 .picture {
-  width: 20%;
-  /* padding:30px; */
+
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -58,7 +79,9 @@ h2 {
 
 .picture > img {
   border-radius: 50%;
-  padding: 20px;
+  padding: 10px;
+  width:150px;
+  
 }
 .picture > div {
   justify-content: center;
@@ -68,7 +91,6 @@ h2 {
 .picture > div {
   background: #30a57b;
   border-radius: 18px;
-  /* border: #30a57b 5px solid; */
   text-align: center;
   color: white;
   margin-bottom: 10px;
@@ -76,6 +98,7 @@ h2 {
   height: 40px;
   justify-content: center;
   text-align: center;
+  
 }
 .description {
   width: 80%;
@@ -109,7 +132,7 @@ h2 {
 .des-price > p2 {
   font-size: 12px;
   color: white;
-  margin-left: 10px;
+  
   color: #888888;
 }
 
