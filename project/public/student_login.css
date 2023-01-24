@@ -3,6 +3,7 @@
     border-radius: 10px;
     border: white 1px solid;
     padding:10px;
+    height:70%;
 }
 
 .student-picture {
@@ -45,8 +46,8 @@
 .introduction {
     margin:10px 0 10px 20px;
     background-color: rgb(244, 244, 232);
-    height: 150px;
-    width:280px;
+    height: 250px;
+    width:200px;
     border-radius: 10px;
     padding:10px;
    
@@ -58,32 +59,50 @@
     padding:10px;
 }
 
-.course {
+.course, .collect{
     font-size: 20px;
     font-weight: bold;
-    padding: 10px 0 0 20px;
+    margin-left:  20px;
+    padding:10px
 }
-.collect {
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px 0 0 20px;
-}
+
 
 .collect-column {
     
     background: #222222;
     border: solid #222222 1px;
     display: flex;
+    flex-direction: column;
     border-radius: 20px;
-    margin-bottom:20px;
+    margin-bottom:5px;
+    margin-left:20px;
+    width:30%;
+    
 }
 .collect-picture {
-    width: 15%;align-items: center;
-   display: flex;
-   justify-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
 }
 
 .collect-picture > img {
     border-radius:50%;
-    padding:20px;
+    padding:5px;
+    width: 100px;
+}
+.collect-column > div {
+    padding:0px;
+    margin:0px;
+}
+.des-head, .des-price > p1 {
+    font-size: 15px;
+    margin:0px;
+    padding:0px
+   
+  
+}
+.right-course , .right-collection {
+    display: flex;
+    flex-wrap: wrap;
 }
