@@ -2,6 +2,7 @@ window.onload = async function () {
   checkLogin();
 };
 
+//checkLogin
 const checkLogin = async () => {
   const res = await fetch("/checkLogin", {
     method: "GET",
@@ -12,8 +13,9 @@ const checkLogin = async () => {
     document.querySelector("#loginShow").classList.add("hide");
     document.querySelector("#signUpShow").classList.add("hide");
     document.querySelector("#logout").classList.remove("hide");
+    document.querySelector(".userProfile").classList.remove("hide");
+    document.querySelector(".userProfile").innerHTML = json.users.username;
     document.querySelector(".become-teacher").classList.add("hide");
-
     return;
   }
 };
@@ -36,9 +38,10 @@ login.addEventListener("submit", async (event) => {
     // login.innerHTML = "WELCOME";
     document.querySelector("#loginShow").classList.add("hide");
     document.querySelector("#signUpShow").classList.add("hide");
+    document.querySelector(".userProfile").classList.remove("hide");
+    document.querySelector(".userProfile").innerHTML = json.users.username;
     document.querySelector("#logout").classList.remove("hide");
     document.querySelector(".become-teacher").classList.add("hide");
-
     return;
   } else {
     window.location = "/404.html";
@@ -77,7 +80,6 @@ signUp.addEventListener("submit", async (event) => {
   console.log(json);
 
   if (json.result) {
-    // login.innerHTML = "WELCOME";
     window.location = "/";
     return;
   } else {

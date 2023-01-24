@@ -26,7 +26,12 @@ app.use("/", checkLoginRoutes);
 import { loadTeacherRoutes } from "./src/loadTeacherRoutes";
 app.use("/", loadTeacherRoutes);
 
+//updateTeacherSettings
+// import { updateTeacherSettings } from "./src/updateTeacherSettings";
+// app.use("/", updateTeacherSettings);
+
 app.use(express.static("public"));
+app.use(express.static("uploads"));
 
 const PORT = 8080;
 app.listen(PORT, () => {

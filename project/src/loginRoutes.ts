@@ -45,23 +45,25 @@ loginRoutes.post("/login", async (req: Request, res: Response) => {
           req.session.user = {
             id: users.rows[0].user_id,
             username: users.rows[0].username,
+            role_id: users.rows[0].role_id,
+            subject_id: users.rows[0].subject_id,
           };
-          console.log(req.session.user);
           found = true;
         }
       }
     }
 
     if (found) {
-      let users = await client.query("SELECT * from users");
+      // let users = await client.query("SELECT * from users");
       res.status(200).json({
         result: true,
         message: "success",
-        users,
+        users: req.session.user,
       });
+      console.log(req.session.user);
       return;
     } else {
-      res.status(401).json({ result: false, message: "fail", users });
+      res.status(401).json({ result: false, message: "fail", users: {} });
       return;
     }
   });
