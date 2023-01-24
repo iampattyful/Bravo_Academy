@@ -79,6 +79,7 @@ async function teacherResult(json) {
   console.log(json);
 
   if (json.result) {
+    teacherListing.innerHTML = "";
     document.querySelector(".teacherListing").innerHTML = json.teachers
       .map(
         (teacher) =>
@@ -128,5 +129,7 @@ async function teacherResult(json) {
     //   );
 
     // teacherListing.appendChild(teacher);
+  } else {
+    teacherListing.innerHTML = "";
   }
 }
