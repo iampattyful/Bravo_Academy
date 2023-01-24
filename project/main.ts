@@ -31,6 +31,7 @@ app.use("/", loadTeacherRoutes);
 // app.use("/", updateTeacherSettings);
 
 app.use(express.static("public"));
+app.use(express.static("uploads"));
 
 const PORT = 8080;
 app.listen(PORT, () => {

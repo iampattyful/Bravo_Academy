@@ -38,10 +38,10 @@ login.addEventListener("submit", async (event) => {
     // login.innerHTML = "WELCOME";
     document.querySelector("#loginShow").classList.add("hide");
     document.querySelector("#signUpShow").classList.add("hide");
-    document.querySelector("#logout").classList.remove("hide");
-    document.querySelector(".become-teacher").classList.add("hide");
     document.querySelector(".userProfile").classList.remove("hide");
     document.querySelector(".userProfile").innerHTML = json.users.username;
+    document.querySelector("#logout").classList.remove("hide");
+    document.querySelector(".become-teacher").classList.add("hide");
     return;
   } else {
     window.location = "/404.html";

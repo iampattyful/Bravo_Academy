@@ -6,7 +6,9 @@ export const loadTeacherRoutes = express.Router();
 loadTeacherRoutes.post("/teachers/:id", async (req: Request, res: Response) => {
   console.log(req.params.id);
   const teachers = await client.query(
-    "SELECT * FROM users WHERE subject_id = $1",
+    // "SELECT * FROM users WHERE subject_id = $1",
+
+    "SELECT * FROM users INNER JOIN subject ON users.subject_id = subject.id WHERE users.subject_id = $1",
     [req.params.id]
   );
   if (teachers.rowCount == 0) {
