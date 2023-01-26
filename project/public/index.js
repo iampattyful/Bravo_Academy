@@ -1,5 +1,5 @@
 window.onload = async function () {
-  checkLogin();
+  await checkLogin();
 };
 
 //checkLogin
@@ -13,13 +13,14 @@ const checkLogin = async () => {
     document.querySelector(".userProfile").classList.remove("hide");
     document.querySelector(".userProfile").innerHTML = json.users.username;
     document.querySelector("#logout").classList.remove("hide");
-    document.querySelector(".become-teacher").classList.add("hide");
     document.querySelector("#loginShow").classList.add("hide");
     document.querySelector("#signUpShow").classList.add("hide");
-    return;
+    // document.querySelector(".become-teacher").classList.add("hide");
+    return json;
   } else {
     document.querySelector("#loginShow").classList.remove("hide");
     document.querySelector("#signUpShow").classList.remove("hide");
+    return json;
   }
 };
 
@@ -45,7 +46,8 @@ login.addEventListener("submit", async (event) => {
     document.querySelector("#loginShow").classList.add("hide");
     document.querySelector("#logout").classList.remove("hide");
     document.querySelector("#signUpShow").classList.add("hide");
-    document.querySelector(".become-teacher").classList.add("hide");
+    // document.querySelector(".become-teacher").classList.add("hide");
+    window.location = "/";
     return;
   } else {
     alert("Wrong login email or wrong password.");

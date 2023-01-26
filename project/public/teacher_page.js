@@ -1,5 +1,5 @@
 window.onload = async function () {
-  checkLogin();
+  await checkLogin();
   const urlParams = new URLSearchParams(window.location.search);
   const subjectId = urlParams.get("id");
   console.log(subjectId);
@@ -7,8 +7,18 @@ window.onload = async function () {
     method: "POST",
   });
   let json = await res.json();
-  teacherResult(json);
+  await teacherResult(json);
+  // await addEvents();
 };
+
+// async function addEvents() {
+//   let bookmark = document.querySelector(".fa-bookmark");
+//   bookmark.addEventListener("click", (event) => {
+//     console.log(1);
+//     // let userId = event.currentTarget.dataset.id;
+//     // console.log(userId);
+//   });
+// }
 
 //teacher list Template
 const teacherListTemplate = (
@@ -28,7 +38,7 @@ const teacherListTemplate = (
         <div class="description">
           <div class="des-head" data-id=${userId}>${teacherName}</div>
           <div class="des-icon">
-            <div><i class="fa-regular fa-bookmark"></i></div>
+            <div class="iconClicked"><i class="fa-regular fa-bookmark" data-id=${userId}></i></div>
             <div><i class="fa-regular fa-heart"></i></div>
           </div>
           <div class="des-content">${description}
@@ -107,29 +117,52 @@ async function teacherResult(json) {
       )
       .join("");
 
-    // teacherListing.innerHTML = "";
-    // for (let i = json.teachers.length - 1; i >= 0; i--) {
-    //   const teacher = document.createElement("div");
-    //   teacher.classList.add("inner-column");
-    //   if (json.teachers[i].image == null) {
-    //     document.querySelector(
-    //       ".picture"
-    //     ).innerHTML = `<img src="./assets/profile_image_placeholder.jpg">`;
-    //   } else {
-    //     json.teachers[i].image == json.teachers[i].image;
-    //   }
+    const teacherDivs = [...document.querySelectorAll(".inner-column")];
+    for (const teacherDiv of teacherDivs) {
+      const json = await checkLogin();
+      if (json.result && json.users.role_id == 2) {
+        console.log(await checkLogin());
+        teacherDiv
+          .querySelector(".fa-bookmark")
+          .addEventListener("click", async (event) => {
+            let userId = event.currentTarget.dataset.id;
+            console.log(userId);
+            teacherDiv.querySelector(
+              ".iconClicked"
+            ).innerHTML = `<i class="fa-solid fa-bookmark"></i>`;
+            const res = await fetch(`/bookmark/${userId}`, {
+              method: "POST",
+            });
+          });
+      } else {
+        teacherDiv.querySelector(".fa-bookmark").classList.add("hide");
+      }
+    }
+  }
 
-    //   teacher.innerHTML = teacherListTemplate(
-    //     json.teachers[i].image,
-    //     json.teachers[i].user_id,
-    //     json.teachers[i].username,
-    //     json.teachers[i].description,
-    //     json.teachers[i].price,
-    //     json.teachers[i].duration
-    //   );
+  // teacherListing.innerHTML = "";
+  // for (let i = json.teachers.length - 1; i >= 0; i--) {
+  //   const teacher = document.createElement("div");
+  //   teacher.classList.add("inner-column");
+  //   if (json.teachers[i].image == null) {
+  //     document.querySelector(
+  //       ".picture"
+  //     ).innerHTML = `<img src="./assets/profile_image_placeholder.jpg">`;
+  //   } else {
+  //     json.teachers[i].image == json.teachers[i].image;
+  //   }
 
-    // teacherListing.appendChild(teacher);
-  } else {
+  //   teacher.innerHTML = teacherListTemplate(
+  //     json.teachers[i].image,
+  //     json.teachers[i].user_id,
+  //     json.teachers[i].username,
+  //     json.teachers[i].description,
+  //     json.teachers[i].price,
+  //     json.teachers[i].duration
+  //   );
+
+  // teacherListing.appendChild(teacher);
+  else {
     teacherListing.innerHTML = "";
   }
 }

@@ -34,11 +34,14 @@ app.use("/", loadTeacherIndividualPageRoutes);
 import { updateTeacherRoutes } from "./src/updateTeacherRoutes";
 app.use("/", updateTeacherRoutes);
 
-//404
+//bookmark
+import { bookmarkRoutes } from "./src/bookmarkRoutes";
+app.use("/", bookmarkRoutes);
 
 app.use(express.static("public"));
 app.use(express.static("uploads"));
 
+//404
 import { errorRoutes } from "./src/404Routes";
 app.use("/", errorRoutes);
 
