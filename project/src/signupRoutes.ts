@@ -12,17 +12,18 @@ const form = formidable({
   uploadDir,
   keepExtensions: true,
   maxFiles: 1,
-  maxFileSize: 200 * 2 ** 10,
+  maxFileSize: 10 * 1024 * 1024,
   filter: (part) => part.mimetype?.startsWith("image/") || false,
 });
 export const signupRoutes = express.Router();
 
 //express session
 import { expressSessionRoutes } from "./expressSessionRoutes";
-signupRoutes.use("/", expressSessionRoutes);
+signupRoutes.use(expressSessionRoutes);
 
 signupRoutes.post("/signup", async (req: Request, res: Response) => {
   form.parse(req, async (err, fields, files) => {
+    console.log(files, fields, err);
     try {
       fields.price = fields.price || "0";
 
