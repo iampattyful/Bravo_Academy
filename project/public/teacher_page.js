@@ -1,5 +1,3 @@
-
-
 window.onload = async function () {
   await checkLogin();
   const urlParams = new URLSearchParams(window.location.search);
@@ -40,7 +38,7 @@ const teacherListTemplate = (
         <div class="description">
           <div class="des-head" data-id=${userId}>${teacherName}</div>
           <div class="des-icon">
-            <div><i class="fa-regular fa-bookmark"></i></div>
+            <div class="iconClicked"><i class="fa-regular fa-bookmark" data-id=${userId}></i></div>
             <div><i class="fa-regular fa-heart"></i></div>
           </div>
           <div class="des-content">${description}
@@ -163,8 +161,8 @@ async function teacherResult(json) {
   //     json.teachers[i].duration
   //   );
 
-    // teacherListing.appendChild(teacher);
+  // teacherListing.appendChild(teacher);
+  else {
+    teacherListing.innerHTML = "";
   }
 }
-
-
