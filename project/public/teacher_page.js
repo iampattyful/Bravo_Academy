@@ -138,6 +138,13 @@ async function teacherResult(json) {
         teacherDiv.querySelector(".fa-bookmark").classList.add("hide");
       }
     }
+
+    let teacherTitle = document.querySelectorAll(".des-head");
+    for (let t of teacherTitle) {
+      t.addEventListener("click", (event) => {
+        window.location.href = `teacher_profile.html?id=${event.currentTarget.dataset.id}`;
+      });
+    }
   }
 
   // teacherListing.innerHTML = "";
