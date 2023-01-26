@@ -1,5 +1,5 @@
 window.onload = async function () {
-  checkLogin();
+  await checkLogin();
 };
 
 //checkLogin
