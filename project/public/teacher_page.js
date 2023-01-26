@@ -1,3 +1,5 @@
+
+
 window.onload = async function () {
   checkLogin();
   const urlParams = new URLSearchParams(window.location.search);
@@ -28,7 +30,7 @@ const teacherListTemplate = (
         <div class="description">
           <div class="des-head" data-id=${userId}>${teacherName}</div>
           <div class="des-icon">
-            <div><i class="fa-regular fa-bookmark"></i></div>
+            <div><i class="fa-regular fa-bookmark" data-id=${userId}></i></div>
             <div><i class="fa-regular fa-heart"></i></div>
           </div>
           <div class="des-content">${description}
@@ -128,5 +130,9 @@ async function teacherResult(json) {
     //   );
 
     // teacherListing.appendChild(teacher);
+  } else {
+    teacherListing.innerHTML = "";
   }
 }
+
+
