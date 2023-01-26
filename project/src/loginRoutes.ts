@@ -36,7 +36,7 @@ loginRoutes.post("/login", async (req: Request, res: Response) => {
     let users = await client.query("SELECT * from users where email = $1", [
       fields.email,
     ]);
-    console.log(users.rows);
+    // console.log(users.rows);
 
     if (!users.rowCount) {
       res.status(401).json({ result: false, message: "fail", users: {} });
