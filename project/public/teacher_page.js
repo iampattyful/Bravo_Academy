@@ -8,17 +8,7 @@ window.onload = async function () {
   });
   let json = await res.json();
   await teacherResult(json);
-  // await addEvents();
 };
-
-// async function addEvents() {
-//   let bookmark = document.querySelector(".fa-bookmark");
-//   bookmark.addEventListener("click", (event) => {
-//     console.log(1);
-//     // let userId = event.currentTarget.dataset.id;
-//     // console.log(userId);
-//   });
-// }
 
 //teacher list Template
 const teacherListTemplate = (
@@ -137,6 +127,12 @@ async function teacherResult(json) {
       } else {
         teacherDiv.querySelector(".fa-bookmark").classList.add("hide");
       }
+    }
+    let teacherTitle = document.querySelectorAll(".des-head");
+    for (let t of teacherTitle) {
+      t.addEventListener("click", (event) => {
+        window.location.href = `teacher_profile.html?id=${event.currentTarget.dataset.id}`;
+      });
     }
   }
 
