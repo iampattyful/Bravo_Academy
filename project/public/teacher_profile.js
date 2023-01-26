@@ -3,12 +3,11 @@ window.onload = async function () {
   await checkLogin();
   const urlParams = new URLSearchParams(window.location.search);
   const userId = urlParams.get("id");
-  //console.log(subjectId);
   const res = await fetch(`/teacher_profile/${userId}`, {
     method: "POST",
   });
   let json = await res.json();
-  console.log(json);
+  // console.log(json);
   await teacherProfileResult(json);
   await createEvents();
 };
@@ -112,36 +111,36 @@ const teacherProfileTemplate = (
                         </div>
       `;
 
-// // load teacher list
-// const loadTeacher = async (event) => {
-//   let subjectId;
+// load teacher list
+const loadTeacher = async (event) => {
+  let subjectId;
 
-//   if (event.currentTarget.id == "chinese") {
-//     subjectId = 1;
-//   } else if (event.currentTarget.id == "english") {
-//     subjectId = 2;
-//   } else if (event.currentTarget.id == "french") {
-//     subjectId = 3;
-//   } else if (event.currentTarget.id == "japanese") {
-//     subjectId = 4;
-//   }
+  if (event.currentTarget.id == "chinese") {
+    subjectId = 1;
+  } else if (event.currentTarget.id == "english") {
+    subjectId = 2;
+  } else if (event.currentTarget.id == "french") {
+    subjectId = 3;
+  } else if (event.currentTarget.id == "japanese") {
+    subjectId = 4;
+  }
 
-//   console.log(subjectId);
-//   const res = await fetch(`/teachers/${subjectId}`, {
-//     method: "POST",
-//   });
-//   let json = await res.json();
-//   teacherProfileResult(json);
-// };
+  console.log(subjectId);
+  const res = await fetch(`/teachers/${subjectId}`, {
+    method: "POST",
+  });
+  let json = await res.json();
+  teacherProfileResult(json);
+};
 
-// const chinese = document.querySelector("#chinese");
-// const english = document.querySelector("#english");
-// const french = document.querySelector("#french");
-// const japanese = document.querySelector("#japanese");
-// chinese.addEventListener("click", loadTeacher);
-// english.addEventListener("click", loadTeacher);
-// french.addEventListener("click", loadTeacher);
-// japanese.addEventListener("click", loadTeacher);
+const chinese = document.querySelector("#chinese");
+const english = document.querySelector("#english");
+const french = document.querySelector("#french");
+const japanese = document.querySelector("#japanese");
+chinese.addEventListener("click", loadTeacher);
+english.addEventListener("click", loadTeacher);
+french.addEventListener("click", loadTeacher);
+japanese.addEventListener("click", loadTeacher);
 
 //teacher profile result
 async function teacherProfileResult(json) {
