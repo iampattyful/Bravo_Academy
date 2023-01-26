@@ -30,8 +30,13 @@ app.use("/", loadTeacherRoutes);
 // import { updateTeacherSettings } from "./src/updateTeacherSettings";
 // app.use("/", updateTeacherSettings);
 
+//404
+
 app.use(express.static("public"));
 app.use(express.static("uploads"));
+
+import { errorRoutes } from "./src/404Routes";
+app.use("/", errorRoutes);
 
 const PORT = 8080;
 app.listen(PORT, () => {
