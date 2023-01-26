@@ -48,6 +48,7 @@ login.addEventListener("submit", async (event) => {
     document.querySelector(".become-teacher").classList.add("hide");
     return;
   } else {
+    alert("Wrong login email or wrong password.");
     document.querySelector("#loginShow").classList.remove("hide");
     document.querySelector("#signUpShow").classList.remove("hide");
   }
