@@ -26,6 +26,10 @@ app.use("/", checkLoginRoutes);
 import { loadTeacherRoutes } from "./src/loadTeacherRoutes";
 app.use("/", loadTeacherRoutes);
 
+//loadTeacherIndividualPageRoutes
+import { loadTeacherIndividualPageRoutes } from "./src/loadTeacherIndividualPageRoutes";
+app.use("/", loadTeacherIndividualPageRoutes);
+
 //updateTeacherSettings
 import { updateTeacherRoutes } from "./src/updateTeacherRoutes";
 app.use("/", updateTeacherRoutes);

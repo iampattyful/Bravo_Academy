@@ -1,10 +1,10 @@
 // window onload
 window.onload = async function () {
-  // checkLogin(); no need to check login as the user can view the teacher profile without login
+  await checkLogin();
   const urlParams = new URLSearchParams(window.location.search);
   const userId = urlParams.get("id");
   //console.log(subjectId);
-  const res = await fetch(`/teachers/${userId}`, {
+  const res = await fetch(`/teacher_profile/${userId}`, {
     method: "POST",
   });
   let json = await res.json();
@@ -16,6 +16,7 @@ window.onload = async function () {
 //teacher profile template
 const teacherProfileTemplate = (
   img,
+  subjectId,
   subjectName,
   userId,
   teacherName,
@@ -31,7 +32,7 @@ const teacherProfileTemplate = (
                     <div class="teacherPic">
                         <div><img src="${img}"></div>
                     </div>
-                    <div class="profileTag"><a href="#">${subjectName}老師</a></div>
+                    <div class="profileTag"><a href="/teacher_page.html?id=${subjectId}">${subjectName}老師</a></div>
                 </div>
                 <div class="col-md-7">
                     <div class="teacherInfo">
@@ -156,6 +157,7 @@ async function teacherProfileResult(json) {
             teacher.image === null
               ? teacherProfileTemplate(
                   `./assets/profile_image_placeholder.jpg" alt=""`,
+                  teacher.subject_id,
                   teacher.subject_name,
                   teacher.user_id,
                   teacher.username,
@@ -165,6 +167,7 @@ async function teacherProfileResult(json) {
                 )
               : teacherListTemplate(
                   teacher.image,
+                  teacher.subject_id,
                   teacher.subject_name,
                   teacher.user_id,
                   teacher.username,
