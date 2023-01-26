@@ -27,8 +27,8 @@ import { loadTeacherRoutes } from "./src/loadTeacherRoutes";
 app.use("/", loadTeacherRoutes);
 
 //updateTeacherSettings
-// import { updateTeacherSettings } from "./src/updateTeacherSettings";
-// app.use("/", updateTeacherSettings);
+import { updateTeacherRoutes } from "./src/updateTeacherRoutes";
+app.use("/", updateTeacherRoutes);
 
 //404
 
