@@ -26,12 +26,24 @@ app.use("/", checkLoginRoutes);
 import { loadTeacherRoutes } from "./src/loadTeacherRoutes";
 app.use("/", loadTeacherRoutes);
 
+//loadTeacherIndividualPageRoutes
+import { loadTeacherIndividualPageRoutes } from "./src/loadTeacherIndividualPageRoutes";
+app.use("/", loadTeacherIndividualPageRoutes);
+
 //updateTeacherSettings
-// import { updateTeacherSettings } from "./src/updateTeacherSettings";
-// app.use("/", updateTeacherSettings);
+import { updateTeacherRoutes } from "./src/updateTeacherRoutes";
+app.use("/", updateTeacherRoutes);
+
+//bookmark
+import { bookmarkRoutes } from "./src/bookmarkRoutes";
+app.use("/", bookmarkRoutes);
 
 app.use(express.static("public"));
 app.use(express.static("uploads"));
+
+//404
+import { errorRoutes } from "./src/404Routes";
+app.use("/", errorRoutes);
 
 const PORT = 8080;
 app.listen(PORT, () => {

@@ -1,12 +1,12 @@
 import express from "express";
 import { Request, Response } from "express";
-export const updateTeacherSettings = express.Router();
+export const updateTeacherRoutes = express.Router();
 
 //express session
 import { expressSessionRoutes } from "./expressSessionRoutes";
-updateTeacherSettings.use("/", expressSessionRoutes);
+updateTeacherRoutes.use("/", expressSessionRoutes);
 
-updateTeacherSettings.get(
+updateTeacherRoutes.get(
   "/teacher_profile_settings/:id",
   async (req: Request, res: Response) => {
     if (req.session.user) {
@@ -23,3 +23,4 @@ updateTeacherSettings.get(
     }
   }
 );
+ 

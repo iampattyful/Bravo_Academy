@@ -10,6 +10,8 @@ import { checkPassword } from "./hash";
 
 import { client } from "./client";
 
+// import path from "path";
+
 export const loginRoutes = express.Router();
 
 //express session
@@ -34,8 +36,10 @@ loginRoutes.post("/login", async (req: Request, res: Response) => {
     let users = await client.query("SELECT * from users where email = $1", [
       fields.email,
     ]);
+    console.log(users.rows);
+
     if (!users.rowCount) {
-      return res.status(401).redirect("/");
+      res.status(401).json({ result: false, message: "fail", users: {} });
     }
     const password = users.rows[0].password;
     const match = await checkPassword(fields.password as string, password);

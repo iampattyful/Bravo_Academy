@@ -16,7 +16,7 @@ checkLoginRoutes.get("/checkLogin", async (req: Request, res: Response) => {
     });
     console.log(req.session.user);
   } else {
-    res.status(401).json({
+    res.status(200).json({
       result: false,
       message: "fail",
     });

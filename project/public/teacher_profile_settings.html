@@ -38,10 +38,10 @@
                                 探索課程
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" id="chinese" href="/teacher_page.html">中文</a></li>
-                                <li><a class="dropdown-item" id="english" href="/teacher_page.html">英文</a></li>
-                                <li><a class="dropdown-item" id="french" href="/teacher_page.html">法文</a></li>
-                                <li><a class="dropdown-item" id="japanese" href="/teacher_page.html">日文</a></li>
+                                <li><a class="dropdown-item" id="chinese" href="/teacher_page.html?id=1">中文</a></li>
+                                <li><a class="dropdown-item" id="english" href="/teacher_page.html?id=2">英文</a></li>
+                                <li><a class="dropdown-item" id="french" href="/teacher_page.html?id=3">法文</a></li>
+                                <li><a class="dropdown-item" id="japanese" href="/teacher_page.html?id=4">日文</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -54,7 +54,7 @@
                             <a class="nav-link">登出</a>
                         </li>
                         <li>
-                            <div id="loginShow" type="button" class="nav-item login white" data-bs-toggle="modal"
+                            <div id="loginShow" type="button" class="nav-item login white hide" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 登入
                             </div>
@@ -89,7 +89,7 @@
                             </div>
                         </li>
                         <li>
-                            <div id="signUpShow" type="button" class="nav-item login white" data-bs-toggle="modal"
+                            <div id="signUpShow" type="button" class="nav-item login white hide" data-bs-toggle="modal"
                                 data-bs-target="#staticBackdrop">
                                 註冊
                             </div>
@@ -156,11 +156,11 @@
                                                 </div>
                                                 <div class="flex priceandtime">
                                                     <div class="mb-3">
-                                                        <label class="form-label">收費</label>
+                                                        <label class="form-label">收費 (HKD)</label>
                                                         <input name="price" class="form-control" />
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label class="form-label">時間</label>
+                                                        <label class="form-label">時間（分鐘）</label>
                                                         <input name="duration" class="form-control" />
                                                     </div>
                                                 </div>
@@ -223,7 +223,9 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div id="updatePersonalInfoTitle"><h2>更新個人資料</h2></div>
+                    <div id="updatePersonalInfoTitle">
+                        <h2>更新個人資料</h2>
+                    </div>
                     <form id="signUp">
                         <div class="flex">
                             <div class="mb-3">

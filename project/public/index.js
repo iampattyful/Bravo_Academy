@@ -1,5 +1,5 @@
 window.onload = async function () {
-  checkLogin();
+  await checkLogin();
 };
 
 //checkLogin
@@ -10,13 +10,17 @@ const checkLogin = async () => {
   const json = await res.json();
   console.log(json.result);
   if (json.result) {
-    document.querySelector("#loginShow").classList.add("hide");
-    document.querySelector("#signUpShow").classList.add("hide");
-    document.querySelector("#logout").classList.remove("hide");
     document.querySelector(".userProfile").classList.remove("hide");
     document.querySelector(".userProfile").innerHTML = json.users.username;
-    document.querySelector(".become-teacher").classList.add("hide");
-    return;
+    document.querySelector("#logout").classList.remove("hide");
+    document.querySelector("#loginShow").classList.add("hide");
+    document.querySelector("#signUpShow").classList.add("hide");
+    // document.querySelector(".become-teacher").classList.add("hide");
+    return json;
+  } else {
+    document.querySelector("#loginShow").classList.remove("hide");
+    document.querySelector("#signUpShow").classList.remove("hide");
+    return json;
   }
 };
 
@@ -35,16 +39,20 @@ login.addEventListener("submit", async (event) => {
   const json = await res.json();
 
   if (json.result) {
-    // login.innerHTML = "WELCOME";
-    document.querySelector("#loginShow").classList.add("hide");
-    document.querySelector("#signUpShow").classList.add("hide");
+    // document.querySelector("#loginShow").classList.add("hide");
+    // document.querySelector("#signUpShow").classList.add("hide");
     document.querySelector(".userProfile").classList.remove("hide");
     document.querySelector(".userProfile").innerHTML = json.users.username;
+    document.querySelector("#loginShow").classList.add("hide");
     document.querySelector("#logout").classList.remove("hide");
-    document.querySelector(".become-teacher").classList.add("hide");
+    document.querySelector("#signUpShow").classList.add("hide");
+    // document.querySelector(".become-teacher").classList.add("hide");
+    window.location = "/";
     return;
   } else {
-    window.location = "/404.html";
+    alert("Wrong login email or wrong password.");
+    document.querySelector("#loginShow").classList.remove("hide");
+    document.querySelector("#signUpShow").classList.remove("hide");
   }
 });
 
