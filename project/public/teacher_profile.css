@@ -38,13 +38,13 @@ body {
 
 .profileTag > a {
   text-decoration: none;
-  color: #000;
+  color: #fff;
 }
 
 .profileTag > a:hover,
 a:focus,
 a:active {
-  color: #fff;
+  color: #000;
   text-decoration: none;
   cursor: pointer;
 }
@@ -160,13 +160,13 @@ img {
 
 #contactBtn > a {
   text-decoration: none;
-  color: #000;
+  color: #fff;
 }
 
 #contactBtn > a:hover,
 a:focus,
 a:active {
-  color: #fff;
+  color: #000;
   text-decoration: none;
   cursor: pointer;
 }
