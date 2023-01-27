@@ -11,6 +11,16 @@ window.onload = async function () {
   let json = await res.json();
   console.log(json);
   await teacherResult(json);
+  let userTitle = document.querySelector(".userProfile");
+  if (checkLoginRes.users.role_id == 1) {
+    userTitle.addEventListener("click", (event) => {
+      window.location.href = `teacher_profile_settings.html?id=${event.currentTarget.dataset.id}`;
+    });
+  } else if (checkLoginRes.users.role_id == 2) {
+    userTitle.addEventListener("click", (event) => {
+      window.location.href = `student_login.html?id=${event.currentTarget.dataset.id}`;
+    });
+  }
 };
 
 //teacher list Template
