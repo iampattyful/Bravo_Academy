@@ -41,6 +41,10 @@ app.use("/", bookmarkRoutes);
 app.use(express.static("public"));
 app.use(express.static("uploads"));
 
+//remove bookmark
+import { removeBookmarkRoutes } from "./src/removeBookmarkRoutes";
+app.use("/", removeBookmarkRoutes);
+
 //404
 import { errorRoutes } from "./src/404Routes";
 app.use("/", errorRoutes);
