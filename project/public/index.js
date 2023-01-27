@@ -116,5 +116,5 @@ logout.addEventListener("click", async (event) => {
 //user Profile
 let userTitle = document.querySelector(".userProfile");
 userTitle.addEventListener("click", (event) => {
-  window.location.href = `student_login.html?id=${event.currentTarget.dataset.id}`;
+  window.location.href = `teacher_profile_settings.html?id=${event.currentTarget.dataset.id}`;
 });
