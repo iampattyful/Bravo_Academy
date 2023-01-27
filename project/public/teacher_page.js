@@ -32,7 +32,7 @@ const teacherListTemplate = (
         <div class="description">
           <div class="des-head" data-id=${userId}>${teacherName}</div>
           <div class="des-icon">
-            <div class="iconClicked">
+            <div class="iconClicked" data-id=${userId}>
               ${
                 isBookMark
                   ? `<i class="fa-solid fa-bookmark" data-id=${userId}></i>`
@@ -125,16 +125,33 @@ async function teacherResult(json) {
     for (const teacherDiv of teacherDivs) {
       if (checkLoginRes.result && checkLoginRes.users.role_id == 2) {
         teacherDiv
-          .querySelector(".fa-bookmark")
+          .querySelector(".iconClicked")
           .addEventListener("click", async (event) => {
             let userId = event.currentTarget.dataset.id;
             console.log(userId);
-            teacherDiv.querySelector(
-              ".iconClicked"
-            ).innerHTML = `<i class="fa-solid fa-bookmark"></i>`;
-            const res = await fetch(`/bookmark/${userId}`, {
-              method: "POST",
-            });
+            if (
+              teacherDiv
+                .querySelector(".fa-bookmark")
+                .classList.contains("fa-regular")
+            ) {
+              teacherDiv.querySelector(
+                ".iconClicked"
+              ).innerHTML = `<i class="fa-solid fa-bookmark" data-id=${userId}>`;
+              const res = await fetch(`/bookmark/${userId}`, {
+                method: "POST",
+              });
+            } else if (
+              teacherDiv
+                .querySelector(".fa-bookmark")
+                .classList.contains("fa-solid")
+            ) {
+              teacherDiv.querySelector(
+                ".iconClicked"
+              ).innerHTML = `<i class="fa-regular fa-bookmark" data-id=${userId}></i>`;
+              const res = await fetch(`/bookmark/${userId}`, {
+                method: "DELETE",
+              });
+            }
           });
       } else {
         teacherDiv.querySelector(".fa-bookmark").classList.add("hide");
