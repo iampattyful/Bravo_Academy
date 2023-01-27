@@ -38,6 +38,14 @@ app.use("/", loadTeacherSettingsRoutes);
 import { updateTeacherSettingsRoutes } from "./src/updateTeacherSettingsRoutes";
 app.use("/", updateTeacherSettingsRoutes);
 
+//update student profile
+import { updateStudentLoginRoutes } from "./src/updateStudentLoginRoutes";
+app.use("/", updateStudentLoginRoutes);
+
+//load student profile
+import { loadStudentProfileRoutes } from "./src/loadStudentProfileRoutes";
+app.use("/", loadStudentProfileRoutes);
+
 //bookmark
 import { bookmarkRoutes } from "./src/bookmarkRoutes";
 app.use("/", bookmarkRoutes);
