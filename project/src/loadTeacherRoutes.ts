@@ -6,7 +6,7 @@ export const loadTeacherRoutes = express.Router();
 loadTeacherRoutes.post(
   "/teachers/:id/",
   async (req: Request, res: Response) => {
-    console.log(req.params.id);
+    // console.log(req.params.id);
 
     // select * FROM bookmark_table where student_id = req.session.userId and teacher_id = req.params.teacher_id
     const teachers = await client.query(
@@ -23,7 +23,7 @@ loadTeacherRoutes.post(
 
     if (my_book_mark.rowCount > 0) {
       let bookmarkIdArr = my_book_mark.rows.map((obj) => obj.teacher_id);
-      console.log(bookmarkIdArr, "27");
+      // console.log(bookmarkIdArr, "27");
       results = results.map((obj) =>
         bookmarkIdArr.includes(obj.user_id)
           ? Object.assign(obj, { isBookMark: true })

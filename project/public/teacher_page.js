@@ -1,12 +1,15 @@
+let checkLoginRes;
+
 window.onload = async function () {
-  await checkLogin();
+  checkLoginRes = await checkLogin();
   const urlParams = new URLSearchParams(window.location.search);
   const subjectId = urlParams.get("id");
-  console.log(subjectId);
+  // console.log(subjectId);
   const res = await fetch(`/teachers/${subjectId}`, {
     method: "POST",
   });
   let json = await res.json();
+  console.log(json);
   await teacherResult(json);
 };
 
@@ -16,6 +19,7 @@ const teacherListTemplate = (
   subjectName,
   userId,
   teacherName,
+  isBookMark,
   description,
   price,
   min
@@ -28,7 +32,13 @@ const teacherListTemplate = (
         <div class="description">
           <div class="des-head" data-id=${userId}>${teacherName}</div>
           <div class="des-icon">
-            <div class="iconClicked"><i class="fa-regular fa-bookmark" data-id=${userId}></i></div>
+            <div class="iconClicked" data-id=${userId}>
+              ${
+                isBookMark
+                  ? `<i class="fa-solid fa-bookmark" data-id=${userId}></i>`
+                  : `<i class="fa-regular fa-bookmark" data-id=${userId}></i>`
+              }
+            </div>
             <div><i class="fa-regular fa-heart"></i></div>
           </div>
           <div class="des-content">${description}
@@ -45,24 +55,26 @@ const teacherListTemplate = (
 
 // load teacher list
 const loadTeacher = async (event) => {
-  let subjectId;
+  // let subjectId;
 
-  if (event.currentTarget.id == "chinese") {
-    subjectId = 1;
-  } else if (event.currentTarget.id == "english") {
-    subjectId = 2;
-  } else if (event.currentTarget.id == "french") {
-    subjectId = 3;
-  } else if (event.currentTarget.id == "japanese") {
-    subjectId = 4;
-  }
+  // if (event.currentTarget.id == "chinese") {
+  //   subjectId = 1;
+  // } else if (event.currentTarget.id == "english") {
+  //   subjectId = 2;
+  // } else if (event.currentTarget.id == "french") {
+  //   subjectId = 3;
+  // } else if (event.currentTarget.id == "japanese") {
+  //   subjectId = 4;
+  // }
+  const urlParams = new URLSearchParams(window.location.search);
+  const subjectId = urlParams.get("id");
 
   console.log(subjectId);
   const res = await fetch(`/teachers/${subjectId}`, {
     method: "POST",
   });
   let json = await res.json();
-  teacherResult(json);
+  await teacherResult(json);
 };
 
 const chinese = document.querySelector("#chinese");
@@ -90,6 +102,7 @@ async function teacherResult(json) {
                   teacher.subject_name,
                   teacher.user_id,
                   teacher.username,
+                  teacher.isBookMark,
                   teacher.description,
                   teacher.price,
                   teacher.duration
@@ -99,6 +112,7 @@ async function teacherResult(json) {
                   teacher.subject_name,
                   teacher.user_id,
                   teacher.username,
+                  teacher.isBookMark,
                   teacher.description,
                   teacher.price,
                   teacher.duration
@@ -109,20 +123,35 @@ async function teacherResult(json) {
 
     const teacherDivs = [...document.querySelectorAll(".inner-column")];
     for (const teacherDiv of teacherDivs) {
-      const json = await checkLogin();
-      if (json.result && json.users.role_id == 2) {
-        console.log(await checkLogin());
+      if (checkLoginRes.result && checkLoginRes.users.role_id == 2) {
         teacherDiv
-          .querySelector(".fa-bookmark")
+          .querySelector(".iconClicked")
           .addEventListener("click", async (event) => {
             let userId = event.currentTarget.dataset.id;
             console.log(userId);
-            teacherDiv.querySelector(
-              ".iconClicked"
-            ).innerHTML = `<i class="fa-solid fa-bookmark"></i>`;
-            const res = await fetch(`/bookmark/${userId}`, {
-              method: "POST",
-            });
+            if (
+              teacherDiv
+                .querySelector(".fa-bookmark")
+                .classList.contains("fa-regular")
+            ) {
+              teacherDiv.querySelector(
+                ".iconClicked"
+              ).innerHTML = `<i class="fa-solid fa-bookmark" data-id=${userId}>`;
+              const res = await fetch(`/bookmark/${userId}`, {
+                method: "POST",
+              });
+            } else if (
+              teacherDiv
+                .querySelector(".fa-bookmark")
+                .classList.contains("fa-solid")
+            ) {
+              teacherDiv.querySelector(
+                ".iconClicked"
+              ).innerHTML = `<i class="fa-regular fa-bookmark" data-id=${userId}></i>`;
+              const res = await fetch(`/bookmark/${userId}`, {
+                method: "DELETE",
+              });
+            }
           });
       } else {
         teacherDiv.querySelector(".fa-bookmark").classList.add("hide");
