@@ -108,6 +108,7 @@ h2 {
 .des-head {
   font-size: 20px;
   color: white;
+  cursor: pointer;
 }
 .des-icon {
   display: flex;
