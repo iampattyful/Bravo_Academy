@@ -26,29 +26,34 @@ updateStudentLoginRoutes.put(
     form.parse(req, async (err, fields, files) => {
       console.log(files, fields, err);
       try {
-        // fields.price = fields.price || "0";
-
-        // fields.duration = fields.duration || "0";
-
-        // if (fields.roleId == "2") {
-        //   fields.subjectId = "5";
-        // }
-
-        let updateRes = await client.query(
+        let result = await client.query(
+          "SELECT image from users WHERE user_id = $1",
+          [req.params.id]
+        );
+        await client.query(
           "UPDATE users SET username = $1, phone = $2, description = $3, image = $4 WHERE user_id = $5",
           [
             fields.username,
             fields.phone,
             fields.description,
-            files.image ? (files.image as formidable.File).newFilename : null,
+            files.image
+              ? (files.image as formidable.File).newFilename
+              : result.rows[0].image,
             req.params.id,
           ]
         );
-        console.log(updateRes);
+
+        // let result = await client.query(
+        //   "SELECT username FROM users WHERE user_id = $1",
+        //   [req.params.id]
+        // );
+
+        // console.log(result.rows);
 
         res.status(200).json({
           result: true,
           message: "success",
+          // student: result.rows[0],
         });
       } catch (err) {
         console.log(err);

@@ -25,6 +25,10 @@ signupRoutes.post("/signup", async (req: Request, res: Response) => {
   form.parse(req, async (err, fields, files) => {
     console.log(files, fields, err);
     try {
+      let users = await client.query("SELECT * from users where email = $1", [
+        fields.email,
+      ]);
+
       fields.price = fields.price || "0";
 
       fields.duration = fields.duration || "0";
@@ -33,38 +37,39 @@ signupRoutes.post("/signup", async (req: Request, res: Response) => {
         fields.subjectId = "5";
       }
 
-      await client.query(
-        "INSERT INTO users (email, password, username, phone, description, price, duration, image, role_id, subject_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)",
-        [
-          fields.email,
-          await hashPassword(fields.password as string),
-          fields.username,
-          fields.phone,
-          fields.description,
-          fields.price,
-          fields.duration,
-          files.image ? (files.image as formidable.File).newFilename : null,
-          fields.roleId,
-          fields.subjectId,
-        ]
-      );
+      if (!users.rowCount) {
+        await client.query(
+          "INSERT INTO users (email, password, username, phone, description, price, duration, image, role_id, subject_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)",
+          [
+            fields.email,
+            await hashPassword(fields.password as string),
+            fields.username,
+            fields.phone,
+            fields.description,
+            fields.price,
+            fields.duration,
+            files.image ? (files.image as formidable.File).newFilename : null,
+            fields.roleId,
+            fields.subjectId,
+          ]
+        );
+        let newUserCreated = await client.query(
+          "SELECT * from users where username = $1",
+          [fields.username]
+        );
+        console.log(newUserCreated.rows);
 
-      let newUserCreated = await client.query(
-        "SELECT * from users where username = $1",
-        [fields.username]
-      );
-      console.log(newUserCreated.rows);
-
-      res.status(200).json({
-        result: true,
-        message: "success",
-        newUser: newUserCreated.rows,
-      });
+        res.status(200).json({
+          result: true,
+          message: "success",
+          newUser: newUserCreated.rows,
+        });
+      }
     } catch (err) {
       console.log(err);
-      res.status(500).json({
+      res.status(401).json({
         result: false,
-        message: "fail",
+        message: "signup fail",
       });
     }
   });

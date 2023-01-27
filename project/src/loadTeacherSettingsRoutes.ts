@@ -6,7 +6,7 @@ export const loadTeacherSettingsRoutes = express.Router();
 loadTeacherSettingsRoutes.get(
   "/teacher_profile_settings/:id",
   async (req: Request, res: Response) => {
-    console.log(req.params.id);
+    // console.log(req.params.id);
     const teachers = await client.query(
       "SELECT * FROM users INNER JOIN subject ON users.subject_id = subject.id WHERE users.user_id = $1 ORDER BY user_id DESC ",
       [req.params.id]

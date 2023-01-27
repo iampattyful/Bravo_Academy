@@ -24,17 +24,14 @@ updateTeacherSettingsRoutes.put(
   "/updateTeacherSettings/:id",
   async (req: Request, res: Response) => {
     form.parse(req, async (err, fields, files) => {
-      console.log(files, fields, err);
+      // console.log(files, fields, err);
       try {
-        fields.price = fields.price || "0";
+        let result = await client.query(
+          "SELECT image from users WHERE user_id = $1",
+          [req.params.id]
+        );
 
-        fields.duration = fields.duration || "0";
-
-        if (fields.roleId == "2") {
-          fields.subjectId = "5";
-        }
-
-       let updateRes = await client.query(
+        await client.query(
           "UPDATE users SET username = $1, phone = $2, description = $3, price = $4, duration = $5, image = $6 WHERE user_id = $7",
           [
             fields.username,
@@ -42,12 +39,13 @@ updateTeacherSettingsRoutes.put(
             fields.description,
             fields.price,
             fields.duration,
-            files.image ? (files.image as formidable.File).newFilename : null,
-            req.params.id
+            files.image
+              ? (files.image as formidable.File).newFilename
+              : result.rows[0].image,
+            req.params.id,
           ]
         );
-        console.log(updateRes);
-        
+
         res.status(200).json({
           result: true,
           message: "success",

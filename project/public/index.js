@@ -66,7 +66,7 @@ login.addEventListener("submit", async (event) => {
     window.location = "/";
     return;
   } else {
-    alert("Wrong login email or wrong password.");
+    alert("Incorrect login email or password.");
     document.querySelector("#loginShow").classList.remove("hide");
     document.querySelector("#signUpShow").classList.remove("hide");
   }
@@ -76,6 +76,7 @@ login.addEventListener("submit", async (event) => {
 const role = document.querySelector("#role");
 const subjects = document.querySelector("#subjects");
 const priceandtime = document.querySelector(".priceandtime");
+const description = document.querySelector(".description");
 
 let roleSelect = false;
 role.addEventListener("change", (event) => {
@@ -83,6 +84,7 @@ role.addEventListener("change", (event) => {
   if (roleSelect == true) {
     subjects.classList.add("hide");
     priceandtime.classList.add("hide");
+    description.classList.add("hide");
   } else {
     subjects.classList.remove("hide");
     priceandtime.classList.remove("hide");
@@ -107,7 +109,7 @@ signUp.addEventListener("submit", async (event) => {
     window.location = "/";
     return;
   } else {
-    alert("Please fill in the blank.");
+    alert("Email address has been used..");
   }
 });
 

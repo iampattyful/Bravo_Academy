@@ -21,9 +21,10 @@ window.onload = async function () {
       method: "PUT",
       body: formData,
     });
-    console.log(res);
     const json = await res.json();
+    console.log(json.student);
     if (json.result) {
+      //   document.querySelector(".userProfile").innerHTML = json.student.username;
       window.location = `/student_login.html?id=${checkLoginRes.users.id}`;
       return;
     } else {
@@ -86,7 +87,7 @@ const studentLoginTemplate = (
               <input type="file" name="image" />
           </div>
           <div class="mb-3">
-              <label class="form-label">自我介紹</label>
+              <label class="form-label">備忘錄</label>
               <textarea class="form-control" name="description" 
                   style="height: 150px">${description}</textarea>
           </div>
