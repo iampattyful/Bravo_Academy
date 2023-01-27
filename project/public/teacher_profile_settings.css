@@ -10,7 +10,7 @@ body {
   margin-top: 50px;
 }
 
-.teacherHeader {
+.teacherSettings {
   display: flex;
   align-items: flex-start;
   padding-top: 5px;
@@ -21,7 +21,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+
 }
 
 .teacherPic {
@@ -49,13 +50,13 @@ body {
 
 .profileTag > a {
   text-decoration: none;
-  color: #000;
+  color: #fff;
 }
 
 .profileTag > a:hover,
 a:focus,
 a:active {
-  color: #fff;
+  color: #000;
   text-decoration: none;
   cursor: pointer;
 }
@@ -76,49 +77,8 @@ img {
 
 .teacherInfo > h3 {
   color: #fff;
-  padding-bottom: 20px;
-  width: fit-content;
-}
-
-.teacherStat {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: row;
-  padding: 10px 10px 10px 0px;
-  color: #fff;
-}
-
-.teacherStat > div {
-  margin-right: 24px;
-}
-
-.fire,
-.comment,
-.bookmark {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.icon {
-  padding-right: 5px;
-  color: #30a57b;
-}
-
-a {
-  color: #888888;
-  text-decoration: none;
-  background-clip: content-box;
-}
-
-a:hover,
-a:focus,
-a:active {
-  color: #30a57b;
-  text-decoration: none;
-  cursor: pointer;
+  padding-bottom: 5px;
+  text-align: center;
 }
 
 #commentTitle h3 {
@@ -190,6 +150,25 @@ p > button {
   padding: 10px 0px 10px 0px;
 }
 
+.previewBtn > a {
+  align-items: center;
+  text-align: center;
+  font-size: 24px;
+  color: #888888;
+  text-decoration: none;
+  background-clip: content-box;
+  border-bottom: 2px solid #888888;
+}
+
+a:hover,
+a:focus,
+a:active {
+  color: #30a57b;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
 @media screen and (max-width: 380px) {
   .teacherInfo {
     display: flex;
@@ -202,7 +181,7 @@ p > button {
     height: 100%;
   }
 
-  .teacherHeader {
+  .teacherSettings {
     display: block;
     align-items: center;
     justify-content: center;
@@ -218,39 +197,6 @@ p > button {
     align-items: center;
     justify-content: center;
   } */
-
-  .teacherPriceContact {
-    width: 100%;
-    height: 100%;
-    position: static;
-    /* display: flex;
-    flex-direction: column; */
-    justify-content: center;
-    align-items: center;
-    background: #000;
-    margin: 0px;
-  }
-
-  .teacherPrice {
-    background-color: #fff;
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
-    /* display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; */
-    margin: 10px;
-    padding: 5px;
-    width: 100%;
-    height: 100%;
-  }
-
-  .teacherStat {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    text-align: center;
-  }
 }
 
 .teacherProfileSettings {

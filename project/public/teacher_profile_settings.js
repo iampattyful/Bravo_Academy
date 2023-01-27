@@ -64,7 +64,7 @@ const teacherProfileSettingsTemplate = (
   `
     <div class="container">
             <div class="row">
-                <div class="teacherHeader">
+                <div class="teacherSettings">
                     <div class="col-md-4 teacherPicProfileTag">
                         <div class="teacherPic">
                             <div><img src="${img}"></div>
@@ -73,13 +73,14 @@ const teacherProfileSettingsTemplate = (
                         <div class="teacherInfo">
                             <h3 data-id=${userId}>${teacherName}</h3>
                         </div>
+                        <div class="previewBtn"><a href="./teacher_profile.html?id=${userId}">預覽個人網頁</a></div>
                     </div>
+                  
                     <div class="col-md-8">
                         <div id="updatePersonalInfoTitle">
                             <h2>更新個人資料</h2>
                         </div>
                         <form id="updateForm">
-        
                             <div class="mb-3">
                                 <label class="form-label">電郵地址</label>
                                 <input type="email" name="email" class="form-control" aria-describedby="emailHelp" value="${email}"
@@ -117,7 +118,7 @@ const teacherProfileSettingsTemplate = (
                             <input type="submit" class="btn btn-primary" value="完成" />
                         </form>
                     </div>
-                </div>
+                
             </div>
         </div>
       `;
