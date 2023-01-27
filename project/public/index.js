@@ -1,5 +1,15 @@
 window.onload = async function () {
-  await checkLogin();
+  let res = await checkLogin();
+  let userTitle = document.querySelector(".userProfile");
+  if (res.users.role_id == 1) {
+    userTitle.addEventListener("click", (event) => {
+      window.location.href = `teacher_profile_settings.html?id=${event.currentTarget.dataset.id}`;
+    });
+  } else if (res.users.role_id == 2) {
+    userTitle.addEventListener("click", (event) => {
+      window.location.href = `student_login.html?id=${event.currentTarget.dataset.id}`;
+    });
+  }
 };
 
 //checkLogin
@@ -111,11 +121,4 @@ logout.addEventListener("click", async (event) => {
   if (json.result) {
     window.location = "/";
   }
-});
-
-//user Profile
-let userTitle = document.querySelector(".userProfile");
-//if(role_id == 1)
-userTitle.addEventListener("click", (event) => {
-  window.location.href = `teacher_profile_settings.html?id=${event.currentTarget.dataset.id}`;
 });
