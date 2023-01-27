@@ -30,9 +30,13 @@ app.use("/", loadTeacherRoutes);
 import { loadTeacherIndividualPageRoutes } from "./src/loadTeacherIndividualPageRoutes";
 app.use("/", loadTeacherIndividualPageRoutes);
 
-//updateTeacherSettings
-import { updateTeacherRoutes } from "./src/updateTeacherRoutes";
-app.use("/", updateTeacherRoutes);
+//loadTeacherSettingsRoutes
+import { loadTeacherSettingsRoutes } from "./src/loadTeacherSettingsRoutes";
+app.use("/", loadTeacherSettingsRoutes);
+
+//updateTeacherSettingsRoutes
+import { updateTeacherSettingsRoutes } from "./src/updateTeacherSettingsRoutes";
+app.use("/", updateTeacherSettingsRoutes);
 
 //bookmark
 import { bookmarkRoutes } from "./src/bookmarkRoutes";
