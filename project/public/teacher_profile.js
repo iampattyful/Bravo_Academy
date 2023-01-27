@@ -1,6 +1,8 @@
+let checkLoginRes;
 // window onload
 window.onload = async function () {
-  await checkLogin();
+  //await checkLogin();
+  checkLoginRes = await checkLogin();
   const urlParams = new URLSearchParams(window.location.search);
   const userId = urlParams.get("id");
   const res = await fetch(`/teacher_profile/${userId}`, {
@@ -23,8 +25,8 @@ const teacherProfileTemplate = (
   min
 ) =>
   `           
-  
-  <div class="container">
+
+  <div id="teacherContainer" class="container">
             <div class="row teacherHeader">
                 <div class="col-md-2">
                     <div class="teacherPic">
@@ -52,7 +54,7 @@ const teacherProfileTemplate = (
                                 </div>
                             </div>
                             <div class="bookmark">
-                                <div class="bookmark icon iconClicked">
+                                <div class="bookmark icon iconClicked" data-id=${userId}>
                                     <i class="fa-regular fa-bookmark"></i>
                                 </div>
                                 <div class="bookmarkNo"><a href="#">
@@ -110,37 +112,6 @@ const teacherProfileTemplate = (
                         </div>
       `;
 
-// load teacher list
-const loadTeacher = async (event) => {
-  let subjectId;
-
-  if (event.currentTarget.id == "chinese") {
-    subjectId = 1;
-  } else if (event.currentTarget.id == "english") {
-    subjectId = 2;
-  } else if (event.currentTarget.id == "french") {
-    subjectId = 3;
-  } else if (event.currentTarget.id == "japanese") {
-    subjectId = 4;
-  }
-
-  console.log(subjectId);
-  const res = await fetch(`/teachers/${subjectId}`, {
-    method: "POST",
-  });
-  let json = await res.json();
-  teacherProfileResult(json);
-};
-
-const chinese = document.querySelector("#chinese");
-const english = document.querySelector("#english");
-const french = document.querySelector("#french");
-const japanese = document.querySelector("#japanese");
-chinese.addEventListener("click", loadTeacher);
-english.addEventListener("click", loadTeacher);
-french.addEventListener("click", loadTeacher);
-japanese.addEventListener("click", loadTeacher);
-
 //teacher profile result
 async function teacherProfileResult(json) {
   const teacherProfileContent = document.querySelector(".teacherProfile");
@@ -177,27 +148,28 @@ async function teacherProfileResult(json) {
       )
       .join("");
 
-    const profileDivs = [...document.querySelectorAll(".container")];
-    for (const profileDiv of profileDivs) {
-      const json = await checkLogin();
-      if (json.result && json.users.role_id == 2) {
-        console.log(await checkLogin());
-        profileDiv
-          .querySelector(".fa-bookmark")
-          .addEventListener("click", async (event) => {
-            let userId = event.currentTarget.dataset.id;
-            console.log(userId);
-            profileDiv.querySelector(
-              ".iconClicked"
-            ).innerHTML = `<i class="fa-solid fa-bookmark"></i>`;
-            const res = await fetch(`/bookmark/${userId}`, {
-              method: "POST",
-            });
+    const profileDiv = document.querySelector("div#teacherContainer");
+    //for (const profileDiv of profileDivs) {
+    //const checkLoginRes = await checkLogin();
+    if (checkLoginRes.result && checkLoginRes.users.role_id == 2) {
+      //console.log(await checkLogin());
+      console.log(profileDiv.querySelector("div.iconClicked"));
+      profileDiv
+        .querySelector("div.iconClicked")
+        .addEventListener("click", async (event) => {
+          let userId = event.currentTarget.dataset.id;
+          console.log(userId);
+          profileDiv.querySelector(
+            ".iconClicked"
+          ).innerHTML = `<i class="fa-solid fa-bookmark"></i>`;
+          const res = await fetch(`/bookmark/${userId}`, {
+            method: "POST",
           });
-      } else {
-        profileDiv.querySelector(".fa-bookmark").classList.add("hide");
-      }
+        });
+    } else {
+      profileDiv.querySelector(".fa-bookmark").classList.add("hide");
     }
+    //}
   } else {
     teacherProfileContent.innerHTML = "";
   }
