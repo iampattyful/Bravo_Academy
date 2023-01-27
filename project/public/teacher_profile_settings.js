@@ -5,12 +5,14 @@ window.onload = async function () {
   checkLoginRes = await checkLogin();
   const urlParams = new URLSearchParams(window.location.search);
   const userId = urlParams.get("id");
-  const res = await fetch(`/teacher_profile_settings/${userId}`, {
-    method: "POST",
-  });
+  const res = await fetch(
+    `/teacher_profile_settings/${checkLoginRes.users.id}`,
+    {
+      method: "GET",
+    }
+  );
   let json = await res.json();
   await teacherProfileSettingsResult(json);
-  await createEvents();
 };
 
 //teacher profile template
@@ -66,8 +68,8 @@ const teacherProfileSettingsTemplate = (
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">自我介紹</label>
-                                <textarea class="form-control" name="description" value="${description}"
-                                    style="height: 150px"></textarea>
+                                <textarea class="form-control" name="description" 
+                                    style="height: 150px">${description}</textarea>
                             </div>
                             <div class="flex priceandtime">
                                 <div class="mb-3">
@@ -112,7 +114,7 @@ async function teacherProfileSettingsResult(json) {
                   teacher.duration
                 )
               : teacherProfileSettingsTemplate(
-                teacher.image,
+                  teacher.image,
                   teacher.subject_id,
                   teacher.subject_name,
                   teacher.user_id,

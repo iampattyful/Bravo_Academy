@@ -3,8 +3,7 @@ import { Request, Response } from "express";
 import { client } from "./client";
 export const updateTeacherRoutes = express.Router();
 
-
-updateTeacherRoutes.post(
+updateTeacherRoutes.get(
   "/teacher_profile_settings/:id",
   async (req: Request, res: Response) => {
     console.log(req.params.id);

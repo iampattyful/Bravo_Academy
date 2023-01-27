@@ -49,10 +49,11 @@ a:active {
   cursor: pointer;
 }
 
-.teacherPic > img {
-  max-width: 100px;
-  max-height: 100px;
+img {
+  max-width: 100%;
+  max-height: 100%;
   overflow: hidden;
+  object-fit: cover;
 }
 
 .teacherInfo {
