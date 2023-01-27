@@ -13,6 +13,29 @@ window.onload = async function () {
   );
   let json = await res.json();
   await teacherProfileSettingsResult(json);
+  // update teacher profile settings
+  const updateForm = document.querySelector("#updateForm");
+  updateForm.addEventListener("submit", async (event) => {
+    event.preventDefault(); // To prevent the form from submitting synchronously
+    const form = event.target;
+    const formData = new FormData(form);
+
+    const res = await fetch(
+      `/updateTeacherSettings/${checkLoginRes.users.id}`,
+      {
+        method: "PUT",
+        body: formData,
+      }
+    );
+    console.log(res);
+    const json = await res.json();
+    if (json.result) {
+      window.location = `/teacher_profile_settings.html?id=${checkLoginRes.users.id}`;
+      return;
+    } else {
+      alert("Please fill in the blank.");
+    }
+  });
 };
 
 //teacher profile template
@@ -45,7 +68,7 @@ const teacherProfileSettingsTemplate = (
                         <div id="updatePersonalInfoTitle">
                             <h2>更新個人資料</h2>
                         </div>
-                        <form id="signUp">
+                        <form id="updateForm">
         
                             <div class="mb-3">
                                 <label class="form-label">電郵地址</label>

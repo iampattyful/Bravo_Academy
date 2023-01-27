@@ -1,9 +1,9 @@
 import express from "express";
 import { Request, Response } from "express";
 import { client } from "./client";
-export const updateTeacherRoutes = express.Router();
+export const loadTeacherSettingsRoutes = express.Router();
 
-updateTeacherRoutes.get(
+loadTeacherSettingsRoutes.get(
   "/teacher_profile_settings/:id",
   async (req: Request, res: Response) => {
     console.log(req.params.id);
