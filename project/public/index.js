@@ -12,6 +12,9 @@ const checkLogin = async () => {
   if (json.result) {
     document.querySelector(".userProfile").classList.remove("hide");
     document.querySelector(".userProfile").innerHTML = json.users.username;
+    document
+      .querySelector(".userProfile")
+      .setAttribute("data-id", `${json.users.id}`);
     document.querySelector("#logout").classList.remove("hide");
     document.querySelector("#loginShow").classList.add("hide");
     document.querySelector("#signUpShow").classList.add("hide");
@@ -43,6 +46,9 @@ login.addEventListener("submit", async (event) => {
     // document.querySelector("#signUpShow").classList.add("hide");
     document.querySelector(".userProfile").classList.remove("hide");
     document.querySelector(".userProfile").innerHTML = json.users.username;
+    document
+      .querySelector(".userProfile")
+      .setAttribute("data-id", `${json.users.id}`);
     document.querySelector("#loginShow").classList.add("hide");
     document.querySelector("#logout").classList.remove("hide");
     document.querySelector("#signUpShow").classList.add("hide");
@@ -105,4 +111,10 @@ logout.addEventListener("click", async (event) => {
   if (json.result) {
     window.location = "/";
   }
+});
+
+//user Profile
+let userTitle = document.querySelector(".userProfile");
+userTitle.addEventListener("click", (event) => {
+  window.location.href = `student_login.html?id=${event.currentTarget.dataset.id}`;
 });
