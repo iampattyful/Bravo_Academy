@@ -3,6 +3,14 @@ let checkLoginRes;
 window.onload = async function () {
   //await checkLogin();
   checkLoginRes = await checkLogin();
+  const urlParams = new URLSearchParams(window.location.search);
+  const userId = urlParams.get("id");
+  const res = await fetch(`/teacher_profile/${userId}`, {
+    method: "POST",
+  });
+  let json = await res.json();
+  await teacherProfileSettingsResult(json);
+  await createEvents();
   let userTitle = document.querySelector(".userProfile");
   if (checkLoginRes.users.role_id == 1) {
     userTitle.addEventListener("click", (event) => {
@@ -13,14 +21,6 @@ window.onload = async function () {
       window.location.href = `student_login.html?id=${event.currentTarget.dataset.id}`;
     });
   }
-  const urlParams = new URLSearchParams(window.location.search);
-  const userId = urlParams.get("id");
-  const res = await fetch(`/teacher_profile/${userId}`, {
-    method: "POST",
-  });
-  let json = await res.json();
-  await teacherProfileSettingsResult(json);
-  await createEvents();
 };
 
 //teacher profile template

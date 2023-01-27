@@ -2,6 +2,15 @@ let checkLoginRes;
 
 window.onload = async function () {
   checkLoginRes = await checkLogin();
+  const urlParams = new URLSearchParams(window.location.search);
+  const subjectId = urlParams.get("id");
+  // console.log(subjectId);
+  const res = await fetch(`/teachers/${subjectId}`, {
+    method: "POST",
+  });
+  let json = await res.json();
+  console.log(json);
+  await teacherResult(json);
   let userTitle = document.querySelector(".userProfile");
   if (checkLoginRes.users.role_id == 1) {
     userTitle.addEventListener("click", (event) => {
@@ -12,15 +21,6 @@ window.onload = async function () {
       window.location.href = `student_login.html?id=${event.currentTarget.dataset.id}`;
     });
   }
-  const urlParams = new URLSearchParams(window.location.search);
-  const subjectId = urlParams.get("id");
-  // console.log(subjectId);
-  const res = await fetch(`/teachers/${subjectId}`, {
-    method: "POST",
-  });
-  let json = await res.json();
-  console.log(json);
-  await teacherResult(json);
 };
 
 //teacher list Template
