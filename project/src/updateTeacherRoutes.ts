@@ -1,26 +1,26 @@
 import express from "express";
 import { Request, Response } from "express";
+import { client } from "./client";
 export const updateTeacherRoutes = express.Router();
 
-//express session
-import { expressSessionRoutes } from "./expressSessionRoutes";
-updateTeacherRoutes.use("/", expressSessionRoutes);
 
-updateTeacherRoutes.get(
+updateTeacherRoutes.post(
   "/teacher_profile_settings/:id",
   async (req: Request, res: Response) => {
-    if (req.session.user) {
-      console.log(req.session.user);
+    console.log(req.params.id);
+    const teachers = await client.query(
+      "SELECT * FROM users INNER JOIN subject ON users.subject_id = subject.id WHERE users.user_id = $1 ORDER BY user_id DESC ",
+      [req.params.id]
+    );
+    if (teachers.rowCount == 0) {
+      res.status(400).json({});
+    } else {
+      console.log(teachers.rows);
       res.status(200).json({
         result: true,
         message: "success",
-      });
-    } else {
-      res.status(401).json({
-        result: false,
-        message: "fail",
+        teachers: teachers.rows,
       });
     }
   }
 );
- 
