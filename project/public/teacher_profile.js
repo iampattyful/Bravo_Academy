@@ -7,7 +7,6 @@ window.onload = async function () {
     method: "POST",
   });
   let json = await res.json();
-  // console.log(json);
   await teacherProfileResult(json);
   await createEvents();
 };
@@ -53,7 +52,7 @@ const teacherProfileTemplate = (
                                 </div>
                             </div>
                             <div class="bookmark">
-                                <div class="bookmark icon">
+                                <div class="bookmark icon iconClicked">
                                     <i class="fa-regular fa-bookmark"></i>
                                 </div>
                                 <div class="bookmarkNo"><a href="#">
@@ -177,6 +176,28 @@ async function teacherProfileResult(json) {
           }`
       )
       .join("");
+
+    const profileDivs = [...document.querySelectorAll(".container")];
+    for (const profileDiv of profileDivs) {
+      const json = await checkLogin();
+      if (json.result && json.users.role_id == 2) {
+        console.log(await checkLogin());
+        profileDiv
+          .querySelector(".fa-bookmark")
+          .addEventListener("click", async (event) => {
+            let userId = event.currentTarget.dataset.id;
+            console.log(userId);
+            profileDiv.querySelector(
+              ".iconClicked"
+            ).innerHTML = `<i class="fa-solid fa-bookmark"></i>`;
+            const res = await fetch(`/bookmark/${userId}`, {
+              method: "POST",
+            });
+          });
+      } else {
+        profileDiv.querySelector(".fa-bookmark").classList.add("hide");
+      }
+    }
   } else {
     teacherProfileContent.innerHTML = "";
   }
