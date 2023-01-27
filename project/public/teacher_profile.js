@@ -9,12 +9,12 @@ window.onload = async function () {
     method: "POST",
   });
   let json = await res.json();
-  await teacherProfileResult(json);
+  await teacherProfileSettingsResult(json);
   await createEvents();
 };
 
 //teacher profile template
-const teacherProfileTemplate = (
+const teacherProfileSettingsTemplate = (
   img,
   subjectId,
   subjectName,
@@ -113,7 +113,7 @@ const teacherProfileTemplate = (
       `;
 
 //teacher profile result
-async function teacherProfileResult(json) {
+async function teacherProfileSettingsResult(json) {
   const teacherProfileContent = document.querySelector(".teacherProfile");
   console.log(json);
 
@@ -124,7 +124,7 @@ async function teacherProfileResult(json) {
         (teacher) =>
           `${
             teacher.image === null
-              ? teacherProfileTemplate(
+              ? teacherProfileSettingsTemplate(
                   `./assets/profile_image_placeholder.jpg" alt=""`,
                   teacher.subject_id,
                   teacher.subject_name,
@@ -134,7 +134,7 @@ async function teacherProfileResult(json) {
                   teacher.price,
                   teacher.duration
                 )
-              : teacherProfileTemplate(
+              : teacherProfileSettingsTemplate(
                   teacher.image,
                   teacher.subject_id,
                   teacher.subject_name,
