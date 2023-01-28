@@ -168,6 +168,19 @@ a:active {
   cursor: pointer;
 }
 
+form > .btn {
+  background-color: #000 !important;
+  border-radius: 50px !important;
+  border: 1px solid #fff !important;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  width: 100%;
+  text-align: center;
+}
 
 @media screen and (max-width: 380px) {
   .teacherInfo {
