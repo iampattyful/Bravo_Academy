@@ -63,7 +63,7 @@ login.addEventListener("submit", async (event) => {
     document.querySelector("#logout").classList.remove("hide");
     document.querySelector("#signUpShow").classList.add("hide");
     // document.querySelector(".become-teacher").classList.add("hide");
-    window.location = "/";
+    window.location.reload();
     return;
   } else {
     alert("Incorrect login email or password.");
@@ -123,5 +123,6 @@ logout.addEventListener("click", async (event) => {
   const json = await res.json();
   if (json.result) {
     window.location = "/";
+    // window.location.reload();
   }
 });
