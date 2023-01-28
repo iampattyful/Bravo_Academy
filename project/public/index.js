@@ -88,6 +88,7 @@ role.addEventListener("change", (event) => {
   } else {
     subjects.classList.remove("hide");
     priceandtime.classList.remove("hide");
+    description.classList.remove("hide");
   }
 });
 
@@ -101,7 +102,7 @@ signUp.addEventListener("submit", async (event) => {
     method: "POST",
     body: formData,
   });
-  signUp.reset();
+  // signUp.reset();
   const json = await res.json();
   console.log(json);
 
