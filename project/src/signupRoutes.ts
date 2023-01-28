@@ -29,15 +29,15 @@ signupRoutes.post("/signup", async (req: Request, res: Response) => {
         fields.email,
       ]);
 
-      fields.price = fields.price || "0";
-
-      fields.duration = fields.duration || "0";
-
-      if (fields.roleId == "2") {
-        fields.subjectId = "5";
-      }
-
       if (!users.rowCount) {
+        fields.price = fields.price || "0";
+
+        fields.duration = fields.duration || "0";
+
+        if (fields.roleId == "2") {
+          fields.subjectId = "5";
+        }
+
         await client.query(
           "INSERT INTO users (email, password, username, phone, description, price, duration, image, role_id, subject_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)",
           [
@@ -63,6 +63,11 @@ signupRoutes.post("/signup", async (req: Request, res: Response) => {
           result: true,
           message: "success",
           newUser: newUserCreated.rows,
+        });
+      } else {
+        res.status(200).json({
+          result: false,
+          message: "signup fail",
         });
       }
     } catch (err) {

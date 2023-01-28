@@ -41,10 +41,12 @@ loginRoutes.post("/login", async (req: Request, res: Response) => {
     if (!users.rowCount) {
       res.status(401).json({ result: false, message: "fail", users: {} });
     }
-    const password = users.rows[0].password;
-    const match = await checkPassword(fields.password as string, password);
+
     if (users.rowCount >= 1) {
+      const password = users.rows[0].password;
+      const match = await checkPassword(fields.password as string, password);
       if (match) {
+        console.log(match);
         if (req.session) {
           req.session.user = {
             id: users.rows[0].user_id,
@@ -54,6 +56,8 @@ loginRoutes.post("/login", async (req: Request, res: Response) => {
           };
           found = true;
         }
+      } else {
+        res.status(401).json({ result: false, message: "fail", users: {} });
       }
     }
 
@@ -66,9 +70,10 @@ loginRoutes.post("/login", async (req: Request, res: Response) => {
       });
       console.log(req.session.user);
       return;
-    } else {
-      res.status(401).json({ result: false, message: "fail", users: {} });
-      return;
+      // } else {
+      //   res.status(401).json({ result: false, message: "fail", users: {} });
+      //   return;
+      // }
     }
   });
 });
