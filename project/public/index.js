@@ -110,7 +110,7 @@ signUp.addEventListener("submit", async (event) => {
     window.location = "/";
     return;
   } else {
-    alert("Email address has been used..");
+    alert("Email address has been used.");
   }
 });
 

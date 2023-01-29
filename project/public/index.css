@@ -91,9 +91,9 @@ body {
   margin-top: 44px;
 }
 
-.carousel {
+/* .carousel {
   z-index: -1;
-}
+} */
 
 .slider .carousel-indicators [data-bs-target] {
   height: 6px;
@@ -164,7 +164,7 @@ body {
 }
 
 .course4 {
-  background-image: url(./assets/Rectangle\ 4.jpg);
+  background-image: url(./assets/Rectangle\ 5.png);
   background-position: center;
 }
 

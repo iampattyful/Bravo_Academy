@@ -90,3 +90,4 @@ INSERT INTO subject (subject_name) VALUES ('student');
 
 INSERT INTO role (role_name) VALUES ('teacher');
 INSERT INTO role (role_name) VALUES ('student');
+

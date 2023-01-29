@@ -1,15 +1,15 @@
 import express from "express";
 import { Request, Response } from "express";
 import { client } from "./client";
-export const loadStudentRemarkRoutes = express.Router();
+export const loadStudentBookmarkRoutes = express.Router();
 
-loadStudentRemarkRoutes.post(
+loadStudentBookmarkRoutes.post(
   "/teachers/:id/",
   async (req: Request, res: Response) => {
-    
     const teachers = await client.query(
-        "select * FROM users where student_id = req.session.userId and teacher_id = req.params.teacher_id"
-      [req.params.id]
+      "select * FROM users where student_id = req.session.userId and teacher_id = req.params.teacher_id"[
+        req.params.id
+      ]
     );
     let results = teachers.rows;
     let my_book_mark = await client.query(
@@ -20,8 +20,8 @@ loadStudentRemarkRoutes.post(
     if (my_book_mark.rowCount > 0) {
       let bookmarkIdArr = my_book_mark.rows.map((obj) => obj.teacher_id);
       // console.log(bookmarkIdArr, "27");
-      results = results.map((obj: { user_id: any; }) =>
-      bookmarkIdArr.includes(obj.user_id)
+      results = results.map((obj: { user_id: any }) =>
+        bookmarkIdArr.includes(obj.user_id)
           ? Object.assign(obj, { isBookMark: true })
           : Object.assign(obj, { isBookMark: false })
       );
