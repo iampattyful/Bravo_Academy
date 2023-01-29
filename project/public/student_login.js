@@ -236,7 +236,9 @@ async function bookmarkedResult(json) {
             const res = await fetch(`/bookmark/${userId}`, {
               method: "DELETE",
             });
-            window.location.reload();
+            bookmarkDiv.classList.add("animate__animated");
+            bookmarkDiv.classList.add("animate__bounceOut");
+            // window.location.reload();
           }
         });
     }
