@@ -1,0 +1,40 @@
+import express from "express";
+import { Request, Response } from "express";
+import { client } from "./client";
+export const loadStudentRemarkRoutes = express.Router();
+
+loadStudentRemarkRoutes.post(
+  "/teachers/:id/",
+  async (req: Request, res: Response) => {
+    
+    const teachers = await client.query(
+        "select * FROM users where student_id = req.session.userId and teacher_id = req.params.teacher_id"
+      [req.params.id]
+    );
+    let results = teachers.rows;
+    let my_book_mark = await client.query(
+      `SELECT teacher_id FROM bookmark_table where student_id = $1`,
+      [req.session.user?.id]
+    );
+
+    if (my_book_mark.rowCount > 0) {
+      let bookmarkIdArr = my_book_mark.rows.map((obj) => obj.teacher_id);
+      // console.log(bookmarkIdArr, "27");
+      results = results.map((obj: { user_id: any; }) =>
+      bookmarkIdArr.includes(obj.user_id)
+          ? Object.assign(obj, { isBookMark: true })
+          : Object.assign(obj, { isBookMark: false })
+      );
+    }
+    if (teachers.rowCount == 0) {
+      res.status(400).json({});
+    } else {
+      console.log(results);
+      res.status(200).json({
+        result: true,
+        message: "success",
+        teachers: results,
+      });
+    }
+  }
+);

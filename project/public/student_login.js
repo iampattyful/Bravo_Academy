@@ -30,8 +30,17 @@ window.onload = async function () {
     } else {
       alert("Please fill in the blank.");
     }
-  });
 
+    //start load student remark
+    const reRemark = await fetch(`/student_login/${userId}`,{
+      method: "POST",
+    });
+    let jsonRemark = await reRemark.json();
+    console.log(jsonRemark)
+    await studentRemarkResult(jsonRemark);
+
+  });
+    // end load student remark
   let userTitle = document.querySelector(".userProfile");
   if (checkLoginRes.users.role_id == 1) {
     userTitle.addEventListener("click", (event) => {
@@ -131,3 +140,132 @@ async function studentLoginResult(json) {
     studentLoginContent.innerHTML = "";
   }
 }
+
+
+
+
+//student profile template
+const studentRemarkTemplate = (
+  img,
+  subjectName,
+  userId,
+  teacherName,
+  isBookMark,
+  description,
+  price,
+  min
+) =>
+      `
+      <div class="course-title">我的最愛
+      </div>
+      <div class="inner-column">
+        <div class="picture">
+            <img src="${img}">
+            <div><a href="#">${subjectName}老師</a></div>
+          </div>
+          <div class="description">
+            <div class="des-head" data-id=${userId}>${teacherName}</div>
+            <div class="des-icon">
+            <div class="iconClicked" data-id=${userId}>
+              ${
+                  isBookMark
+                  ? `<i class="fa-solid fa-bookmark" data-id=${userId}></i>`
+                  : `<i class="fa-regular fa-bookmark" data-id=${userId}></i>`
+              }
+          </div>
+          <div><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="des-content">${description}
+        </div>
+          <div>
+            <div class="des-price">
+              <p1>HK$${price}</p1>
+              <p2>/${min}分鐘</p2>
+           </div>
+          </div>
+        </div>
+      </div>
+      
+      <p>
+        <button
+          class="btn btn-primary collapaseButton"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseExample-2"
+          aria-expanded="false"
+          aria-controls="collapseExample"
+          >
+          顯示更多課程
+        </button>
+      </p>
+      <div class="collapse" id="collapseExample-2">
+            
+        <div class="inner-column">
+          <div class="picture">
+              <img src="${img}">
+              <div><a href="#">${subjectName}老師</a></div>
+            </div>
+            <div class="description">
+              <div class="des-head" data-id=${userId}>${teacherName}</div>
+              <div class="des-icon">
+              <div class="iconClicked" data-id=${userId}>
+                ${
+                    isBookMark
+                    ? `<i class="fa-solid fa-bookmark" data-id=${userId}></i>`
+                    : `<i class="fa-regular fa-bookmark" data-id=${userId}></i>`
+                }
+            </div>
+            <div><i class="fa-regular fa-heart"></i></div>
+          </div>
+          <div class="des-content">${description}
+          </div>
+            <div>
+              <div class="des-price">
+                <p1>HK$${price}</p1>
+                <p2>/${min}分鐘</p2>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+      `;
+
+//student profile settings result
+async function studentRemarkResult(jsonRemark) {
+  const studentRemarkContent = document.querySelector(".studentRemark");
+  if (jsonRemark.result) {
+    studentRemarkContent.innerHTML = "";
+    studentRemarkContent.innerHTML = json.teachers
+      .map(
+        (teacher) =>
+          `${
+            teacher.image === null
+              ? studentRemarkTemplate(
+                  `./assets/profile_image_placeholder.jpg" alt=""`,
+                  teacher.subject_name,
+                  teacher.user_id,
+                  teacher.username,
+                  teacher.isBookMark,
+                  teacher.description,
+                  teacher.price,
+                  teacher.duration
+                )
+              : studentRemarkTemplate(
+                  teacher.image,
+                  teacher.subject_name,
+                  teacher.user_id,
+                  teacher.username,
+                  teacher.isBookMark,
+                  teacher.description,
+                  teacher.price,
+                  teacher.duration
+                )
+          }`
+      )
+      .join("");
+  } else {
+    studentRemarkContent.innerHTML = "";
+  }
+}
+
+

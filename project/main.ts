@@ -50,6 +50,10 @@ app.use("/", loadStudentProfileRoutes);
 import { bookmarkRoutes } from "./src/bookmarkRoutes";
 app.use("/", bookmarkRoutes);
 
+// load student bookmark record
+import { loadStudentRemarkRoutes } from "./src/loadStudentRemarkRoutes";
+app.use("/", loadStudentRemarkRoutes)
+
 app.use(express.static("public"));
 app.use(express.static("uploads"));
 
