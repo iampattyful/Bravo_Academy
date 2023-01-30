@@ -28,6 +28,9 @@ app.use("/", checkLoginRoutes);
 import { loadUserCommentRoutes } from "./src/loadUserCommentRoutes";
 app.use("/", loadUserCommentRoutes);
 
+app.use(express.static("public"));
+app.use(express.static("uploads"));
+
 //loadTeacher
 import { loadTeacherRoutes } from "./src/loadTeacherRoutes";
 app.use("/", loadTeacherRoutes);
@@ -56,16 +59,32 @@ app.use("/", loadStudentProfileRoutes);
 import { bookmarkRoutes } from "./src/bookmarkRoutes";
 app.use("/", bookmarkRoutes);
 
-app.use(express.static("public"));
-app.use(express.static("uploads"));
-
 //remove bookmark
 import { removeBookmarkRoutes } from "./src/removeBookmarkRoutes";
 app.use("/", removeBookmarkRoutes);
 
-//404
-import { errorRoutes } from "./src/404Routes";
-app.use("/", errorRoutes);
+//contact us
+import { contactUsRoutes } from "./src/contactUsRoutes";
+app.use("/", contactUsRoutes);
+
+//admin login
+const isLoggedIn = (
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction
+) => {
+  if (req.session.user?.role_id == "3") {
+    next();
+  } else {
+    res.redirect("/");
+  }
+};
+
+// //404
+// import { errorRoutes } from "./src/404Routes";
+// app.use("/", errorRoutes);
+
+app.use(isLoggedIn, express.static("protected"));
 
 const PORT = 8080;
 app.listen(PORT, () => {

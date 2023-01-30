@@ -44,16 +44,16 @@ window.onload = async function () {
 
     // });
     //   // end load student remark
-    // let userTitle = document.querySelector(".userProfile");
-    // if (checkLoginRes.users.role_id == 1) {
-    //   userTitle.addEventListener("click", (event) => {
-    //     window.location.href = `teacher_profile_settings.html?id=${event.currentTarget.dataset.id}`;
-    //   });
-    // } else if (checkLoginRes.users.role_id == 2) {
-    //   userTitle.addEventListener("click", (event) => {
-    //     window.location.href = `student_login.html?id=${event.currentTarget.dataset.id}`;
-    //   });
-    // }
+    let userTitle = document.querySelector(".userProfile");
+    if (checkLoginRes.users.role_id == 1) {
+      userTitle.addEventListener("click", (event) => {
+        window.location.href = `teacher_profile_settings.html?id=${event.currentTarget.dataset.id}`;
+      });
+    } else if (checkLoginRes.users.role_id == 2) {
+      userTitle.addEventListener("click", (event) => {
+        window.location.href = `student_login.html?id=${event.currentTarget.dataset.id}`;
+      });
+    }
   });
 };
 
@@ -156,7 +156,6 @@ const bookmarkedTemplate = (
   subjectName,
   teacherName,
   teacherId,
-  isBookMark,
   teacherDescription,
   price,
   min
