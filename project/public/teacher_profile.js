@@ -9,7 +9,7 @@ window.onload = async function () {
     method: "POST",
   });
   let json = await res.json();
-  await teacherProfileSettingsResult(json);
+  await userCommentResult(json);
   await createEvents();
   let userTitle = document.querySelector(".userProfile");
   if (checkLoginRes.users.role_id == 1) {
@@ -123,13 +123,13 @@ const teacherProfileSettingsTemplate = (
       `;
 
 //teacher profile result
-async function teacherProfileSettingsResult(json) {
+async function userCommentResult(json) {
   const teacherProfileContent = document.querySelector(".teacherProfile");
   console.log(json);
 
   if (json.result) {
     teacherProfileContent.innerHTML = "";
-    document.querySelector(".teacherProfile").innerHTML = json.teachers
+    document.querySelector(".teacherProfile").innerHTML = json.teacher
       .map(
         (teacher) =>
           `${

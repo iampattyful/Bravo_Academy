@@ -48,19 +48,6 @@ body {
   height: 50%;
 }
 
-.profileTag > a {
-  text-decoration: none;
-  color: #fff;
-}
-
-.profileTag > a:hover,
-a:focus,
-a:active {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 img {
   max-width: 100%;
   max-height: 100%;
@@ -77,59 +64,8 @@ img {
 
 .teacherInfo > h3 {
   color: #fff;
-  padding-bottom: 5px;
+  padding: 10px;
   text-align: center;
-}
-
-#commentTitle h3 {
-  color: #fff;
-  font-weight: 600;
-  padding: 50px 0px 20px 0px;
-  font-size: 32px;
-}
-
-.commentContent {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: #888888;
-  margin-left: 10px;
-}
-
-.commentContent > .commentName {
-  color: #fff;
-  font-weight: 500;
-  font-size: 18px;
-}
-
-.commentPic {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.commentUserInfo {
-  color: #888888;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 10px 0px 10px 0px;
-}
-
-.commentDate {
-  font-size: 12px;
-}
-
-.commentText {
-  color: #888888;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  font-size: 18px;
-  padding-bottom: 10px;
 }
 
 p > button {
@@ -182,14 +118,19 @@ form > .btn {
   text-align: center;
 }
 
+.teacherProfileSettings, .userComment {
+  padding-bottom: 30px;
+}
+
+
 @media screen and (max-width: 380px) {
   .teacherInfo {
     display: flex;
     flex-direction: column;
     justify-content: left;
     align-items: left;
-    padding: 0px;
-    margin: 0px;
+    /* padding: 0px;
+    margin: 0px; */
     width: 100%;
     height: 100%;
   }
@@ -198,20 +139,11 @@ form > .btn {
     display: block;
     align-items: center;
     justify-content: center;
-    top: 0px;
+    /* top: 0px;
     right: 0px;
     bottom: 0px;
     left: 0px;
-    margin-right: 0px;
+    margin-right: 0px; */
   }
-
-  /* .teacherPic {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  } */
 }
 
-.teacherProfileSettings {
-  padding-bottom: 30px;
-}

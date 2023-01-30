@@ -48,6 +48,35 @@ window.onload = async function () {
   }
 };
 
+// submit user comment
+const submitUserComment = document.querySelector("#submitUserComment");
+submitUserComment.addEventListener("submit", async (event) => {
+  event.preventDefault(); // To prevent the form from submitting synchronously
+  const body = {
+    userId: checkLoginRes.users.id,
+    content: document.getElementById("userComment").value,
+  };
+  const submitUserCommentRes = await fetch(
+    `/submitUserComment/${checkLoginRes.users.id}`,
+    {
+      method: "POST",
+      headers: {
+        // Specify any HTTP Headers Here
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify(body), // Specify the Request Body
+    }
+  );
+
+  const content = await submitUserCommentRes.json();
+  if (content.result) {
+    window.location = `/teacher_profile_settings.html?id=${checkLoginRes.users.id}`;
+    return;
+  } else {
+    alert("Please fill in the blank.");
+  }
+});
+
 //teacher profile template
 const teacherProfileSettingsTemplate = (
   img,
@@ -69,7 +98,7 @@ const teacherProfileSettingsTemplate = (
                 <div class="teacherPic">
                     <div><img src="${img}"></div>
                 </div>
-                <div class="profileTag"><a href="./teacher_page.html?id=${subjectId}">${subjectName}老師</a></div>
+                <div class="profileTag"><strong>${subjectName}老師</strong></div>
                 <div class="teacherInfo">
                     <h3 data-id=${userId}>${teacherName}</h3>
                 </div>
@@ -114,7 +143,7 @@ const teacherProfileSettingsTemplate = (
                             <input name="duration" class="form-control" value="${min}" />
                         </div>
                     </div>
-                    <input type="submit" class="btn btn-primary" value="完成" />
+                    <input type="submit" class="btn btn-primary" value="提交" />
                 </form>
             </div>
         </div>
