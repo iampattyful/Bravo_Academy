@@ -50,23 +50,17 @@ body {
     font-size: 20px;
   }
   
-  p > button {
-    background-color: #000 !important;
-    border-radius: 50px !important;
-    border: 1px solid #fff !important;
-    font-family: "Noto Sans TC";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    color: #ffffff;
-    width: 100%;
-    text-align: center;
-  }
-  
 
   .form-label {
     color: white;
+  }
+
+  .whole-remark {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .studentRemark {
+    width:48%;
   }
 
   @media (max-width: 390px) {

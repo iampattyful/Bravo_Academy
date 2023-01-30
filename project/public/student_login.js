@@ -65,10 +65,7 @@ const studentLoginTemplate = (
   email,
   phone,
   description,
-  teacherImg,
-  teacherDescription,
-  price,
-  min
+  
 ) =>
   `
     <div class="container">
@@ -201,18 +198,18 @@ async function bookmarkedResult(json) {
                   bookmark.subject_name,
                   bookmark.username,
                   bookmark.user_id,
-                  bookmark.isBookMark,
-                  bookmark.email,
-                  bookmark.description
+                  bookmark.description,
+                  bookmark.price,
+                  bookmark.duration
                 )
               : bookmarkedTemplate(
                   bookmark.image,
                   bookmark.subject_name,
                   bookmark.username,
                   bookmark.user_id,
-                  bookmark.isBookMark,
-                  bookmark.email,
-                  bookmark.description
+                  bookmark.description,
+                  bookmark.price,
+                  bookmark.duration
                 )
           }`
       )
@@ -235,7 +232,8 @@ async function bookmarkedResult(json) {
             const res = await fetch(`/bookmark/${userId}`, {
               method: "DELETE",
             });
-            window.location.reload();
+            bookmarkDiv.classList.add("animate__animated")
+            bookmarkDiv.classList.add("animate__bounceOut")
           }
         });
     }
