@@ -201,18 +201,18 @@ async function bookmarkedResult(json) {
                   bookmark.subject_name,
                   bookmark.username,
                   bookmark.user_id,
-                  bookmark.isBookMark,
-                  bookmark.email,
-                  bookmark.description
+                  bookmark.description,
+                  bookmark.price,
+                  bookmark.duration
                 )
               : bookmarkedTemplate(
                   bookmark.image,
                   bookmark.subject_name,
                   bookmark.username,
                   bookmark.user_id,
-                  bookmark.isBookMark,
-                  bookmark.email,
-                  bookmark.description
+                  bookmark.description,
+                  bookmark.price,
+                  bookmark.duration
                 )
           }`
       )
