@@ -115,3 +115,10 @@ CREATE TABLE contact_us
 );
 
 INSERT INTO role (id, role_name) VALUES (3, 'admin') ;
+
+        
+CREATE TABLE appointment
+(
+  user_id integer 
+  user_id integer 
+);

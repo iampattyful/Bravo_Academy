@@ -64,11 +64,7 @@ const studentLoginTemplate = (
   studentName,
   email,
   phone,
-  description,
-  teacherImg,
-  teacherDescription,
-  price,
-  min
+  description
 ) =>
   `
     <div class="container">
