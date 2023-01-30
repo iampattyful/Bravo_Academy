@@ -64,7 +64,8 @@ const studentLoginTemplate = (
   studentName,
   email,
   phone,
-  description
+  description,
+
 ) =>
   `
     <div class="container">
@@ -231,9 +232,8 @@ async function bookmarkedResult(json) {
             const res = await fetch(`/bookmark/${userId}`, {
               method: "DELETE",
             });
-            bookmarkDiv.classList.add("animate__animated");
-            bookmarkDiv.classList.add("animate__bounceOut");
-            // window.location.reload();
+            bookmarkDiv.classList.add("animate__animated")
+            bookmarkDiv.classList.add("animate__bounceOut")
           }
         });
     }
