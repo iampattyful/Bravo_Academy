@@ -49,7 +49,7 @@ const teacherListTemplate = (
                   : `<i class="fa-regular fa-bookmark" data-id=${userId}></i>`
               }
             </div>
-            <div><i class="fa-regular fa-heart"></i></div>
+            
           </div>
           <div class="des-content">${description}
           </div>

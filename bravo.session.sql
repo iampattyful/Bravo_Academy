@@ -119,6 +119,16 @@ INSERT INTO role (id, role_name) VALUES (3, 'admin') ;
         
 CREATE TABLE appointment
 (
-  user_id integer 
-  user_id integer 
+  student_id INTEGER,
+  teacher_id INTEGER 
 );
+
+ALTER TABLE appointment
+  ADD CONSTRAINT FK_users_TO_appointment
+    FOREIGN KEY (student_id)
+    REFERENCES users (user_id);
+
+ALTER TABLE appointment
+  ADD CONSTRAINT FK_users_TO_appointment1
+    FOREIGN KEY (teacher_id)
+    REFERENCES users (user_id);
