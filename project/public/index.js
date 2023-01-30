@@ -126,3 +126,26 @@ logout.addEventListener("click", async (event) => {
     // window.location.reload();
   }
 });
+
+//contact us
+const contactus = document.querySelector("#contactBox");
+contactus.addEventListener("submit", async (event) => {
+  event.preventDefault(); // To prevent the form from submitting synchronously
+  const form = event.target;
+  const formData = new FormData(form);
+
+  const res = await fetch("/contactus", {
+    method: "POST",
+    body: formData,
+  });
+  const json = await res.json();
+  console.log(json);
+
+  if (json.result) {
+    contactus.reset();
+    alert("Message sent.");
+    return;
+  } else {
+    alert("Please fill in the blank.");
+  }
+});

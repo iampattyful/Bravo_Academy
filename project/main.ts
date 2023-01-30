@@ -57,6 +57,10 @@ app.use(express.static("uploads"));
 import { removeBookmarkRoutes } from "./src/removeBookmarkRoutes";
 app.use("/", removeBookmarkRoutes);
 
+//contact us
+import { contactUsRoutes } from "./src/contactUsRoutes";
+app.use("/", contactUsRoutes);
+
 //404
 import { errorRoutes } from "./src/404Routes";
 app.use("/", errorRoutes);

@@ -156,7 +156,6 @@ const bookmarkedTemplate = (
   subjectName,
   teacherName,
   teacherId,
-  isBookMark,
   teacherDescription,
   price,
   min
