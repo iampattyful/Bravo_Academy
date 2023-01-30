@@ -113,3 +113,5 @@ CREATE TABLE contact_us
   content VARCHAR NOT NULL,
   PRIMARY KEY (id)
 );
+
+INSERT INTO role (id, role_name) VALUES (3, 'admin') ;

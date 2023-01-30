@@ -20,16 +20,20 @@ const checkLogin = async () => {
   const json = await res.json();
   console.log(json.result);
   if (json.result) {
-    document.querySelector(".userProfile").classList.remove("hide");
-    document.querySelector(".userProfile").innerHTML = json.users.username;
-    document
-      .querySelector(".userProfile")
-      .setAttribute("data-id", `${json.users.id}`);
-    document.querySelector("#logout").classList.remove("hide");
-    document.querySelector("#loginShow").classList.add("hide");
-    document.querySelector("#signUpShow").classList.add("hide");
-    // document.querySelector(".become-teacher").classList.add("hide");
-    return json;
+    if (json.users.role_id == 3) {
+      window.location = "/admin_portal.html";
+    } else {
+      document.querySelector(".userProfile").classList.remove("hide");
+      document.querySelector(".userProfile").innerHTML = json.users.username;
+      document
+        .querySelector(".userProfile")
+        .setAttribute("data-id", `${json.users.id}`);
+      document.querySelector("#logout").classList.remove("hide");
+      document.querySelector("#loginShow").classList.add("hide");
+      document.querySelector("#signUpShow").classList.add("hide");
+      // document.querySelector(".become-teacher").classList.add("hide");
+      return json;
+    }
   } else {
     document.querySelector("#loginShow").classList.remove("hide");
     document.querySelector("#signUpShow").classList.remove("hide");
@@ -52,19 +56,23 @@ login.addEventListener("submit", async (event) => {
   const json = await res.json();
 
   if (json.result) {
-    // document.querySelector("#loginShow").classList.add("hide");
-    // document.querySelector("#signUpShow").classList.add("hide");
-    document.querySelector(".userProfile").classList.remove("hide");
-    document.querySelector(".userProfile").innerHTML = json.users.username;
-    document
-      .querySelector(".userProfile")
-      .setAttribute("data-id", `${json.users.id}`);
-    document.querySelector("#loginShow").classList.add("hide");
-    document.querySelector("#logout").classList.remove("hide");
-    document.querySelector("#signUpShow").classList.add("hide");
-    // document.querySelector(".become-teacher").classList.add("hide");
-    window.location.reload();
-    return;
+    if (json.users.role_id == 3) {
+      window.location = "/admin_portal.html";
+    } else {
+      // document.querySelector("#loginShow").classList.add("hide");
+      // document.querySelector("#signUpShow").classList.add("hide");
+      document.querySelector(".userProfile").classList.remove("hide");
+      document.querySelector(".userProfile").innerHTML = json.users.username;
+      document
+        .querySelector(".userProfile")
+        .setAttribute("data-id", `${json.users.id}`);
+      document.querySelector("#loginShow").classList.add("hide");
+      document.querySelector("#logout").classList.remove("hide");
+      document.querySelector("#signUpShow").classList.add("hide");
+      // document.querySelector(".become-teacher").classList.add("hide");
+      window.location.reload();
+      return;
+    }
   } else {
     alert("Incorrect login email or password.");
     document.querySelector("#loginShow").classList.remove("hide");
@@ -124,5 +132,28 @@ logout.addEventListener("click", async (event) => {
   if (json.result) {
     window.location = "/";
     // window.location.reload();
+  }
+});
+
+//contact us
+const contactus = document.querySelector("#contactBox");
+contactus.addEventListener("submit", async (event) => {
+  event.preventDefault(); // To prevent the form from submitting synchronously
+  const form = event.target;
+  const formData = new FormData(form);
+
+  const res = await fetch("/contactus", {
+    method: "POST",
+    body: formData,
+  });
+  const json = await res.json();
+  console.log(json);
+
+  if (json.result) {
+    contactus.reset();
+    alert("Message sent.");
+    return;
+  } else {
+    alert("Please fill in the blank.");
   }
 });

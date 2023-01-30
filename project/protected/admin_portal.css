@@ -1,0 +1,12 @@
+.logout {
+  display: flex;
+  width: 83px;
+  height: 32px;
+  left: 1327px;
+  top: 8px;
+  background: #30a57b;
+  border-radius: 25px;
+  justify-content: center;
+  margin: 0 10px;
+  cursor: pointer;
+}
