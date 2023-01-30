@@ -330,92 +330,141 @@
 
     <div class="studentLoginSetting"></div>
 
-    <!-- <div class="container">
-        <div class="studentCourse">
-            <div class="course-title">我的課程</div>
-            <div class="inner-column">
+    <div class="container">
+      <div class="whole-remark">
+        <div class="studentRemark">
+          <div class="course-title">我的最愛</div>
+            <div class="bookmark-teacher" id="bookmarkTeacher">
+            <div class="black-holder">
+              我就好似個電腦一樣，『我的最愛』永遠有好多，鍾意就keep，唔鍾意就delete！
+            </div>
+            <!-- <div class="inner-column">
               <div class="picture">
-                <img src="./assets/profile_image_placeholder.jpg" />
-                <div><a href="#">英文老師</a></div>
+                <img src="${teacherImg}">
+                <div><a href="#">${subjectName}老師</a></div>
               </div>
               <div class="description">
-                <div class="des-head">ghrlgjlregg</div>
-    
-                <div class="des-content">jhjkghdkjfghkdljsfghjldkg</div>
+                <div class="des-head" >${teacherName}</div>
+                <div class="des-icon">
+                  <div class="iconClicked" data-id=${teacherId}>
+                        <i class="fa-solid fa-bookmark" data-id=${teacherId}></i>
+                  </div>
+                  <div><i class="fa-regular fa-heart"></i></div>
+                </div>
+                <div class="des-content">${teacherDescription}
+                </div>
                 <div>
                   <div class="des-price">
-                    <p1>HK$ 100</p1>
-                    <p2>50 /分鐘</p2>
+                    <p1>HK$${price}</p1>
+                    <p2>/${min}分鐘</p2>
                   </div>
                 </div>
               </div>
             </div>
             <div class="inner-column">
               <div class="picture">
-                <img src="./assets/profile_image_placeholder.jpg" />
-                <div><a href="#">日文老師</a></div>
+                <img src="${teacherImg}">
+                <div><a href="#">${subjectName}老師</a></div>
               </div>
               <div class="description">
-                <div class="des-head">ghrlgjlregg</div>
-              
-                <div class="des-content">jhjkghdkjfghkdljsfghjldkg</div>
-                <div>
-                  <div class="des-price">
-                    <p1>HK$ 100</p1>
-                    <p2>50 /分鐘</p2>
+                <div class="des-head" >${teacherName}</div>
+                <div class="des-icon">
+                  <div class="iconClicked" data-id=${teacherId}>
+                        <i class="fa-solid fa-bookmark" data-id=${teacherId}></i>
                   </div>
+                  <div><i class="fa-regular fa-heart"></i></div>
                 </div>
-              </div>
-            </div>
-            <p>
-              <button
-                class="btn btn-primary collapaseButton"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseExample-1"
-                aria-expanded="false"
-                aria-controls="collapseExample"
-              >
-                顯示更多最愛
-              </button>
-            </p>
-            <div class="collapse" id="collapseExample-1">
-            <div class="inner-column">
-              <div class="picture">
-                <img src="./assets/profile_image_placeholder.jpg" />
-                <div><a href="#">老師</a></div>
-              </div>
-              <div class="description">
-                <div class="des-head">ghrlgjlregg</div>
-               
-                <div class="des-content">jhjkghdkjfghkdljsfghjldkg</div>
+                <div class="des-content">${teacherDescription}
+                </div>
                 <div>
                   <div class="des-price">
-                    <p1>HK$ 100</p1>
-                    <p2>50 /分鐘</p2>
+                    <p1>HK$${price}</p1>
+                    <p2>/${min}分鐘</p2>
                   </div>
                 </div>
               </div>
             </div>
             <div class="inner-column">
               <div class="picture">
-                <img src="./assets/profile_image_placeholder.jpg" />
-                <div><a href="#">老師</a></div>
+                <img src="${teacherImg}">
+                <div><a href="#">${subjectName}老師</a></div>
               </div>
               <div class="description">
-                <div class="des-head">ghrlgjlregg</div>
-                <div class="des-content">jhjkghdkjfghkdljsfghjldkg</div>
+                <div class="des-head" >${teacherName}</div>
+                <div class="des-icon">
+                  <div class="iconClicked" data-id=${teacherId}>
+                        <i class="fa-solid fa-bookmark" data-id=${teacherId}></i>
+                  </div>
+                  <div><i class="fa-regular fa-heart"></i></div>
+                </div>
+                <div class="des-content">${teacherDescription}
+                </div>
                 <div>
                   <div class="des-price">
-                    <p1>HK$ 100</p1>
-                    <p2>50 /分鐘</p2>
+                    <p1>HK$${price}</p1>
+                    <p2>/${min}分鐘</p2>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            </div>
+          </div>  
+     
+          <div class="studentRemark">
+            <div class="course-title">我和老師有個約會</div>
+            <div class="reserved-teacher" id="">
+            <div class="white-holder">心裡總有一個位置給你</div>  
+            <!-- <div class="inner-column">
+              <div class="picture">
+                <img src="${teacherImg}">
+                <div><a href="#">${subjectName}老師</a></div>
+              </div>
+              <div class="description">
+                <div class="des-head" >${teacherName}</div>
+                <div class="des-icon">
+                  <div class="iconClicked" data-id=${teacherId}>
+                        <i class="fa-solid fa-bookmark" data-id=${teacherId}></i>
+                  </div>
+                  <div><i class="fa-regular fa-heart"></i></div>
+                </div>
+                <div class="des-content">${teacherDescription}
+                </div>
+                <div>
+                  <div class="des-price">
+                    <p1>HK$${price}</p1>
+                    <p2>/${min}分鐘</p2>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div> -->
-    <div class="studentRemark"></div>
+            <div class="inner-column">
+              <div class="picture">
+                <img src="${teacherImg}">
+                <div><a href="#">${subjectName}老師</a></div>
+              </div>
+              <div class="description">
+                <div class="des-head" >${teacherName}</div>
+                <div class="des-icon">
+                  <div class="iconClicked" data-id=${teacherId}>
+                        <i class="fa-solid fa-bookmark" data-id=${teacherId}></i>
+                  </div>
+                  <div><i class="fa-regular fa-heart"></i></div>
+                </div>
+                <div class="des-content">${teacherDescription}
+                </div>
+                <div>
+                  <div class="des-price">
+                    <p1>HK$${price}</p1>
+                    <p2>/${min}分鐘</p2>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            </div>
+          </div> 
+        </div>  
+      </div>  
+    </div>
     <section class="footer">
       <div class="container">
         <div class="row">

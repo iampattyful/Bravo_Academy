@@ -86,6 +86,8 @@ const isLoggedIn = (
 
 app.use(isLoggedIn, express.static("protected"));
 
+//load contact us data
+
 const PORT = 8080;
 app.listen(PORT, () => {
   console.log(`Listening at http://localhost:${PORT}/`);

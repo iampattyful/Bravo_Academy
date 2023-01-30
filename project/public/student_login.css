@@ -9,7 +9,7 @@ body {
 
   .student-image{
     display: flex;
-    justify-content: center;
+    
     align-items: center;
     flex-direction: column;
   }
@@ -18,8 +18,8 @@ body {
     margin-bottom: 20px;
     display: inline-block;
     position: relative;
-    width: 200px; 
-    height: 200px; 
+    width: 250px; 
+    height: 250px; 
     overflow: hidden;
   
   }
@@ -34,7 +34,7 @@ body {
     text-align: center;
     background: skyblue;
     border-radius: 25px;
-    width:200px;
+    width:250px;
     height:40px;
     font-size: 25px;
   }
@@ -48,20 +48,7 @@ body {
   .course-title{
     color: white;
     font-size: 20px;
-  }
-  
-  p > button {
-    background-color: #000 !important;
-    border-radius: 50px !important;
-    border: 1px solid #fff !important;
-    font-family: "Noto Sans TC";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    color: #ffffff;
-    width: 100%;
-    text-align: center;
+    margin:10px;
   }
   
 
@@ -69,8 +56,39 @@ body {
     color: white;
   }
 
+  .whole-remark {
+    display: flex;
+    justify-content: space-between;
+  }
+  .studentRemark {
+    width:48%;
+  }
+  .white-holder {
+    background-color: white;
+    color:black;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    width: 500px;
+    height:200px;
+    padding:20px;
+
+  }
+  .black-holder {
+    background-color: #666;
+    color:white;
+    
+    border-radius: 20px;
+    margin-bottom: 20px;
+    width: 500px;
+    height:200px;
+    padding:30px;
+
+  }
+  .whole-remark {
+    border-top: #666 solid 1px; 
+  }
   @media (max-width: 390px) {
     
-
+  
   }
   
