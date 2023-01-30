@@ -69,7 +69,7 @@ h2 {
   text-align: center;
   color: white;
   margin-bottom: 10px;
-  width: 140px;
+  width: 200px;
   height: 40px;
   justify-content: center;
   text-align: center;
@@ -126,19 +126,38 @@ a {
     display: flex;
     flex-direction: column;
     margin: 20px;
+    padding:20px;
   }
   .word-inside-image  {
     display: none;
   }
   .picture {
     display: flex;
+   flex-direction: column;
+   
+  }
+  .picture > img {
+    width:200px;
+    height:200px;
+  }
+  .description {
+    display: flex;
     flex-direction: column;
+    justify-content: center;
   }
   .description > div {
-    font-size: 15px;
+    font-size: 30px;
+    padding:5px;
+    color: white;
+  
   }
   .description div > p1 {
-    font-size: 15px;
+    font-size: 30px;
+    padding:5px;
+  
+  }
+  .description div > p2 {
+    font-size: 20px;
   }
   .scroll-to-top {
     display: none;
@@ -146,14 +165,12 @@ a {
 }
 
 @media only screen and (max-width: 820px) {
-  /* .inner-column {
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
-  } */
+ 
   .word-inside-image  {
-    height:250px;
+    margin-left: -200px;
+    
   }
+ 
   /* .picture {
     display: flex;
     flex-direction: column;
