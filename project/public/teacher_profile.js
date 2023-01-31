@@ -32,6 +32,7 @@ const teacherProfileSettingsTemplate = (
   subjectName,
   userId,
   teacherName,
+  isBookMark,
   description,
   price,
   min,
@@ -50,27 +51,13 @@ const teacherProfileSettingsTemplate = (
             <div class="teacherInfo">
                 <h1 data-id=${userId}>${teacherName}</h1>
                 <div class="teacherStat">
-                    <div class="fire">
-                        <div class="fire icon">
-                            <i class="fa-solid fa-fire"></i>
-                        </div>
-                        <div class="fireNo"><a href="#">100</a>
-                        </div>
-                    </div>
-                    <div class="comment">
-                        <div class="comment icon">
-                            <i class="fa-regular fa-comment-dots"></i>
-                        </div>
-                        <div class="commentNo"><a href="#commentTitle">
-                                5個評論</a>
-                        </div>
-                    </div>
                     <div class="bookmark">
                         <div class="bookmark icon iconClicked" data-id=${userId}>
-                            <i class="fa-regular fa-bookmark"></i>
-                        </div>
-                        <div class="bookmarkNo"><a href="#">
-                                9人收藏</a>
+              ${
+                isBookMark
+                  ? `<i class="fa-solid fa-bookmark marked" data-id=${userId}></i> <span>已收藏</span>`
+                  : `<i class="fa-regular fa-bookmark unmarked" data-id=${userId}></i> <span>收藏</span>`
+              } 
                         </div>
                     </div>
                 </div>
@@ -129,6 +116,7 @@ async function userCommentResult(json) {
                   teacher.subject_name,
                   teacher.user_id,
                   teacher.username,
+                  teacher.isBookMark,
                   teacher.description,
                   teacher.price,
                   teacher.duration,
@@ -140,6 +128,7 @@ async function userCommentResult(json) {
                   teacher.subject_name,
                   teacher.user_id,
                   teacher.username,
+                  teacher.isBookMark,
                   teacher.description,
                   teacher.price,
                   teacher.duration,
@@ -150,28 +139,35 @@ async function userCommentResult(json) {
       .join("");
 
     // teacher individual profile bookmark function setup
-    const profileDiv = document.querySelector("div#teacherContainer");
-    //for (const profileDiv of profileDivs) {
-    //const checkLoginRes = await checkLogin();
     if (checkLoginRes.result && checkLoginRes.users.role_id == 2) {
-      //console.log(await checkLogin());
-      console.log(profileDiv.querySelector("div.iconClicked"));
-      profileDiv
-        .querySelector("div.iconClicked")
+      document
+        .querySelector(".iconClicked")
         .addEventListener("click", async (event) => {
           let userId = event.currentTarget.dataset.id;
           console.log(userId);
-          profileDiv.querySelector(
-            ".iconClicked"
-          ).innerHTML = `<i class="fa-solid fa-bookmark"></i>`;
-          const res = await fetch(`/bookmark/${userId}`, {
-            method: "POST",
-          });
+          if (
+            document
+              .querySelector(".fa-bookmark")
+              .classList.contains("unmarked")
+          ) {
+            document.querySelector(
+              ".iconClicked"
+            ).innerHTML = `<i class="fa-solid fa-bookmark marked" data-id=${userId}></i> <span>已收藏</span>`;
+            const res = await fetch(`/bookmark/${userId}`, {
+              method: "POST",
+            });
+          } else {
+            document.querySelector(
+              ".iconClicked"
+            ).innerHTML = `<i class="fa-regular fa-bookmark unmarked" data-id=${userId}></i> <span>收藏</span>`;
+            const res = await fetch(`/bookmark/${userId}`, {
+              method: "DELETE",
+            });
+          }
         });
     } else {
-      profileDiv.querySelector(".fa-bookmark").classList.add("hide");
+      document.querySelector(".fa-bookmark").classList.add("hide");
     }
-    //}
   } else {
     teacherProfileContent.innerHTML = "";
   }
@@ -209,9 +205,8 @@ async function createEvents() {
     document
       .getElementById("contactBtn")
       .addEventListener("click", async (event) => {
-        document.getElementById(
-          "modalContent"
-        ).innerHTML = "預約諮詢服務僅供學生用戶使用，謝謝！";
+        document.getElementById("modalContent").innerHTML =
+          "預約諮詢服務僅供學生用戶使用，謝謝！";
       });
   } else if (!checkLoginRes.result) {
     document

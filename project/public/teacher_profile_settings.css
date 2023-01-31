@@ -126,7 +126,7 @@ form > .btn {
   padding-bottom: 30px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 414px) {
   img :not(.navbar-brand) {
     width: 200px;
     height: 200px;
@@ -146,6 +146,7 @@ form > .btn {
     display: block;
     align-items: center;
     justify-content: center;
+    padding-top: 10px;
     /* top: 0px;
     right: 0px;
     bottom: 0px;
