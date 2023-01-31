@@ -248,126 +248,82 @@ async function bookmarkedResult(json) {
   }
 }
 
-// //student profile template
-// const studentRemarkTemplate = (
-//   img,
-//   subjectName,
-//   userId,
-//   teacherName,
-//   isBookMark,
-//   description,
-//   price,
-//   min
-// ) =>
-//   `
-//       <div class="course-title">我的最愛
-//       </div>
-//       <div class="inner-column">
-//         <div class="picture">
-//             <img src="${img}">
-//             <div><a href="#">${subjectName}老師</a></div>
-//           </div>
-//           <div class="description">
-//             <div class="des-head" data-id=${userId}>${teacherName}</div>
-//             <div class="des-icon">
-//             <div class="iconClicked" data-id=${userId}>
-//               ${
-//                 isBookMark
-//                   ? `<i class="fa-solid fa-bookmark" data-id=${userId}></i>`
-//                   : `<i class="fa-regular fa-bookmark" data-id=${userId}></i>`
-//               }
-//           </div>
-//           <div><i class="fa-regular fa-heart"></i></div>
-//         </div>
-//         <div class="des-content">${description}
-//         </div>
-//           <div>
-//             <div class="des-price">
-//               <p1>HK$${price}</p1>
-//               <p2>/${min}分鐘</p2>
-//            </div>
-//           </div>
-//         </div>
-//       </div>
+//appointment template
+const appointmentTemplate = (
+  teacherImg,
+  subjectName,
+  teacherName,
+  teacherId,
+  teacherDescription,
+  price,
+  min
+) =>
+  `
+<div class="inner-column">
+        <div class="picture">
+          <img src="${teacherImg}">
+          <div><a href="#">${subjectName}老師</a></div>
+        </div>
+        <div class="description">
+          <div class="des-head" data-id=${teacherId} >${teacherName}</div>
+          <div class="des-icon">
+            <div class="iconClicked" data-id=${teacherId}>
+                  <i class="fa-solid fa-bookmark" data-id=${teacherId}></i>
+            </div>
+        
+          </div>
+          <div class="des-content">${teacherDescription}
+          </div>
+          <div>
+            <div class="des-price">
+              <p1>HK$${price}</p1>
+              <p2>/${min}分鐘</p2>
+            </div>
+          </div>
+        </div>
+      </div>`;
 
-//       <p>
-//         <button
-//           class="btn btn-primary collapaseButton"
-//           type="button"
-//           data-bs-toggle="collapse"
-//           data-bs-target="#collapseExample-2"
-//           aria-expanded="false"
-//           aria-controls="collapseExample"
-//           >
-//           顯示更多課程
-//         </button>
-//       </p>
-//       <div class="collapse" id="collapseExample-2">
+//Bookmarked result
+async function appointmentResult(json) {
+  const appointmentContent = document.querySelector("#appointment");
+  if (json.result) {
+    appointmentContent.innerHTML = "";
 
-//         <div class="inner-column">
-//           <div class="picture">
-//               <img src="${img}">
-//               <div><a href="#">${subjectName}老師</a></div>
-//             </div>
-//             <div class="description">
-//               <div class="des-head" data-id=${userId}>${teacherName}</div>
-//               <div class="des-icon">
-//               <div class="iconClicked" data-id=${userId}>
-//                 ${
-//                   isBookMark
-//                     ? `<i class="fa-solid fa-bookmark" data-id=${userId}></i>`
-//                     : `<i class="fa-regular fa-bookmark" data-id=${userId}></i>`
-//                 }
-//             </div>
-//             <div><i class="fa-regular fa-heart"></i></div>
-//           </div>
-//           <div class="des-content">${description}
-//           </div>
-//             <div>
-//               <div class="des-price">
-//                 <p1>HK$${price}</p1>
-//                 <p2>/${min}分鐘</p2>
-//             </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//       `;
+    appointmentContent.innerHTML = json.appointments
+      .map(
+        (appointment) =>
+          `${
+            appointment.image === null
+              ? appointmentResult(
+                  `./assets/profile_image_placeholder.jpg" alt=""`,
+                  appointment.subject_name,
+                  appointment.username,
+                  appointment.user_id,
+                  appointment.description,
+                  appointment.price,
+                  appointment.duration
+                )
+              : appointmentResult(
+                appointment.image,
+                appointment.subject_name,
+                appointment.username,
+                appointment.user_id,
+                appointment.description,
+                appointment.price,
+                appointment.duration
+                )
+          }`
+      )
+      .join("");
 
-// //student profile settings result
-// async function studentRemarkResult(jsonRemark) {
-//   const studentRemarkContent = document.querySelector(".studentRemark");
-//   if (jsonRemark.result) {
-//     studentRemarkContent.innerHTML = "";
-//     studentRemarkContent.innerHTML = json.teachers
-//       .map(
-//         (teacher) =>
-//           `${
-//             teacher.image === null
-//               ? studentRemarkTemplate(
-//                   `./assets/profile_image_placeholder.jpg" alt=""`,
-//                   teacher.subject_name,
-//                   teacher.user_id,
-//                   teacher.username,
-//                   teacher.isBookMark,
-//                   teacher.description,
-//                   teacher.price,
-//                   teacher.duration
-//                 )
-//               : studentRemarkTemplate(
-//                   teacher.image,
-//                   teacher.subject_name,
-//                   teacher.user_id,
-//                   teacher.username,
-//                   teacher.isBookMark,
-//                   teacher.description,
-//                   teacher.price,
-//                   teacher.duration
-//                 )
-//           }`
-//       )
-//       .join("");
-//   } else {
-//     studentRemarkContent.innerHTML = "";
-//   }
-// }
+    
+     let teacherTitle = document.querySelectorAll(".des-head");
+    for (let t of teacherTitle) {
+      t.addEventListener("click", (event) => {
+        window.location.href = `teacher_profile.html?id=${event.currentTarget.dataset.id}`;
+      });
+    }
+  } else {
+    appointmentContent.innerHTML = "";
+  }
+}
