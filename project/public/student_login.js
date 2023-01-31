@@ -25,7 +25,7 @@ window.onload = async function () {
     const json = await res.json();
     console.log(json.student);
     if (json.result) {
-      //   document.querySelector(".userProfile").innerHTML = json.student.username;
+      //   document.querySelectr(".userProfile").innerHTML = json.student.username;
       window.location.reload();
       return;
     } else {
