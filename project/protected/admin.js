@@ -1,9 +1,12 @@
-// const { formatInTimeZone } = require("date-fns-tz");
-
-// const date = contentDate;
-// const timeZone = "Asia/Hong_Kong";
-
-// formatInTimeZone(date, "Asia/Hong_Kong", "yyyy-MM-dd HH:mm:ss");
+//socket.io
+const socket = io.connect("http://localhost:8080/");
+socket.on("new-contactus", async () => {
+  const res = await fetch("/contactus", {
+    method: "GET",
+  });
+  let json = await res.json();
+  await contactUsResult(json);
+});
 
 //load contact us msg
 window.onload = async function () {

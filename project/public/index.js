@@ -1,3 +1,5 @@
+const socket = io.connect("http://localhost:8080/");
+
 window.onload = async function () {
   let res = await checkLogin();
   let userTitle = document.querySelector(".userProfile");
@@ -152,6 +154,7 @@ contactus.addEventListener("submit", async (event) => {
   console.log(json);
 
   if (json.result) {
+    socket.emit("newMessage");
     contactus.reset();
     alert("Message sent.");
     return;
