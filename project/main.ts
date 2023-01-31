@@ -80,9 +80,13 @@ app.use("/", contactUsRoutes);
 import { loadUserCommentRoutes } from "./src/loadUserCommentRoutes";
 app.use("/", loadUserCommentRoutes);
 
-// contact teacher 
+// contact teacher
 import { contactTeacherRoutes } from "./src/contactTeacherRoute";
-app.use("/",contactTeacherRoutes)
+app.use("/", contactTeacherRoutes);
+
+//uncontact teacher
+import { removeAppointmentRoutes } from "./src/removeAppointmentRoutes";
+app.use("/", removeAppointmentRoutes);
 
 //admin login
 const isLoggedIn = (

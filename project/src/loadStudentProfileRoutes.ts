@@ -14,19 +14,19 @@ loadStudentProfileRoutes.get(
     if (student.rowCount == 0) {
       res.status(400).json({});
     } else {
-      console.log(student.rows);
+      // console.log(student.rows);
       const bookmarked = await client.query(
         "SELECT * FROM users INNER JOIN subject ON users.subject_id = subject.id WHERE user_id IN (SELECT bookmark_table.teacher_id FROM bookmark_table WHERE bookmark_table.student_id = $1) ORDER BY user_id DESC ",
         [req.params.id]
       );
-      const appointments = await client.query (
+      const appointments = await client.query(
         "SELECT * FROM users INNER JOIN subject ON users.subject_id = subject.id WHERE user_id IN (SELECT appointment.teacher_id FROM appointment WHERE appointment.student_id = $1) ORDER BY user_id DESC ",
         [req.params.id]
-      )
+      );
       // console.log(bookmarked.rows);
       console.log(appointments.rows);
 
-      if (bookmarked.rowCount > 0 && appointments.rowCount > 0 ) {
+      if (bookmarked.rowCount > 0 && appointments.rowCount > 0) {
         res.status(200).json({
           result: true,
           message: "success",
@@ -34,32 +34,31 @@ loadStudentProfileRoutes.get(
           bookmarked: bookmarked.rows,
           appointments: appointments.rows,
         });
-      } else if (bookmarked.rowCount > 0 && appointments.rowCount == 0)
-      {res.status(200).json({
-        result: true,
-        message: "success",
-        students: student.rows,
-        bookmarked: bookmarked.rows,
-        appointments: [],
-      });
-      }else if (bookmarked.rowCount == 0 && appointments.rowCount > 0)
-      {res.status(200).json({
-        result: true,
-        message: "success",
-        students: student.rows,
-        bookmarked: [],
-        appointments: appointments.rows,
-      });
-    }else {
+      } else if (bookmarked.rowCount > 0 && appointments.rowCount == 0) {
+        res.status(200).json({
+          result: true,
+          message: "success",
+          students: student.rows,
+          bookmarked: bookmarked.rows,
+          appointments: [],
+        });
+      } else if (bookmarked.rowCount == 0 && appointments.rowCount > 0) {
         res.status(200).json({
           result: true,
           message: "success",
           students: student.rows,
           bookmarked: [],
-          appointments: []
+          appointments: appointments.rows,
+        });
+      } else {
+        res.status(200).json({
+          result: true,
+          message: "success",
+          students: student.rows,
+          bookmarked: [],
+          appointments: [],
         });
       }
     }
   }
 );
-
