@@ -3,6 +3,8 @@ import http from "http";
 import { Server as SocketIO } from "socket.io";
 
 const app = express();
+app.use(express.urlencoded());
+app.use(express.json());
 const server = new http.Server(app);
 export const io = new SocketIO(server);
 

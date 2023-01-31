@@ -1,7 +1,8 @@
+// This file contains the javascript code for the teacher profile page
+
 let checkLoginRes;
 // window onload
 window.onload = async function () {
-  //await checkLogin();
   checkLoginRes = await checkLogin();
   const urlParams = new URLSearchParams(window.location.search);
   const userId = urlParams.get("id");
@@ -9,8 +10,9 @@ window.onload = async function () {
     method: "POST",
   });
   let json = await res.json();
-  await teacherProfileSettingsResult(json);
-  await createEvents();
+  await userCommentResult(json);
+  await createEvents(); // for contactBtn modal function
+  // nav bar login / register / logout function setup
   let userTitle = document.querySelector(".userProfile");
   if (checkLoginRes.users.role_id == 1) {
     userTitle.addEventListener("click", (event) => {
@@ -30,100 +32,74 @@ const teacherProfileSettingsTemplate = (
   subjectName,
   userId,
   teacherName,
+  isBookMark,
   description,
   price,
-  min
+  min,
+  userEmail
 ) =>
   `           
-
-  <div id="teacherContainer" class="container">
-            <div class="row teacherHeader">
-                <div class="col-md-2">
-                    <div class="teacherPic">
-                        <div><img src="${img}"></div>
-                    </div>
-                    <div class="profileTag"><a href="/teacher_page.html?id=${subjectId}">${subjectName}老師</a></div>
-                </div>
-                <div class="col-md-7">
-                    <div class="teacherInfo">
-                        <h1 data-id=${userId}>${teacherName}</h1>
-                        <div class="teacherStat">
-                            <div class="fire">
-                                <div class="fire icon">
-                                    <i class="fa-solid fa-fire"></i>
-                                </div>
-                                <div class="fireNo"><a href="#">100</a>
-                                </div>
-                            </div>
-                            <div class="comment">
-                                <div class="comment icon">
-                                    <i class="fa-regular fa-comment-dots"></i>
-                                </div>
-                                <div class="commentNo"><a href="#commentTitle">
-                                        5個評論</a>
-                                </div>
-                            </div>
-                            <div class="bookmark">
-                                <div class="bookmark icon iconClicked" data-id=${userId}>
-                                    <i class="fa-regular fa-bookmark"></i>
-                                </div>
-                                <div class="bookmarkNo"><a href="#">
-                                        9人收藏</a>
-                                </div>
-                            </div>
+<div id="teacherContainer" class="container">
+    <div class="row teacherHeader">
+        <div class="col-md-2">
+            <div class="teacherPic">
+                <div><img src="${img}"></div>
+            </div>
+            <div class="profileTag"><a href="/teacher_page.html?id=${subjectId}">${subjectName}老師</a></div>
+        </div>
+        <div class="col-md-7">
+            <div class="teacherInfo">
+                <h1 data-id=${userId}>${teacherName}</h1>
+                <div class="teacherStat">
+                    <div class="bookmark">
+                        <div class="bookmark icon iconClicked" data-id=${userId}>
+              ${
+                isBookMark
+                  ? `<i class="fa-solid fa-bookmark marked" data-id=${userId}></i> <span>已收藏</span>`
+                  : `<i class="fa-regular fa-bookmark unmarked" data-id=${userId}></i> <span>收藏</span>`
+              } 
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="teacherPriceContact">
-                        <div class="teacherPrice">
-                            <div id="priceText">HK$${price}</div>
-                            <div id="durationText">/${min}分鐘</div>
-                        </div>
-                        <!-- <div class="teacherContact">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="teacherPriceContact">
+                <div class="teacherPrice">
+                    <div id="priceText">HK$${price}</div>
+                    <div id="durationText">/${min}分鐘</div>
+                </div>
+                <!-- <div class="teacherContact">
                         <div id="contactText">預約諮詢</div>
                     </div> -->
-                        <!-- Trigger/Open The Modal -->
-                        <button id="contactBtn"><a href="#">預約諮詢</a></button>
+                <!-- Trigger/Open The Modal -->
+                <button id="contactBtn"><a href="#">預約諮詢</a></button>
 
-                        <!-- The Modal -->
-                        <div id="myModal" class="modal">
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
 
-                            <!-- Modal content -->
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <p>我們已收到您的預約諮詢申請，Bravo Academy課程顧問將盡快與您聯繫，敬請留意通知，謝謝！</p>
-                            </div>
-
-                        </div>
-                        <div class="sns">
-                            <!-- <div class="sns-icon"><a href="#"><i class="fa-regular fa-envelope"></i></a></div> -->
-                            <div class="sns-icon"><a href="http://www.twitter.com/"><i
-                                        class="fa-brands fa-twitter"></i></a>
-                            </div>
-                            <div class="sns-icon"><a href="http://www.facebook.com/"><i
-                                        class="fa-brands fa-facebook"></i></a></div>
-                            <div class="sns-icon"><a href="http://www.instagram.com/"><i
-                                        class="fa-brands fa-instagram"></i></a></div>
-                            <!-- <div class="sns-icon"><a href="http://api.whatsapp.com/"><i
-                                        class="fa-brands fa-whatsapp"></i></a></div>
-                        </div> -->
-
-                        </div>
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <br>
+                        <p id="modalContent">我們已收到您的預約諮詢申請，Bravo Academy課程顧問將盡快與您聯繫。您亦可以發送電郵到 <a href="mailto:${userEmail}">${userEmail}</a> 聯絡 <strong>${teacherName}</strong> 老師，謝謝！</p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-9">
-                        <div class="selfIntro">
-                            <h3>自我介紹</h3>
-                            <div class="selfIntroInnerText">
-                                ${description}
-                            </div>
-                        </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="selfIntro">
+                <h3>自我介紹</h3>
+                <div class="selfIntroInnerText">
+                    ${description}
+                </div>
+            </div>
       `;
 
 //teacher profile result
-async function teacherProfileSettingsResult(json) {
+async function userCommentResult(json) {
   const teacherProfileContent = document.querySelector(".teacherProfile");
   console.log(json);
 
@@ -140,9 +116,11 @@ async function teacherProfileSettingsResult(json) {
                   teacher.subject_name,
                   teacher.user_id,
                   teacher.username,
+                  teacher.isBookMark,
                   teacher.description,
                   teacher.price,
-                  teacher.duration
+                  teacher.duration,
+                  teacher.email
                 )
               : teacherProfileSettingsTemplate(
                   teacher.image,
@@ -150,45 +128,53 @@ async function teacherProfileSettingsResult(json) {
                   teacher.subject_name,
                   teacher.user_id,
                   teacher.username,
+                  teacher.isBookMark,
                   teacher.description,
                   teacher.price,
-                  teacher.duration
+                  teacher.duration,
+                  teacher.email
                 )
           }`
       )
       .join("");
 
-    const profileDiv = document.querySelector("div#teacherContainer");
-    //for (const profileDiv of profileDivs) {
-    //const checkLoginRes = await checkLogin();
+    // teacher individual profile bookmark function setup
     if (checkLoginRes.result && checkLoginRes.users.role_id == 2) {
-      //console.log(await checkLogin());
-      console.log(profileDiv.querySelector("div.iconClicked"));
-      profileDiv
-        .querySelector("div.iconClicked")
+      document
+        .querySelector(".iconClicked")
         .addEventListener("click", async (event) => {
           let userId = event.currentTarget.dataset.id;
           console.log(userId);
-          profileDiv.querySelector(
-            ".iconClicked"
-          ).innerHTML = `<i class="fa-solid fa-bookmark"></i>`;
-          const res = await fetch(`/bookmark/${userId}`, {
-            method: "POST",
-          });
+          if (
+            document
+              .querySelector(".fa-bookmark")
+              .classList.contains("unmarked")
+          ) {
+            document.querySelector(
+              ".iconClicked"
+            ).innerHTML = `<i class="fa-solid fa-bookmark marked" data-id=${userId}></i> <span>已收藏</span>`;
+            const res = await fetch(`/bookmark/${userId}`, {
+              method: "POST",
+            });
+          } else {
+            document.querySelector(
+              ".iconClicked"
+            ).innerHTML = `<i class="fa-regular fa-bookmark unmarked" data-id=${userId}></i> <span>收藏</span>`;
+            const res = await fetch(`/bookmark/${userId}`, {
+              method: "DELETE",
+            });
+          }
         });
     } else {
-      profileDiv.querySelector(".fa-bookmark").classList.add("hide");
+      document.querySelector(".fa-bookmark").classList.add("hide");
     }
-    //}
   } else {
     teacherProfileContent.innerHTML = "";
   }
 }
 
+// Contact button modal code
 async function createEvents() {
-  // This file contains the javascript code for the teacher profile page
-  // Contact button modal code <
-
   // Get the modal
   var modal = document.getElementById("myModal");
 
@@ -214,5 +200,22 @@ async function createEvents() {
       modal.style.display = "none";
     }
   };
-  // >
+
+  if (checkLoginRes.result && checkLoginRes.users.role_id == 1) {
+    document
+      .getElementById("contactBtn")
+      .addEventListener("click", async (event) => {
+        document.getElementById("modalContent").innerHTML =
+          "預約諮詢服務僅供學生用戶使用，謝謝！";
+      });
+  } else if (!checkLoginRes.result) {
+    document
+      .getElementById("contactBtn")
+      .addEventListener("click", async (event) => {
+        document.getElementById("modalContent").innerHTML =
+          "您必須先註冊/登入學生帳戶才能預約諮詢，謝謝！";
+      });
+  } else {
+    return;
+  }
 }
