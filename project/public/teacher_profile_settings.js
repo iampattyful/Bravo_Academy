@@ -38,6 +38,7 @@ window.onload = async function () {
       alert("Please fill in the blank.");
     }
   });
+  // nav bar login / register / logout function setup
   let userTitle = document.querySelector(".userProfile");
   if (checkLoginRes.users.role_id == 1) {
     userTitle.addEventListener("click", (event) => {
@@ -72,7 +73,8 @@ submitUserComment.addEventListener("submit", async (event) => {
 
   const content = await submitUserCommentRes.json();
   if (content.result) {
-    window.location = `/teacher_profile_settings.html?id=${checkLoginRes.users.id}`;
+    submitUserComment.reset();
+    // window.location = `/teacher_profile_settings.html?id=${checkLoginRes.users.id}`;
     return;
   } else {
     alert("Please fill in the blank.");
