@@ -73,9 +73,10 @@ submitUserComment.addEventListener("submit", async (event) => {
 
   const content = await submitUserCommentRes.json();
   if (content.result) {
-    submitUserComment.reset();
+    console.log(content.result)
+    submitUserComment.reset();    
+    alert("已成功提交用戶評價！");
     // window.location = `/teacher_profile_settings.html?id=${checkLoginRes.users.id}`;
-    return;
   } else {
     alert("Please fill in the blank.");
   }
