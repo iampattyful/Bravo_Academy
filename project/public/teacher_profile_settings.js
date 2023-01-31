@@ -38,6 +38,7 @@ window.onload = async function () {
       alert("Please fill in the blank.");
     }
   });
+  // nav bar login / register / logout function setup
   let userTitle = document.querySelector(".userProfile");
   if (checkLoginRes.users.role_id == 1) {
     userTitle.addEventListener("click", (event) => {
