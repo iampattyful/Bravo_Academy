@@ -10,7 +10,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
 }
 
 .container {
@@ -49,16 +49,13 @@ img {
   color: #fff;
   font-weight: 600;
   padding: 50px 0px 20px 0px;
-  font-size: 32px;
+  font-size: 50px;
 }
 
-.commentContent {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+#commentDescription {
   color: #888888;
-  margin-left: 10px;
-  margin-right: 10px;
+  font-size: 24px;
+  padding: 0px 0px 50px 0px;
 }
 
 .commentName {
@@ -87,7 +84,7 @@ img {
 }
 
 .commentText {
-  color: #fff;
+  color: #888888;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

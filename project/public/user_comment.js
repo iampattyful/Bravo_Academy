@@ -65,7 +65,7 @@ async function userCommentResult(json) {
     // if user is student, do nothing
     let userTitle = document.querySelectorAll(".commentName");
     for (let u of userTitle) {
-      t.addEventListener("click", (event) => {
+      u.addEventListener("click", (event) => {
         window.location.href = `teacher_profile.html?id=${event.currentTarget.dataset.id}`;
       });
     }
