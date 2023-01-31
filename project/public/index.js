@@ -33,7 +33,6 @@ const checkLogin = async () => {
       document.querySelector("#logout").classList.remove("hide");
       document.querySelector("#loginShow").classList.add("hide");
       document.querySelector("#signUpShow").classList.add("hide");
-      document.querySelector("#review").classList.remove("hide");
       // document.querySelector(".become-teacher").classList.add("hide");
       return json;
     }
