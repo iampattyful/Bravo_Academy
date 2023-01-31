@@ -164,6 +164,7 @@ async function teacherResult(json) {
           });
       } else {
         teacherDiv.querySelector(".fa-bookmark").classList.add("hide");
+        teacherDiv.querySelector("span").classList.add("hide");
       }
     }
     let teacherTitle = document.querySelectorAll(".des-head");
