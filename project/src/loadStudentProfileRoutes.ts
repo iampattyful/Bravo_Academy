@@ -39,6 +39,7 @@ loadStudentProfileRoutes.get(
           result: true,
           message: "success",
           students: student.rows,
+          bookmarked: [],
         });
       }
     }
