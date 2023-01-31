@@ -7,8 +7,8 @@ loadUserCommentRoutes.get(
   "/user_comment/",
   async (req: Request, res: Response) => {
     const comments = await client.query(
-      "select * from user_comment_table inner join users on user_comment_table.user_id  = users.user_id where user_comment_table.user_id = 1;"
-    );
+      "SELECT image, username, content FROM user_comment_table INNER JOIN users ON user_comment_table.user_id  = users.user_id"
+    );    
     if (comments.rowCount == 0) {
       res.status(400).json({});
     } else {

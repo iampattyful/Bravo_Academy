@@ -1,3 +1,5 @@
+// This file contains the javascript code for the teacher profile settings page
+
 let checkLoginRes;
 // window onload
 window.onload = async function () {
@@ -96,7 +98,7 @@ const teacherProfileSettingsTemplate = (
         <div class="teacherSettings">
             <div class="col-md-4 teacherPicProfileTag">
                 <div class="teacherPic">
-                    <div><img src="${img}"></div>
+                    <img src="${img}">
                 </div>
                 <div class="profileTag"><strong>${subjectName}老師</strong></div>
                 <div class="teacherInfo">

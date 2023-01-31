@@ -1,3 +1,5 @@
+// This file contains the javascript code for the user comment page
+
 let checkLoginRes;
 // window onload
 window.onload = async function () {

@@ -22,7 +22,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 
 .teacherPic {
@@ -48,7 +47,7 @@ body {
   height: 50%;
 }
 
-img {
+img :not(.navbar-brand) {
   max-width: 100%;
   max-height: 100%;
   width: 100%;
@@ -96,6 +95,10 @@ p > button {
   border-bottom: 2px solid #888888;
 }
 
+.previewBtn {
+  padding-bottom: 10px;
+}
+
 a:hover,
 a:focus,
 a:active {
@@ -118,12 +121,16 @@ form > .btn {
   text-align: center;
 }
 
-.teacherProfileSettings, .userComment {
+.teacherProfileSettings,
+.userComment {
   padding-bottom: 30px;
 }
 
-
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 400px) {
+  img :not(.navbar-brand) {
+    width: 200px;
+    height: 200px;
+  }
   .teacherInfo {
     display: flex;
     flex-direction: column;
@@ -146,4 +153,3 @@ form > .btn {
     margin-right: 0px; */
   }
 }
-

@@ -234,6 +234,7 @@ a:active {
   color: #888888;
   padding-bottom: 20px;
   border-bottom: 1px solid #333333;
+  font-size: 24px;
 }
 
 .selfIntro h3 {
@@ -241,25 +242,6 @@ a:active {
   font-weight: 600;
   font-size: 32px;
   padding: 0px 0px 20px 0px;
-}
-
-.sns {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding-top: 30px;
-  color: #888888;
-  font-size: 30px;
-  text-align: right;
-}
-
-.sns > .sns-icon {
-  display: flex;
-  flex-direction: row;
-  padding: 10px;
-  justify-content: space-around;
-  align-items: center;
 }
 
 a {
@@ -276,57 +258,6 @@ a:active {
   cursor: pointer;
 }
 
-#commentTitle h3 {
-  color: #fff;
-  font-weight: 600;
-  padding: 50px 0px 20px 0px;
-  font-size: 32px;
-}
-
-.commentContent {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: #888888;
-  margin-left: 10px;
-}
-
-.commentContent > .commentName {
-  color: #fff;
-  font-weight: 500;
-  font-size: 18px;
-}
-
-.commentPic {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.commentUserInfo {
-  color: #888888;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 10px 0px 10px 0px;
-}
-
-.commentDate {
-  font-size: 12px;
-}
-
-.commentText {
-  color: #888888;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  font-size: 18px;
-  padding-bottom: 10px;
-}
-
 p > button {
   background-color: #000 !important;
   border-radius: 50px !important;
@@ -341,7 +272,7 @@ p > button {
   text-align: center;
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 400px) {
   .teacherInfo {
     display: flex;
     flex-direction: column;
@@ -375,7 +306,7 @@ p > button {
     justify-content: center;
     align-items: center;
     background: #000;
-    margin: 0px;
+    margin-bottom: 10px;
   }
 
   .teacherPrice {
@@ -403,29 +334,23 @@ p > button {
     margin-bottom: 5px;
   }
 
-  .sns {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    color: #888888;
-    font-size: 30px;
-    text-align: right;
-    margin-bottom: 10px;
+  img :not(.navbar-brand) {
+    width: 200px;
+    height: 200px;
   }
 
-  .sns > .sns-icon {
-    display: flex;
-    flex-direction: row;
-    padding: 5px;
-    justify-content: space-around;
+  .profileTag {
+    justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+    padding: 5px 0px 5px 0px;
   }
-
   .selfIntro h3 {
     color: #fff;
     font-weight: 600;
     font-size: 32px;
-    margin: 0px 0px 20px 0px;
+    margin: 0px 10px 20px 0px;
   }
 }
