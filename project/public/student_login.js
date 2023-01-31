@@ -26,10 +26,10 @@ window.onload = async function () {
     console.log(json.student);
     if (json.result) {
       //   document.querySelector(".userProfile").innerHTML = json.student.username;
-      window.location = `/student_login.html?id=${checkLoginRes.users.id}`;
+      window.location.reload();
       return;
     } else {
-      alert("Please fill in the blank.");
+      alert("格式錯誤！");
     }
 
     //load bookmark
@@ -64,8 +64,7 @@ const studentLoginTemplate = (
   studentName,
   email,
   phone,
-  description,
-
+  description
 ) =>
   `
     <div class="container">
@@ -221,7 +220,7 @@ async function bookmarkedResult(json) {
         .querySelector(".iconClicked")
         .addEventListener("click", async (event) => {
           let userId = event.currentTarget.dataset.id;
-          
+
           if (
             bookmarkDiv
               .querySelector(".fa-bookmark")
@@ -233,11 +232,12 @@ async function bookmarkedResult(json) {
             const res = await fetch(`/bookmark/${userId}`, {
               method: "DELETE",
             });
-            bookmarkDiv.classList.add("animate__animated")
-            bookmarkDiv.classList.add("animate__bounceOut")
+            bookmarkDiv.classList.add("animate__animated");
+            bookmarkDiv.classList.add("animate__bounceOut");
           }
         });
-    } let teacherTitle = document.querySelectorAll(".des-head");
+    }
+    let teacherTitle = document.querySelectorAll(".des-head");
     for (let t of teacherTitle) {
       t.addEventListener("click", (event) => {
         window.location.href = `teacher_profile.html?id=${event.currentTarget.dataset.id}`;
