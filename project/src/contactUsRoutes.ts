@@ -23,6 +23,7 @@ contactUsRoutes.post("/contactus", async (req: Request, res: Response) => {
         "INSERT INTO contact_us (email, content) VALUES ($1, $2)",
         [fields.email, fields.message]
       );
+
       let result = await client.query("SELECT * FROM contact_us");
       console.table(result.rows);
       res.status(200).json({

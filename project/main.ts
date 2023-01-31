@@ -1,6 +1,19 @@
 import express from "express";
+import http from "http";
+import { Server as SocketIO } from "socket.io";
 
 const app = express();
+const server = new http.Server(app);
+export const io = new SocketIO(server);
+
+io.on("connection", function (socket) {
+  console.log({ socketEvent: "connection", "socket.id": socket.id });
+
+  socket.on("newMessage", () => {
+    console.log(1);
+    io.emit("new-contactus");
+  });
+});
 
 //express session
 import { expressSessionRoutes } from "./src/expressSessionRoutes";
@@ -89,6 +102,6 @@ import { updateContactUsRoutes } from "./src/updateContactUsRoutes";
 app.use("/", updateContactUsRoutes);
 
 const PORT = 8080;
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Listening at http://localhost:${PORT}/`);
 });
