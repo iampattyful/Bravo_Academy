@@ -68,20 +68,18 @@ body {
     color:black;
     border-radius: 20px;
     margin-bottom: 20px;
-    width: 500px;
-    height:200px;
+  
     padding:20px;
 
   }
   .black-holder {
-    background-color: #666;
-    color:white;
+    background-color:white;
+    color: black;
     
     border-radius: 20px;
     margin-bottom: 20px;
-    width: 500px;
-    height:200px;
-    padding:30px;
+  
+    padding:20px;
 
   }
   .whole-remark {
