@@ -14,6 +14,8 @@ io.on("connection", function (socket) {
     io.emit("new-contactus");
   });
 });
+app.use(express.urlencoded());
+app.use(express.json());
 
 //express session
 import { expressSessionRoutes } from "./src/expressSessionRoutes";
@@ -34,6 +36,10 @@ app.use("/", logoutRoutes);
 //check login
 import { checkLoginRoutes } from "./src/checkLoginRoutes";
 app.use("/", checkLoginRoutes);
+
+//load user comments
+import { loadUserCommentRoutes } from "./src/loadUserCommentRoutes";
+app.use("/", loadUserCommentRoutes);
 
 app.use(express.static("public"));
 app.use(express.static("uploads"));
