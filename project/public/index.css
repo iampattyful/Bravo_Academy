@@ -413,6 +413,7 @@ body {
   padding-top: 30px;
   padding-bottom: 30px;
   border-top: 1px solid #333333;
+  bottom: 0;
 }
 
 .footer span {
@@ -522,17 +523,26 @@ body {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 390px) {
+@media only screen and (max-width: 414px) {
   .navbar {
     padding-right: 15px;
+  }
+
+  .carousel-inner h3 {
+    font-size: 26px;
+  }
+
+  .carousel-inner p {
+    font-size: 13px;
   }
 
   li {
     margin-bottom: 5px;
   }
-  .slider {
+  /* .slider {
     display: none;
-  }
+  } */
+
   .hot-course {
     margin-top: 40px;
   }

@@ -20,6 +20,7 @@ export const updateTeacherSettingsRoutes = express.Router();
 import { expressSessionRoutes } from "./expressSessionRoutes";
 updateTeacherSettingsRoutes.use(expressSessionRoutes);
 
+// update teacher settings
 updateTeacherSettingsRoutes.put(
   "/updateTeacherSettings/:id",
   async (req: Request, res: Response) => {
@@ -58,5 +59,36 @@ updateTeacherSettingsRoutes.put(
         });
       }
     });
+  }
+);
+
+// submit user comment
+updateTeacherSettingsRoutes.post(
+  "/submitUserComment/:id",
+  async (req: Request, res: Response) => {
+    //req.body.userId
+    // console.log(files, fields, err);
+    try {
+      // let result = await client.query(
+      //   "SELECT image from users WHERE user_id = $1",
+      //   [req.params.id]
+      // );
+
+      await client.query(
+        "INSERT INTO user_comment_table (user_id, content) VALUES ($1,$2)",
+        [req.body.userId, req.body.content]
+      );
+
+      res.status(200).json({
+        result: true,
+        message: "success",
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({
+        result: false,
+        message: "fail",
+      });
+    }
   }
 );
