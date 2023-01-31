@@ -11,6 +11,7 @@ window.onload = async function () {
   let json = await res.json();
   await studentLoginResult(json);
   await bookmarkedResult(json);
+  await appointmentResult(json);
   // update student profile settings
   const updateForm = document.querySelector("#studentUpdateForm");
   updateForm.addEventListener("submit", async (event) => {
@@ -160,7 +161,7 @@ const bookmarkedTemplate = (
 <div class="inner-column">
         <div class="picture">
           <img src="${teacherImg}">
-          <div><a href="#">${subjectName}老師</a></div>
+          <div>${subjectName}老師</div>
         </div>
         <div class="description">
           <div class="des-head" data-id=${teacherId} >${teacherName}</div>
@@ -262,16 +263,11 @@ const appointmentTemplate = (
 <div class="inner-column">
         <div class="picture">
           <img src="${teacherImg}">
-          <div><a href="#">${subjectName}老師</a></div>
+          <div>${subjectName}老師</div>
         </div>
         <div class="description">
           <div class="des-head" data-id=${teacherId} >${teacherName}</div>
-          <div class="des-icon">
-            <div class="iconClicked" data-id=${teacherId}>
-                  <i class="fa-solid fa-bookmark" data-id=${teacherId}></i>
-            </div>
-        
-          </div>
+          
           <div class="des-content">${teacherDescription}
           </div>
           <div>
@@ -283,10 +279,11 @@ const appointmentTemplate = (
         </div>
       </div>`;
 
-//Bookmarked result
+//appointment result
 async function appointmentResult(json) {
   const appointmentContent = document.querySelector("#appointment");
   if (json.result) {
+    console.log(json.appointments)
     appointmentContent.innerHTML = "";
 
     appointmentContent.innerHTML = json.appointments
@@ -294,7 +291,7 @@ async function appointmentResult(json) {
         (appointment) =>
           `${
             appointment.image === null
-              ? appointmentResult(
+              ? appointmentTemplate(
                   `./assets/profile_image_placeholder.jpg" alt=""`,
                   appointment.subject_name,
                   appointment.username,
@@ -303,7 +300,7 @@ async function appointmentResult(json) {
                   appointment.price,
                   appointment.duration
                 )
-              : appointmentResult(
+              : appointmentTemplate(
                 appointment.image,
                 appointment.subject_name,
                 appointment.username,

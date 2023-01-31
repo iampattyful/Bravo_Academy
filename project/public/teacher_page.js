@@ -37,7 +37,7 @@ const teacherListTemplate = (
   `   <div class="inner-column">
         <div class="picture">
           <img src="${img}">
-          <div><a href="#">${subjectName}老師</a></div>
+          <div>${subjectName}老師</div>
         </div>
         <div class="description">
           <div class="des-head" data-id=${userId}>${teacherName}</div>
