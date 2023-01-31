@@ -76,7 +76,7 @@ login.addEventListener("submit", async (event) => {
       return;
     }
   } else {
-    alert("Incorrect login email or password.");
+    alert("登入電郵/密碼錯誤。");
     document.querySelector("#loginShow").classList.remove("hide");
     document.querySelector("#signUpShow").classList.remove("hide");
   }
@@ -120,7 +120,7 @@ signUp.addEventListener("submit", async (event) => {
     window.location = "/";
     return;
   } else {
-    alert("Email address has been used.");
+    alert("此電郵已使用。");
   }
 });
 
@@ -154,9 +154,9 @@ contactus.addEventListener("submit", async (event) => {
   if (json.result) {
     socket.emit("newMessage");
     contactus.reset();
-    alert("Message sent.");
+    alert("訊息已發送。");
     return;
   } else {
-    alert("Please fill in the blank.");
+    alert("請準備好填寫內容。");
   }
 });

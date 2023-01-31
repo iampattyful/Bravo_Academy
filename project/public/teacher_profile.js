@@ -52,7 +52,7 @@ const teacherProfileSettingsTemplate = (
                 <h1 data-id=${userId}>${teacherName}</h1>
                 <div class="teacherStat">
                     <div class="bookmark">
-                        <div class="bookmark icon iconClicked" data-id=${userId}>
+                        <div class="iconClicked" data-id=${userId}>
               ${
                 isBookMark
                   ? `<i class="fa-solid fa-bookmark marked" data-id=${userId}></i> <span>已收藏</span>`
