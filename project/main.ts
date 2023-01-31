@@ -80,6 +80,10 @@ app.use("/", contactUsRoutes);
 import { loadUserCommentRoutes } from "./src/loadUserCommentRoutes";
 app.use("/", loadUserCommentRoutes);
 
+// contact teacher 
+import { contactTeacherRoutes } from "./src/contactTeacherRoute";
+app.use("/",contactTeacherRoutes)
+
 //admin login
 const isLoggedIn = (
   req: express.Request,
