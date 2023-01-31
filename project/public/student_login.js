@@ -260,14 +260,16 @@ const appointmentTemplate = (
   min
 ) =>
   `
-<div class="inner-column">
+<div class="inner-column appointment-column">
         <div class="picture">
           <img src="${teacherImg}">
           <div>${subjectName}老師</div>
         </div>
         <div class="description">
           <div class="des-head" data-id=${teacherId} >${teacherName}</div>
-          
+            <div class="trashClicked" data-id=${teacherId}>
+                    <i class="bi bi-trash" data-id=${teacherId}></i>
+              </div>
           <div class="des-content">${teacherDescription}
           </div>
           <div>
@@ -283,7 +285,7 @@ const appointmentTemplate = (
 async function appointmentResult(json) {
   const appointmentContent = document.querySelector("#appointment");
   if (json.result) {
-    console.log(json.appointments)
+    console.log(json.appointments);
     appointmentContent.innerHTML = "";
 
     appointmentContent.innerHTML = json.appointments
@@ -301,20 +303,35 @@ async function appointmentResult(json) {
                   appointment.duration
                 )
               : appointmentTemplate(
-                appointment.image,
-                appointment.subject_name,
-                appointment.username,
-                appointment.user_id,
-                appointment.description,
-                appointment.price,
-                appointment.duration
+                  appointment.image,
+                  appointment.subject_name,
+                  appointment.username,
+                  appointment.user_id,
+                  appointment.description,
+                  appointment.price,
+                  appointment.duration
                 )
           }`
       )
       .join("");
+    const appointmentDivs = [
+      ...document.querySelectorAll(".appointment-column"),
+    ];
+    for (const appointmentDiv of appointmentDivs) {
+      appointmentDiv
+        .querySelector(".trashClicked")
+        .addEventListener("click", async (event) => {
+          let userId = event.currentTarget.dataset.id;
+          console.log(userId);
+          const res = await fetch(`/uncontactTeacher/${userId}`, {
+            method: "DELETE",
+          });
+          appointmentDiv.classList.add("animate__animated");
+          appointmentDiv.classList.add("animate__bounceOut");
+        });
+    }
 
-    
-     let teacherTitle = document.querySelectorAll(".des-head");
+    let teacherTitle = document.querySelectorAll(".des-head");
     for (let t of teacherTitle) {
       t.addEventListener("click", (event) => {
         window.location.href = `teacher_profile.html?id=${event.currentTarget.dataset.id}`;
