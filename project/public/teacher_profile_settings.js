@@ -72,7 +72,8 @@ submitUserComment.addEventListener("submit", async (event) => {
 
   const content = await submitUserCommentRes.json();
   if (content.result) {
-    window.location = `/teacher_profile_settings.html?id=${checkLoginRes.users.id}`;
+    submitUserComment.reset();
+    // window.location = `/teacher_profile_settings.html?id=${checkLoginRes.users.id}`;
     return;
   } else {
     alert("Please fill in the blank.");
