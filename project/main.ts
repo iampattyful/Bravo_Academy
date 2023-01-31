@@ -87,6 +87,12 @@ const isLoggedIn = (
 app.use(isLoggedIn, express.static("protected"));
 
 //load contact us data
+import { loadContactUsRoutes } from "./src/loadContactUsRoutes";
+app.use("/", loadContactUsRoutes);
+
+//update contact us data
+import { updateContactUsRoutes } from "./src/updateContactUsRoutes";
+app.use("/", updateContactUsRoutes);
 
 const PORT = 8080;
 app.listen(PORT, () => {

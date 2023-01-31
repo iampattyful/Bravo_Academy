@@ -62,7 +62,9 @@ login.addEventListener("submit", async (event) => {
       // document.querySelector("#loginShow").classList.add("hide");
       // document.querySelector("#signUpShow").classList.add("hide");
       document.querySelector(".userProfile").classList.remove("hide");
-      document.querySelector(".userProfile").innerHTML = json.users.username;
+      document.querySelector(
+        ".userProfile"
+      ).innerHTML = `Hello, ${json.users.username}`;
       document
         .querySelector(".userProfile")
         .setAttribute("data-id", `${json.users.id}`);

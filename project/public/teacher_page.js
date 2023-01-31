@@ -45,11 +45,10 @@ const teacherListTemplate = (
             <div class="iconClicked" data-id=${userId}>
               ${
                 isBookMark
-                  ? `<i class="fa-solid fa-bookmark" data-id=${userId}></i>`
-                  : `<i class="fa-regular fa-bookmark" data-id=${userId}></i>`
-              }
+                  ? `<i class="fa-solid fa-bookmark" data-id=${userId}></i> <span>已收藏</span>`
+                  : `<i class="fa-regular fa-bookmark" data-id=${userId}></i> <span>收藏</span>`
+              } 
             </div>
-            
           </div>
           <div class="des-content">${description}
           </div>
@@ -146,7 +145,7 @@ async function teacherResult(json) {
             ) {
               teacherDiv.querySelector(
                 ".iconClicked"
-              ).innerHTML = `<i class="fa-solid fa-bookmark" data-id=${userId}>`;
+              ).innerHTML = `<i class="fa-solid fa-bookmark" data-id=${userId}></i> <span>已收藏</span>`;
               const res = await fetch(`/bookmark/${userId}`, {
                 method: "POST",
               });
@@ -157,7 +156,7 @@ async function teacherResult(json) {
             ) {
               teacherDiv.querySelector(
                 ".iconClicked"
-              ).innerHTML = `<i class="fa-regular fa-bookmark" data-id=${userId}></i>`;
+              ).innerHTML = `<i class="fa-regular fa-bookmark" data-id=${userId}></i> <span>收藏</span>`;
               const res = await fetch(`/bookmark/${userId}`, {
                 method: "DELETE",
               });
