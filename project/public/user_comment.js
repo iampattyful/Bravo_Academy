@@ -28,9 +28,7 @@ const userCommentTemplate = (img, userName, userComment) =>
   <div class="commentBox">
     <div class="commentUserInfo">
         <div class="commentPic"><img src="${img}"></div>
-        <div class="commentContent">
             <div class="commentName">${userName}</div>
-        </div>
     </div>
     <div class="commentText">${userComment}</div>
 </div>          
