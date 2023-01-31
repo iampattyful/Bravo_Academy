@@ -164,12 +164,12 @@ const bookmarkedTemplate = (
           <div><a href="#">${subjectName}老師</a></div>
         </div>
         <div class="description">
-          <div class="des-head" >${teacherName}</div>
+          <div class="des-head" data-id=${teacherId} >${teacherName}</div>
           <div class="des-icon">
             <div class="iconClicked" data-id=${teacherId}>
                   <i class="fa-solid fa-bookmark" data-id=${teacherId}></i>
             </div>
-            <div><i class="fa-regular fa-heart"></i></div>
+        
           </div>
           <div class="des-content">${teacherDescription}
           </div>
@@ -184,7 +184,7 @@ const bookmarkedTemplate = (
 
 //Bookmarked result
 async function bookmarkedResult(json) {
-  const bookmarkedContent = document.querySelector(".studentRemark");
+  const bookmarkedContent = document.querySelector("#bookmarkTeacher");
   if (json.result) {
     bookmarkedContent.innerHTML = "";
 
@@ -221,6 +221,7 @@ async function bookmarkedResult(json) {
         .querySelector(".iconClicked")
         .addEventListener("click", async (event) => {
           let userId = event.currentTarget.dataset.id;
+          
           if (
             bookmarkDiv
               .querySelector(".fa-bookmark")
@@ -236,6 +237,11 @@ async function bookmarkedResult(json) {
             bookmarkDiv.classList.add("animate__bounceOut")
           }
         });
+    } let teacherTitle = document.querySelectorAll(".des-head");
+    for (let t of teacherTitle) {
+      t.addEventListener("click", (event) => {
+        window.location.href = `teacher_profile.html?id=${event.currentTarget.dataset.id}`;
+      });
     }
   } else {
     bookmarkedContent.innerHTML = "";
