@@ -60,6 +60,10 @@ body {
   padding: 8px;
 }
 
+.navbar.navbar-expand-lg.bg-body-tertiary {
+  border-bottom: 1px solid #333333;
+}
+
 ::-webkit-file-upload-button {
   color: white;
   font-weight: 400;

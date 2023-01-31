@@ -132,3 +132,6 @@ ALTER TABLE appointment
   ADD CONSTRAINT FK_users_TO_appointment1
     FOREIGN KEY (teacher_id)
     REFERENCES users (user_id);
+
+ALTER TABLE contact_us ADD COLUMN created_at  TIMESTAMP with time zone Default current_timestamp; 
+ALTER TABLE contact_us ADD COLUMN read INTEGER NOT NULL Default 0; 
