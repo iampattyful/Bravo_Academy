@@ -19,15 +19,21 @@ loadStudentProfileRoutes.get(
         "SELECT * FROM users INNER JOIN subject ON users.subject_id = subject.id WHERE user_id IN (SELECT bookmark_table.teacher_id FROM bookmark_table WHERE bookmark_table.student_id = $1) ORDER BY user_id DESC ",
         [req.params.id]
       );
+      const appointment = await client.query (
+        "select * FROM users INNER JOIN appointment On users.teacher_id = teacher.id WHERE user_id in (SELECT appointment.student_id FROM appointment WHERE appointment.student_id = $1)  ORDER BY user_id DESC ",                                                                                                                                                    
+        [req.params.id]
+      )
       console.log(bookmarked.rows);
-
-      if (bookmarked.rowCount > 0) {
+      console.log(appointment.rows);
+      if (bookmarked.rowCount > 0 && appointment.rowCount > 0) {
         res.status(200).json({
           result: true,
           message: "success",
           students: student.rows,
           bookmarked: bookmarked.rows,
+          appointment:appointment.rows,
         });
+        
       } else {
         res.status(200).json({
           result: true,

@@ -137,8 +137,8 @@ a {
    
   }
   .picture > img {
-    width:200px;
-    height:200px;
+    width:150px;
+    height:150px;
   }
   .description {
     display: flex;
@@ -146,18 +146,18 @@ a {
     justify-content: center;
   }
   .description > div {
-    font-size: 30px;
+    font-size: 20px;
     padding:5px;
     color: white;
   
   }
   .description div > p1 {
-    font-size: 30px;
+    font-size: 15px;
     padding:5px;
   
   }
   .description div > p2 {
-    font-size: 20px;
+    font-size: 15px;
   }
   .scroll-to-top {
     display: none;
@@ -168,21 +168,28 @@ a {
  
   .word-inside-image  {
     margin-left: -200px;
-    
+
   }
- 
-  /* .picture {
-    display: flex;
-    flex-direction: column;
+  .picture > img {
+    width:150px;
+    height:150px;
   }
   .description > div {
-    font-size: 15px;
+    font-size: 20px;
+    padding:5px;
+    color: white;
+  
   }
   .description div > p1 {
+    font-size: 15px;
+    padding:5px;
+  
+  }
+  .description div > p2 {
     font-size: 15px;
   }
   .scroll-to-top {
     display: none;
-  } */
+  }
 
 }
