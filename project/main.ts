@@ -76,6 +76,10 @@ app.use("/", removeBookmarkRoutes);
 import { contactUsRoutes } from "./src/contactUsRoutes";
 app.use("/", contactUsRoutes);
 
+// load user comment
+import { loadUserCommentRoutes } from "./src/loadUserCommentRoutes";
+app.use("/", loadUserCommentRoutes);
+
 //admin login
 const isLoggedIn = (
   req: express.Request,

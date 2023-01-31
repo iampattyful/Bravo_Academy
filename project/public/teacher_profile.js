@@ -166,7 +166,7 @@ async function userCommentResult(json) {
           }
         });
     } else {
-      document.querySelector(".fa-bookmark").classList.add("hide");
+      document.querySelector(".iconClicked").classList.add("hide");
     }
   } else {
     teacherProfileContent.innerHTML = "";
@@ -206,7 +206,7 @@ async function createEvents() {
       .getElementById("contactBtn")
       .addEventListener("click", async (event) => {
         document.getElementById("modalContent").innerHTML =
-          "預約諮詢服務僅供學生用戶使用，謝謝！";
+          "請注意：預約諮詢服務僅供學生用戶使用，謝謝！";
       });
   } else if (!checkLoginRes.result) {
     document
