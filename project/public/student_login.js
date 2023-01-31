@@ -11,7 +11,7 @@ window.onload = async function () {
   let json = await res.json();
   await studentLoginResult(json);
   await bookmarkedResult(json);
-  await appointmentResult(json);
+  await appointmentResult(json)
   // update student profile settings
   const updateForm = document.querySelector("#studentUpdateForm");
   updateForm.addEventListener("submit", async (event) => {
@@ -292,7 +292,7 @@ async function appointmentResult(json) {
   if (json.result) {
     appointmentContent.innerHTML = "";
 
-    appointmentContent.innerHTML = json.appointment
+    appointmentContent.innerHTML = json.appointments
       .map(
         (appointment) =>
           `${
@@ -319,35 +319,14 @@ async function appointmentResult(json) {
       )
       .join("");
 
-    const bookmarkDivs = [...document.querySelectorAll(".inner-column")];
-    for (const bookmarkDiv of bookmarkDivs) {
-      bookmarkDiv
-        .querySelector(".iconClicked")
-        .addEventListener("click", async (event) => {
-          let userId = event.currentTarget.dataset.id;
-          
-          if (
-            bookmarkDiv
-              .querySelector(".fa-bookmark")
-              .classList.contains("fa-solid")
-          ) {
-            bookmarkDiv.querySelector(
-              ".iconClicked"
-            ).innerHTML = `<i class="fa-regular fa-bookmark" data-id=${userId}></i>`;
-            const res = await fetch(`/bookmark/${userId}`, {
-              method: "DELETE",
-            });
-            bookmarkDiv.classList.add("animate__animated")
-            bookmarkDiv.classList.add("animate__bounceOut")
-          }
-        });
-    } let teacherTitle = document.querySelectorAll(".des-head");
+    
+     let teacherTitle = document.querySelectorAll(".des-head");
     for (let t of teacherTitle) {
       t.addEventListener("click", (event) => {
         window.location.href = `teacher_profile.html?id=${event.currentTarget.dataset.id}`;
       });
     }
   } else {
-    bookmarkedContent.innerHTML = "";
+    appointmentContent.innerHTML = "";
   }
 }
