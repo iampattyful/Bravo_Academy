@@ -8,7 +8,7 @@ loadTeacherIndividualPageRoutes.post(
   async (req: Request, res: Response) => {
     console.log(req.params.id);
     const teachers = await client.query(
-      "SELECT * FROM users INNER JOIN subject ON users.subject_id = subject.id WHERE users.user_id = $1 ORDER BY user_id DESC ",
+      "SELECT * FROM users INNER JOIN subject ON users.subject_id = subject.id WHERE (users.user_id = $1) and (role_id not in (2) ) ORDER BY user_id desc",
       [req.params.id]
     );
     if (teachers.rowCount == 0) {
