@@ -86,6 +86,9 @@ h2 {
   /* margin-bottom: 10px; */
   padding: 10px;
 }
+.des-head {
+  width:80%;
+}
 .des-content {
   white-space: nowrap; 
   width: 80%;

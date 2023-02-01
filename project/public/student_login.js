@@ -105,7 +105,7 @@ const studentLoginTemplate = (
               <textarea class="form-control" name="description" 
                   style="height: 150px">${description}</textarea>
           </div>
-          <input type="submit" class="btn btn-primary" value="完成" />
+          <input type="submit" class="btn btn-primary sub-range" value="完成" />
         </form>
       </div>
     </div>  
@@ -268,7 +268,7 @@ const appointmentTemplate = (
         <div class="description">
           <div class="des-head" data-id=${teacherId} >${teacherName}</div>
             <div class="trashClicked" data-id=${teacherId}>
-                    <i class="bi bi-trash" data-id=${teacherId}></i>
+                    <i class="bi bi-trash" data-id=${teacherId}> <span>取消預約</span></i> 
               </div>
           <div class="des-content">${teacherDescription}
           </div>
