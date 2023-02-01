@@ -342,44 +342,42 @@ async function appointmentResult(json) {
   }
 }
 
-
-
 // submit user comment
-const submitUserCommentRes = document.querySelector("#submitUserComment")
-.addEventListener("submit", async (event) => {
-  event.preventDefault(); // To prevent the form from submitting synchronously
-  const body = {
-    userId: checkLoginRes.users.id,
-    content: document.getElementById("userComment").value,
-  };
-  const submitUserCommentRes = await fetch(
-    `/submitUserComment/${checkLoginRes.users.id}`,
-    {
-      method: "POST",
-      headers: {
-        // Specify any HTTP Headers Here
-        "Content-Type": "application/json; charset=utf-8",
-      },
-      body: JSON.stringify(body), // Specify the Request Body
+const submitUserCommentRes = document
+  .querySelector("#submitUserComment")
+  .addEventListener("submit", async (event) => {
+    event.preventDefault(); // To prevent the form from submitting synchronously
+    const body = {
+      userId: checkLoginRes.users.id,
+      content: document.getElementById("userComment").value,
+    };
+    const submitUserCommentRes = await fetch(
+      `/submitUserComment/${checkLoginRes.users.id}`,
+      {
+        method: "POST",
+        headers: {
+          // Specify any HTTP Headers Here
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify(body), // Specify the Request Body
+      }
+    );
+
+    const content = await submitUserCommentRes.json();
+    if (content.result) {
+      console.log(content.result);
+      submitUserComment.reset();
+      alert("已成功提交用戶評價！");
+      // window.location = `/teacher_profile_settings.html?id=${checkLoginRes.users.id}`;
+    } else {
+      alert("請準確填寫內容。");
     }
-  );
+  });
 
-
-  const content = await submitUserCommentRes.json();
-  if (content.result) {
-    console.log(content.result)
-    submitUserComment.reset();    
-    alert("已成功提交用戶評價！");
-    // window.location = `/teacher_profile_settings.html?id=${checkLoginRes.users.id}`;
-  } else {
-    alert("請準確填寫內容。");
-  }
-});
-  
 //   const content = await submitStudentUserComment.json();
 //   if (content.result) {
 //     console.log(content.result)
-//     submitStudentUserComment.reset();    
+//     submitStudentUserComment.reset();
 //     alert("已成功提交用戶評價！");
 //     // window.location = `/student_login.html?id=${checkLoginRes.users.id}`;
 //   } else {
