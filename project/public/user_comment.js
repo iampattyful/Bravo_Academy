@@ -23,12 +23,22 @@ window.onload = async function () {
 };
 
 //user comment template
-const userCommentTemplate = (img, userName, userId, userComment) =>
+const userCommentTemplate = (
+  img,
+  userName,
+  userId,
+  subjectName,
+  roleName,
+  userComment
+) =>
   ` 
   <div class="commentBox">
     <div class="commentUserInfo">
         <div class="commentPic"><img src="${img}"></div>
+        <div class="commentNameSubject">
             <div class="commentName" data-id=${userId}>${userName}</div>
+            <div class="commentSubject" data-id=${userId}>${subjectName}${roleName}</div>
+        </div>
     </div>
     <div class="commentText">${userComment}</div>
 </div>          
@@ -37,8 +47,6 @@ const userCommentTemplate = (img, userName, userId, userComment) =>
 //user comment result
 async function userCommentResult(json) {
   const userCommentContent = document.querySelector(".userCommentContainer");
-  console.log(json);
-
   if (json.result) {
     userCommentContent.innerHTML = "";
     document.querySelector(".userCommentContainer").innerHTML = json.comments
@@ -50,13 +58,17 @@ async function userCommentResult(json) {
                   `./assets/profile_image_placeholder.jpg" alt=""`,
                   comment.username,
                   comment.user_id,
-                  comment.content
+                  comment.subject_name,
+                  comment.role_name,
+                  comment.content.replaceAll("\r\n" && "\n", "<br>")
                 )
               : userCommentTemplate(
                   comment.image,
                   comment.username,
                   comment.user_id,
-                  comment.content
+                  comment.subject_name,
+                  comment.role_name,
+                  comment.content.replaceAll("\r\n" && "\n", "<br>")
                 )
           }`
       )
