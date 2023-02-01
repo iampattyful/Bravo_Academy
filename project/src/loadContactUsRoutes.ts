@@ -6,7 +6,7 @@ export const loadContactUsRoutes = express.Router();
 
 loadContactUsRoutes.get("/contactus", async (req: Request, res: Response) => {
   const content = await client.query(
-    "SELECT * FROM contact_us ORDER BY id DESC"
+    "SELECT * FROM contact_us ORDER BY created_at DESC"
   );
   console.table(content.rows);
 

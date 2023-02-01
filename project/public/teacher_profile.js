@@ -35,8 +35,7 @@ const teacherProfileSettingsTemplate = (
   isBookMark,
   description,
   price,
-  min,
-  userEmail
+  min
 ) =>
   `           
 <div id="teacherContainer" class="container">
@@ -117,10 +116,9 @@ async function userCommentResult(json) {
                   teacher.user_id,
                   teacher.username,
                   teacher.isBookMark,
-                  teacher.description,
+                  teacher.description.replaceAll("\r\n" && "\n", "<br/>"),
                   teacher.price,
-                  teacher.duration,
-                  teacher.email
+                  teacher.duration
                 )
               : teacherProfileSettingsTemplate(
                   teacher.image,
@@ -129,10 +127,9 @@ async function userCommentResult(json) {
                   teacher.user_id,
                   teacher.username,
                   teacher.isBookMark,
-                  teacher.description,
+                  teacher.description.replaceAll("\r\n" && "\n", "<br/>"),
                   teacher.price,
-                  teacher.duration,
-                  teacher.email
+                  teacher.duration
                 )
           }`
       )
@@ -179,7 +176,7 @@ async function createEvents() {
   var modal = document.getElementById("myModal");
 
   // Get the button that opens the modal
-  var btn = document.getElementById("contactBtn")
+  var btn = document.getElementById("contactBtn");
 
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
@@ -215,27 +212,24 @@ async function createEvents() {
         document.getElementById("modalContent").innerHTML =
           "您必須先註冊/登入學生帳戶才能預約諮詢，謝謝！";
       });
-  } else if(checkLoginRes.result && checkLoginRes.users.role_id == 2){
+  } else if (checkLoginRes.result && checkLoginRes.users.role_id == 2) {
     document
       .getElementById("contactBtn")
       .addEventListener("click", async (event) => {
         let userId = event.currentTarget.dataset.id;
         const res = await fetch(`/contactTeacher/${userId}`, {
           method: "POST",
-
         });
         let json = await res.json();
-        console.log(json.teacher)
-        if(json.result){
-          document.getElementById("modalContent").innerHTML =
-          `我們已收到您的預約諮詢申請，Bravo Academy課程顧問將盡快與您聯繫。您亦可以發送電郵到 <a href="mailto:${json.teacher.email}">${json.teacher.email}</a> 聯絡 <strong>${json.teacher.username}</strong> 老師，謝謝！`;
+        console.log(json.teacher);
+        if (json.result) {
+          document.getElementById(
+            "modalContent"
+          ).innerHTML = `我們已收到您的預約諮詢申請，Bravo Academy課程顧問將盡快與您聯繫。您亦可以發送電郵到 <a href="mailto:${json.teacher.email}">${json.teacher.email}</a> 聯絡 <strong>${json.teacher.username}</strong> 老師，謝謝！`;
         } else {
           document.getElementById("modalContent").innerHTML =
-          "我們已收到您的預約諮詢申請，Bravo Academy課程顧問將盡快與您聯繫。"}
-        
+            "我們已收到您的預約諮詢申請，Bravo Academy課程顧問將盡快與您聯繫。";
+        }
       });
-    
-  } 
+  }
 }
-
-

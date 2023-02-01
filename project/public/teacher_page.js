@@ -39,7 +39,7 @@ const teacherListTemplate = (
           <img src="${img}">
           <div>${subjectName}老師</div>
         </div>
-        <div class="description">
+        <div class="teacherDescription">
           <div class="des-head" data-id=${userId}>${teacherName}</div>
           <div class="des-icon">
             <div class="iconClicked" data-id=${userId}>
