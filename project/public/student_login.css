@@ -80,19 +80,21 @@ h3 {
   border-top: #666 solid 1px;
 }
 .des-head {
-  width: 80%;
+  
+  white-space: pre-wrap;
+  
 }
 .des-content {
   white-space: nowrap;
-  width: 80%;
+ 
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .description {
   width: 80%;
-  margin-top: 10px;
-  margin-left: 20px;
+  padding:10px
+  
 }
 .description > div {
   padding: 10px;
@@ -127,7 +129,7 @@ h3 {
   margin-bottom: 20px;
 }
 
-@media only screen and (max-width: 900px) {
+@media  (min-width:415px) and (max-width: 900px) {
   .student-pic {
     width: 200px;
     height: 200px;
@@ -156,11 +158,12 @@ h3 {
     font-size: 16px;
     color: white;
     cursor: pointer;
-    width: 100%;
+    width: 52%;
   }
   .des-content {
     color: #999;
     font-size: 18px;
+    width:60%
   }
   .des-icon i {
     font-size: 15px;
@@ -226,5 +229,51 @@ h3 {
   }
   .des-price {
     margin-bottom: 5px;
+  }
+}
+
+
+@media  (min-width:901px) and (max-width: 1200px) {
+  .student-pic {
+    width: 200px;
+    height: 200px;
+  }
+  .student-tag {
+    width: 200px;
+  }
+  .picture > img {
+    width: 120px;
+    height: 120px;
+  }
+  .picture > div {
+    font-size: 15px;
+  }
+  .inner-column {
+    display: flex;
+  }
+  .studentRemark {
+    width: 100%;
+  }
+  .whole-remark {
+    display: flex;
+    flex-direction: column;
+  }
+  .des-head {
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+  
+  }
+  .des-content {
+    color: #999;
+    font-size: 18px;
+   
+  }
+  .des-icon i {
+    font-size: 15px;
+  }
+  .des-price > p1 {
+    color: white;
+    font-size: 20px;
   }
 }
