@@ -43,7 +43,7 @@ h3 {
 }
 
 .course-title {
-  color: white;
+  color: black;
   font-size: 20px;
   margin: 10px;
 }
@@ -79,10 +79,140 @@ h3 {
 .whole-remark {
   border-top: #666 solid 1px;
 }
-@media (max-width: 390px) {
+.des-content {
+  white-space: nowrap; 
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  
+}
+
+.description {
+  width: 80%;
+  margin-top: 10px;
+  margin-left:30px;
+
+}
+.description > div {
+  padding:10px;
+}
+.whole-remark {
+  background-color: white;
+  padding:20px;
 }
 
 .bi-trash {
   color: #30a57b;
   font-size: 20px;
 }
+/* .studentRemark {
+  background-color: white;
+} */
+@media only screen and (max-width: 820px) {
+  .student-pic {
+   width:200px;
+   height:200px;
+  }
+  .student-tag {
+    width: 200px;
+  }
+  .picture > img{
+    width: 120px;
+    height:120px;
+  }
+  .picture > div {
+    font-size: 15px;;
+  }
+  .inner-column {
+    display: flex;
+    flex-direction: column;
+  }
+  .des-head {
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+  }
+  .des-content {
+    color: #999;
+    font-size: 18px;
+  
+  }
+  .des-icon i {
+    font-size: 15px;
+  }
+  .des-price > p1 {
+    color: white;
+    font-size: 20px;
+  }
+
+}
+
+
+
+@media only screen and (max-width: 414px) {
+  .whole-remark {
+    display: flex;
+    flex-direction: column;
+  }
+  .inner-column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding:0;
+    margin:0 0 10px 0;
+    
+   
+  }
+  .studentRemark {
+    width: 100%;
+    padding:10px;
+   
+  }
+  .whole-remark {
+    padding:0px;
+    margin:0;
+  }
+
+  .picture {
+    display: flex;
+    flex-direction: column;
+  }
+  .picture > div {
+    margin:0
+  }
+  .picture > img {
+    width: 150px;
+    height: 150px;
+  }
+  .description {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%; */
+  }
+  .description > div {
+    padding: 5px;
+  }
+  .description div > p1 {
+    font-size: 15px;
+    padding: 0px;
+    margin: 0px
+  }
+  .description div > p2 {
+    font-size: 12px;
+    margin-left:5px;
+    
+  }
+  .des-content {
+    width:100%;
+    margin:0;
+    padding:0;
+  }
+  .des-price {
+   margin-bottom: 5px;
+  }
+}
+
+
+

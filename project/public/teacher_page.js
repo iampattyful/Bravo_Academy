@@ -55,7 +55,7 @@ const teacherListTemplate = (
           <div>
             <div class="des-price">
               <p1>HK$${price}</p1>
-              <p2>/${min}分鐘</p2>
+              <p2>/ ${min}分鐘</p2>
             </div>
           </div>
         </div>
