@@ -29,15 +29,23 @@ const userCommentTemplate = (
   userId,
   subjectName,
   roleName,
-  userComment
+  userComment,
+  roleId
 ) =>
   ` 
   <div class="commentBox">
     <div class="commentUserInfo">
         <div class="commentPic"><img src="${img}"></div>
         <div class="commentNameSubject">
-            <div class="commentName" data-id=${userId}>${userName}</div>
-            <div class="commentSubject" data-id=${userId}>${subjectName}${roleName}</div>
+            <div class="commentName" data-role_id=${roleId} data-id=${userId}>${userName}</div>
+            <div class="commentSubject" data-id=${userId}>
+            ${
+              subjectName !== "student"
+                ? `${subjectName}${roleName}`
+                : `${roleName}`
+            }
+            
+            </div>
         </div>
     </div>
     <div class="commentText">${userComment}</div>
@@ -48,6 +56,7 @@ const userCommentTemplate = (
 async function userCommentResult(json) {
   const userCommentContent = document.querySelector(".userCommentContainer");
   if (json.result) {
+    console.log(json);
     userCommentContent.innerHTML = "";
     document.querySelector(".userCommentContainer").innerHTML = json.comments
       .map(
@@ -60,7 +69,8 @@ async function userCommentResult(json) {
                   comment.user_id,
                   comment.subject_name,
                   comment.role_name,
-                  comment.content.replaceAll("\r\n" && "\n", "<br>")
+                  comment.content.replaceAll("\r\n" && "\n", "<br>"),
+                  comment.role_id
                 )
               : userCommentTemplate(
                   comment.image,
@@ -68,7 +78,8 @@ async function userCommentResult(json) {
                   comment.user_id,
                   comment.subject_name,
                   comment.role_name,
-                  comment.content.replaceAll("\r\n" && "\n", "<br>")
+                  comment.content.replaceAll("\r\n" && "\n", "<br>"),
+                  comment.role_id
                 )
           }`
       )
@@ -78,6 +89,9 @@ async function userCommentResult(json) {
     let userTitle = document.querySelectorAll(".commentName");
     for (let u of userTitle) {
       u.addEventListener("click", (event) => {
+        if (event.currentTarget.dataset.role_id == 2) {
+          return;
+        }
         window.location.href = `teacher_profile.html?id=${event.currentTarget.dataset.id}`;
       });
     }
