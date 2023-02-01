@@ -28,6 +28,13 @@ body {
   flex-direction: column;
 }
 
+.teacherPic > div > img {
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  object-fit: cover;
+}
+
 .profileTag {
   background: #30a57b;
   border-radius: 25px;
@@ -49,13 +56,6 @@ a:active {
   color: #000;
   text-decoration: none;
   cursor: pointer;
-}
-
-.teacherPic > div > img {
-  max-width: 100%;
-  max-height: 100%;
-  overflow: hidden;
-  object-fit: cover;
 }
 
 .teacherInfo {

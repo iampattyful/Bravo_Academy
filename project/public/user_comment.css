@@ -12,7 +12,7 @@ body {
   gap: 20px;
 }
 
-.container {
+#commentContainer {
   display: flex;
   flex-direction: column;
   margin-top: 50px;
