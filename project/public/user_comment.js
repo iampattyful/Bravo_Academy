@@ -23,14 +23,12 @@ window.onload = async function () {
 };
 
 //user comment template
-const userCommentTemplate = (img, userName, userComment) =>
+const userCommentTemplate = (img, userName, userId, userComment) =>
   ` 
   <div class="commentBox">
     <div class="commentUserInfo">
         <div class="commentPic"><img src="${img}"></div>
-        <div class="commentContent">
-            <div class="commentName">${userName}</div>
-        </div>
+            <div class="commentName" data-id=${userId}>${userName}</div>
     </div>
     <div class="commentText">${userComment}</div>
 </div>          
@@ -51,16 +49,26 @@ async function userCommentResult(json) {
               ? userCommentTemplate(
                   `./assets/profile_image_placeholder.jpg" alt=""`,
                   comment.username,
+                  comment.user_id,
                   comment.content
                 )
               : userCommentTemplate(
                   comment.image,
                   comment.username,
+                  comment.user_id,
                   comment.content
                 )
           }`
       )
       .join("");
+    // check if user is a teacher, if so, redirect to teacher profile page (done)
+    // if user is student, do nothing
+    let userTitle = document.querySelectorAll(".commentName");
+    for (let u of userTitle) {
+      u.addEventListener("click", (event) => {
+        window.location.href = `teacher_profile.html?id=${event.currentTarget.dataset.id}`;
+      });
+    }
   } else {
     userCommentContent.innerHTML = "";
   }
