@@ -1,12 +1,14 @@
+// This file contains the ts code for the teacher settings page
+
 import express from "express";
 import { Request, Response } from "express";
 import { client } from "./client";
 export const loadTeacherSettingsRoutes = express.Router();
 
+// This route is used to load the teacher settings page
 loadTeacherSettingsRoutes.get(
   "/teacher_profile_settings/:id",
   async (req: Request, res: Response) => {
-    // console.log(req.params.id);
     const teachers = await client.query(
       "SELECT * FROM users INNER JOIN subject ON users.subject_id = subject.id WHERE users.user_id = $1 ORDER BY user_id DESC ",
       [req.params.id]

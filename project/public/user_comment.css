@@ -1,10 +1,9 @@
+/* This file contains the css code for the teacher user comment page */
+
 body {
   background: black;
   width: 100%;
 }
-
-/* #userCommentBanner {
-} */
 
 .userCommentContainer {
   display: flex;
@@ -74,7 +73,6 @@ img {
 .commentSubject {
   color: #000;
   font-size: 18px;
-
   font-weight: 600;
   background-color: #30a57b;
   text-align: center;

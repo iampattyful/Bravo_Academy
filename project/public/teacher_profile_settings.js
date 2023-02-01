@@ -1,9 +1,9 @@
 // This file contains the javascript code for the teacher profile settings page
 
 let checkLoginRes;
+
 // window onload
 window.onload = async function () {
-  //await checkLogin();
   checkLoginRes = await checkLogin();
   const urlParams = new URLSearchParams(window.location.search);
   const userId = urlParams.get("id");
@@ -15,13 +15,13 @@ window.onload = async function () {
   );
   let json = await res.json();
   await teacherProfileSettingsResult(json);
+
   // update teacher profile settings
   const updateForm = document.querySelector("#updateForm");
   updateForm.addEventListener("submit", async (event) => {
     event.preventDefault(); // To prevent the form from submitting synchronously
     const form = event.target;
     const formData = new FormData(form);
-
     const res = await fetch(
       `/updateTeacherSettings/${checkLoginRes.users.id}`,
       {
@@ -38,6 +38,7 @@ window.onload = async function () {
       alert("格式錯誤！");
     }
   });
+
   // nav bar login / register / logout function setup
   let userTitle = document.querySelector(".userProfile");
   if (checkLoginRes.users.role_id == 1) {
@@ -96,7 +97,7 @@ const teacherProfileSettingsTemplate = (
   min
 ) =>
   `
-<div class="container">
+<div id="teacherSettingsContainer" class="container">
     <div class="row">
         <div class="teacherSettings">
             <div class="col-md-4 teacherPicProfileTag">
@@ -107,7 +108,7 @@ const teacherProfileSettingsTemplate = (
                 <div class="teacherInfo">
                     <h3 data-id=${userId}>${teacherName}</h3>
                 </div>
-                <div class="previewBtn"><a href="./teacher_profile.html?id=${userId}">瀏覽個人簡介網頁</a></div>
+                <div class="previewBtn"><a href="./teacher_profile.html?id=${userId}">瀏覽您的簡介網頁</a></div>
             </div>
             <div class="col-md-8">
                 <div id="updatePersonalInfoTitle">

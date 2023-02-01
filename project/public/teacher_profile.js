@@ -11,7 +11,8 @@ window.onload = async function () {
   });
   let json = await res.json();
   await userCommentResult(json);
-  await createEvents(); // for contactBtn modal function
+  // for contactBtn modal function
+  await createEvents(); 
   // nav bar login / register / logout function setup
   let userTitle = document.querySelector(".userProfile");
   if (checkLoginRes.users.role_id == 1) {
