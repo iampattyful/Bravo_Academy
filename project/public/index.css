@@ -588,7 +588,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 900px) {
+@media (min-width: 415px) and (max-width: 900px) {
   li {
     margin-bottom: 5px;
   }
@@ -655,4 +655,52 @@ body {
 
 .map {
   margin-top: 30px;
+}
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .selected-course {
+    width: 252px;
+    height: 400px;
+  }
+  .selected-course .title {
+    top: 232px;
+  }
+  .learning-reason .box {
+    width: 214px;
+    height: 292px;
+  }
+  .learning-reason .reasons span {
+    font-size: 21px;
+  }
+
+  iframe {
+    width: -webkit-fill-available;
+  }
+
+  .become-teacher {
+    padding: 0;
+  }
+
+  .become-teacher h6 {
+    font-size: 18px;
+    line-height: 25px;
+  }
+  .become-teacher p {
+    font-size: 13px;
+    line-height: 14px;
+  }
+
+  .become-teacher ul {
+    margin: 15px 0;
+  }
+
+  .become-teacher li {
+    margin: 12px 0;
+    font-size: 18px;
+    line-height: 17px;
+  }
+
+  .become-teacher .right {
+    padding: 19px 30px;
+  }
 }
