@@ -166,8 +166,8 @@ async function userCommentResult(json) {
       document.querySelector(".iconClicked").classList.add("hide");
     }
   } else {
-    teacherProfileContent.innerHTML = "";
-  }
+  window.location = "/" 
+}
 }
 
 // Contact button modal code
