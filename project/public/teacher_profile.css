@@ -28,6 +28,7 @@ body {
   flex-direction: column;
   max-width: 200px;
   max-height: 200px;
+  margin: auto;
 }
 
 .teacherPic > div > img {

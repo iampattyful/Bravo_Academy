@@ -41,7 +41,7 @@ const teacherProfileSettingsTemplate = (
   `           
 <div id="teacherContainer" class="container">
     <div class="row teacherHeader">
-        <div class="col-md-3">
+        <div class="col-md-3 photo">
             <div class="teacherPic">
                 <div><img src="${img}"></div>
             </div>
