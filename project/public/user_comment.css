@@ -1,10 +1,9 @@
+/* This file contains the css code for the teacher user comment page */
+
 body {
   background: black;
   width: 100%;
 }
-
-/* #userCommentBanner {
-} */
 
 .userCommentContainer {
   display: flex;
@@ -13,7 +12,7 @@ body {
   gap: 20px;
 }
 
-.container {
+#commentContainer {
   display: flex;
   flex-direction: column;
   margin-top: 50px;
@@ -38,9 +37,9 @@ body {
   width: 48%;
 }
 
-img {
-  max-width: 100%;
-  max-height: 100%;
+.commentPic > img {
+  width: 100%;
+
   overflow: hidden;
   object-fit: cover;
 }
@@ -48,19 +47,20 @@ img {
 #commentTitle h3 {
   color: #fff;
   font-weight: 600;
-  padding: 50px 0px 20px 0px;
+  padding: 30px 0px 20px 0px;
   font-size: 50px;
 }
 
 #commentDescription {
   color: #888888;
-  font-size: 28px;
+  font-size: 22px;
   padding: 0px 0px 50px 0px;
 }
 
 .commentNameSubject {
   display: flex;
   flex-direction: column;
+  width: 60%;
 }
 
 .commentName {
@@ -74,7 +74,6 @@ img {
 .commentSubject {
   color: #000;
   font-size: 18px;
-
   font-weight: 600;
   background-color: #30a57b;
   text-align: center;
@@ -107,7 +106,7 @@ img {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  font-size: 24px;
+  font-size: 20px;
   padding: 10px;
   margin-left: 18px;
   margin-right: 18px;
@@ -116,15 +115,31 @@ img {
 
 @media screen and (max-width: 414px) {
   .commentBox {
-  box-sizing: border-box;
-  gap: 10px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  background-color: #222;
-  border-radius: 25px;
-  margin-bottom: 10px;
-  padding: 10px;
-  width: 100%;
+    box-sizing: border-box;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #222;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .commentName {
+    font-size: 20px;
+  }
+
+  .commentPic {
+    width: 80px;
+    height: 80px;
+  }
 }
+
+@media (min-width: 414px) and (max-width: 900px) {
+  .commentBox {
+    width: 100%;
+    flex-wrap: nowrap;
+  }
 }

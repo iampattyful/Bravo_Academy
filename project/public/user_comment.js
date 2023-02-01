@@ -9,6 +9,7 @@ window.onload = async function () {
   });
   let json = await res.json();
   await userCommentResult(json);
+
   // nav bar login / register / logout function setup
   let userTitle = document.querySelector(".userProfile");
   if (checkLoginRes.users.role_id == 1) {
@@ -84,8 +85,7 @@ async function userCommentResult(json) {
           }`
       )
       .join("");
-    // check if user is a teacher, if so, redirect to teacher profile page (done)
-    // if user is student, do nothing
+    // check if user is a teacher, if so, redirect to teacher profile page, if user is a student, redirect to homepage
     let userTitle = document.querySelectorAll(".commentName");
     for (let u of userTitle) {
       u.addEventListener("click", (event) => {

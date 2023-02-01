@@ -1,8 +1,11 @@
+// This file is used to load all the comments from the database and display them on the user comment page
+
 import express from "express";
 import { Request, Response } from "express";
 import { client } from "./client";
 export const loadUserCommentRoutes = express.Router();
 
+// This route is used to load the user comment page
 loadUserCommentRoutes.get(
   "/user_comment",
   async (req: Request, res: Response) => {

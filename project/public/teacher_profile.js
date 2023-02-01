@@ -11,7 +11,8 @@ window.onload = async function () {
   });
   let json = await res.json();
   await userCommentResult(json);
-  await createEvents(); // for contactBtn modal function
+  // for contactBtn modal function
+  await createEvents();
   // nav bar login / register / logout function setup
   let userTitle = document.querySelector(".userProfile");
   if (checkLoginRes.users.role_id == 1) {
@@ -40,13 +41,13 @@ const teacherProfileSettingsTemplate = (
   `           
 <div id="teacherContainer" class="container">
     <div class="row teacherHeader">
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="teacherPic">
                 <div><img src="${img}"></div>
             </div>
             <div class="profileTag"><a href="/teacher_page.html?id=${subjectId}">${subjectName}老師</a></div>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-6">
             <div class="teacherInfo">
                 <h1 data-id=${userId}>${teacherName}</h1>
                 <div class="teacherStat">
@@ -166,7 +167,7 @@ async function userCommentResult(json) {
       document.querySelector(".iconClicked").classList.add("hide");
     }
   } else {
-    teacherProfileContent.innerHTML = "";
+    window.location = "/";
   }
 }
 

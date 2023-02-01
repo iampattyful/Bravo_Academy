@@ -652,3 +652,7 @@ body {
     display: none;
   }
 }
+
+.map {
+  margin-top: 30px;
+}
