@@ -80,27 +80,26 @@ h3 {
   border-top: #666 solid 1px;
 }
 .des-head {
-  width:80%
+  width: 80%;
 }
 .des-content {
-  white-space: nowrap; 
+  white-space: nowrap;
   width: 80%;
   overflow: hidden;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
 }
 
 .description {
   width: 80%;
   margin-top: 10px;
-  margin-left:20px;
-
+  margin-left: 20px;
 }
 .description > div {
-  padding:10px;
+  padding: 10px;
 }
 .whole-remark {
   background-color: white;
-  padding:20px;
+  padding: 20px;
 }
 
 .bi-trash {
@@ -108,7 +107,7 @@ h3 {
   font-size: 20px;
 }
 .trashClicked span {
-  font-size: 14px; 
+  font-size: 14px;
   color: white;
   font-style: normal;
 }
@@ -130,26 +129,25 @@ h3 {
 
 @media only screen and (max-width: 820px) {
   .student-pic {
-   width:200px;
-   height:200px;
+    width: 200px;
+    height: 200px;
   }
   .student-tag {
     width: 200px;
   }
-  .picture > img{
+  .picture > img {
     width: 120px;
-    height:120px;
+    height: 120px;
   }
   .picture > div {
-    font-size: 15px;;
+    font-size: 15px;
   }
   .inner-column {
     display: flex;
-   
   }
   .studentRemark {
-    width:100%
-  } 
+    width: 100%;
+  }
   .whole-remark {
     display: flex;
     flex-direction: column;
@@ -163,7 +161,6 @@ h3 {
   .des-content {
     color: #999;
     font-size: 18px;
-  
   }
   .des-icon i {
     font-size: 15px;
@@ -172,10 +169,7 @@ h3 {
     color: white;
     font-size: 20px;
   }
-
 }
-
-
 
 @media only screen and (max-width: 414px) {
   .whole-remark {
@@ -186,19 +180,16 @@ h3 {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding:0;
-    margin:0 0 10px 0;
-    
-   
+    padding: 0;
+    margin: 0 0 10px 0;
   }
   .studentRemark {
     width: 100%;
-    padding:10px;
-   
+    padding: 10px;
   }
   .whole-remark {
-    padding:0px;
-    margin:0;
+    padding: 0px;
+    margin: 0;
   }
 
   .picture {
@@ -206,7 +197,7 @@ h3 {
     flex-direction: column;
   }
   .picture > div {
-    margin:0
+    margin: 0;
   }
   .picture > img {
     width: 150px;
@@ -222,22 +213,18 @@ h3 {
   .description div > p1 {
     font-size: 15px;
     padding: 0px;
-    margin: 0px
+    margin: 0px;
   }
   .description div > p2 {
     font-size: 12px;
-    margin-left:5px;
-    
+    margin-left: 5px;
   }
   .des-content {
-    width:100%;
-    margin:0;
-    padding:0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
   .des-price {
-   margin-bottom: 5px;
+    margin-bottom: 5px;
   }
 }
-
-
-
