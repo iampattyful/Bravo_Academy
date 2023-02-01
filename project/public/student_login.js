@@ -167,7 +167,7 @@ const bookmarkedTemplate = (
           <div class="des-head" data-id=${teacherId} >${teacherName}</div>
           <div class="des-icon">
             <div class="iconClicked" data-id=${teacherId}>
-                  <i class="fa-solid fa-bookmark" data-id=${teacherId}></i>
+                  <i class="fa-solid fa-bookmark" data-id=${teacherId}> <span>已收藏</span></i>
             </div>
         
           </div>
@@ -229,7 +229,7 @@ async function bookmarkedResult(json) {
           ) {
             bookmarkDiv.querySelector(
               ".iconClicked"
-            ).innerHTML = `<i class="fa-regular fa-bookmark" data-id=${userId}></i>`;
+            ).innerHTML = `<i class="fa-regular fa-bookmark" data-id=${userId}> <span>收藏</span></i>`;
             const res = await fetch(`/bookmark/${userId}`, {
               method: "DELETE",
             });
