@@ -10,7 +10,7 @@ updateContactUsRoutes.put(
       "SELECT * FROM contact_us WHERE id = $1",
       [req.params.id]
     );
-    if (content.rowCount) {
+    if (content.rowCount > 0) {
       await client.query("UPDATE contact_us SET read = $1 WHERE id = $2", [
         1,
         req.params.id,

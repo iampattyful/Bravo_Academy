@@ -13,6 +13,7 @@ loadStudentProfileRoutes.get(
     );
     if (student.rowCount == 0) {
       res.status(400).json({});
+      return;
     } else {
       // console.log(student.rows);
       const bookmarked = await client.query(
@@ -34,6 +35,7 @@ loadStudentProfileRoutes.get(
           bookmarked: bookmarked.rows,
           appointments: appointments.rows,
         });
+        return;
       } else if (bookmarked.rowCount > 0 && appointments.rowCount == 0) {
         res.status(200).json({
           result: true,
@@ -42,6 +44,7 @@ loadStudentProfileRoutes.get(
           bookmarked: bookmarked.rows,
           appointments: [],
         });
+        return;
       } else if (bookmarked.rowCount == 0 && appointments.rowCount > 0) {
         res.status(200).json({
           result: true,
@@ -50,6 +53,7 @@ loadStudentProfileRoutes.get(
           bookmarked: [],
           appointments: appointments.rows,
         });
+        return;
       } else {
         res.status(200).json({
           result: true,
@@ -58,6 +62,7 @@ loadStudentProfileRoutes.get(
           bookmarked: [],
           appointments: [],
         });
+        return;
       }
     }
   }

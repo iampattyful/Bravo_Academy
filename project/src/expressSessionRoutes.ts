@@ -1,14 +1,18 @@
-import express from "express";
 import expressSession from "express-session";
 
-export const expressSessionRoutes = express.Router();
-expressSessionRoutes.use(
-  expressSession({
-    secret: "testingABC",
-    resave: true,
-    saveUninitialized: true,
-  })
-);
+//export const expressSessionRoutes = express.Router();
+// expressSessionRoutes.use(
+// expressSession({
+//   secret: "testingABC",
+//   resave: true,
+//   saveUninitialized: true,
+// })
+// );
+export const applyExpressSessionMiddleware = expressSession({
+  secret: "testingABC",
+  resave: true,
+  saveUninitialized: true,
+});
 
 declare module "express-session" {
   interface SessionData {

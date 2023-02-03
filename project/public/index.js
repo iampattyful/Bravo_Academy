@@ -16,9 +16,7 @@ window.onload = async function () {
 
 //checkLogin
 const checkLogin = async () => {
-  const res = await fetch("/checkLogin", {
-    method: "GET",
-  });
+  const res = await fetch("/checkLogin");
   const json = await res.json();
   console.log(json.result);
   if (json.result) {
@@ -54,38 +52,34 @@ login.addEventListener("submit", async (event) => {
     method: "POST",
     body: formData,
   });
-  login.reset();
-  const json = await res.json();
-
-  if (json.result) {
-    if (json.users.role_id == 3) {
+  const { result, users } = await res.json();
+  if (result) {
+    if (users.role_id == 3) {
       window.location = "/admin_portal.html";
     } else {
       // document.querySelector("#loginShow").classList.add("hide");
       // document.querySelector("#signUpShow").classList.add("hide");
       document.querySelector(".userProfile").classList.remove("hide");
-      document.querySelector(".userProfile").innerHTML = json.users.username;
+      document.querySelector(".userProfile").innerHTML = users.username;
       document
         .querySelector(".userProfile")
-        .setAttribute("data-id", `${json.users.id}`);
+        .setAttribute("data-id", `${users.id}`);
       document.querySelector("#loginShow").classList.add("hide");
       document.querySelector("#logout").classList.remove("hide");
       document.querySelector("#signUpShow").classList.add("hide");
-      // document.querySelector(".become-teacher").classList.add("hide");
-      window.location.reload();
-      return;
     }
   } else {
     alert("登入電郵/密碼錯誤。");
     document.querySelector("#loginShow").classList.remove("hide");
     document.querySelector("#signUpShow").classList.remove("hide");
   }
+  login.reset();
 });
 
 //Sign up
 const role = document.querySelector("#role");
 const subjects = document.querySelector("#subjects");
-const priceandtime = document.querySelector(".priceandtime");
+const priceAndTime = document.querySelector(".priceandtime");
 const description = document.querySelector(".description");
 
 let roleSelect = false;
@@ -93,11 +87,11 @@ role.addEventListener("change", (event) => {
   roleSelect = !roleSelect;
   if (roleSelect == true) {
     subjects.classList.add("hide");
-    priceandtime.classList.add("hide");
+    priceAndTime.classList.add("hide");
     description.classList.add("hide");
   } else {
     subjects.classList.remove("hide");
-    priceandtime.classList.remove("hide");
+    priceAndTime.classList.remove("hide");
     description.classList.remove("hide");
   }
 });
@@ -118,7 +112,6 @@ signUp.addEventListener("submit", async (event) => {
 
   if (json.result) {
     window.location = "/";
-    return;
   } else {
     alert("此電郵已使用。");
   }
@@ -133,7 +126,6 @@ logout.addEventListener("click", async (event) => {
   const json = await res.json();
   if (json.result) {
     window.location = "/";
-    // window.location.reload();
   }
 });
 

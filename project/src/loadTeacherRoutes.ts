@@ -23,12 +23,17 @@ loadTeacherRoutes.post(
 
     if (my_book_mark.rowCount > 0) {
       let bookmarkIdArr = my_book_mark.rows.map((obj) => obj.teacher_id);
-      // console.log(bookmarkIdArr, "27");
       results = results.map((obj) =>
-        bookmarkIdArr.includes(obj.user_id)
-          ? Object.assign(obj, { isBookMark: true })
-          : Object.assign(obj, { isBookMark: false })
+        Object.assign(obj, {
+          isBookMark: bookmarkIdArr.includes(obj.user_id),
+        })
       );
+      // const newResults = results.map(teacher=>{
+      //   return {
+      //     ...teacher,
+      //     isBookMark: bookmarkIdArr.includes(teacher.user_id),
+      //   };
+      // });
     }
     if (teachers.rowCount == 0) {
       res.status(400).json({});

@@ -20,8 +20,7 @@ const form = formidable({
 export const updateTeacherSettingsRoutes = express.Router();
 
 //express session
-import { expressSessionRoutes } from "./expressSessionRoutes";
-updateTeacherSettingsRoutes.use(expressSessionRoutes);
+import "./expressSessionRoutes";
 
 // This route is used to update the teacher settings
 updateTeacherSettingsRoutes.put(
@@ -69,11 +68,12 @@ updateTeacherSettingsRoutes.put(
 updateTeacherSettingsRoutes.post(
   "/submitUserComment/:id",
   async (req: Request, res: Response) => {
+    const { content, userId } = req.body;
     try {
-      if (req.body.content) {
+      if (content) {
         await client.query(
           "INSERT INTO user_comment_table (user_id, content) VALUES ($1,$2)",
-          [req.body.userId, req.body.content]
+          [userId, content]
         );
         res.status(200).json({
           result: true,

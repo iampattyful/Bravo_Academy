@@ -4,8 +4,7 @@ export const removeAppointmentRoutes = express.Router();
 import { client } from "./client";
 
 //express session
-import { expressSessionRoutes } from "./expressSessionRoutes";
-removeAppointmentRoutes.use("/", expressSessionRoutes);
+import "./expressSessionRoutes";
 
 removeAppointmentRoutes.delete(
   "/uncontactTeacher/:id",

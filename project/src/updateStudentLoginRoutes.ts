@@ -18,8 +18,7 @@ const form = formidable({
 export const updateStudentLoginRoutes = express.Router();
 
 //express session
-import { expressSessionRoutes } from "./expressSessionRoutes";
-updateStudentLoginRoutes.use(expressSessionRoutes);
+import "./expressSessionRoutes";
 
 updateStudentLoginRoutes.put(
   "/updateStudentLogin/:id",

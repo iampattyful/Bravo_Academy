@@ -1,0 +1,140 @@
+body {
+  background-color: black;
+}
+
+.footer {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-top: 1px solid #333333;
+  width: 100%;
+}
+
+.footer span {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+}
+
+.footer .outer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer .outer ul {
+  list-style: none;
+  color: #ffffff;
+  padding: 0;
+  margin-top: 30px;
+}
+
+.footer .outer li {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  margin-bottom: 10px;
+}
+
+.end {
+  border-top: 1px solid #333333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.end span {
+  color: #888888;
+}
+
+.social-media {
+  display: flex;
+  gap: 20px;
+}
+
+.social-media i {
+  display: flex;
+  color: #888888;
+}
+
+.scroll-to-top {
+  width: 48px;
+  height: 48px;
+  background: #30a57b;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  position: fixed;
+  bottom: 100px;
+  right: 50px;
+}
+
+.end {
+  border-top: 1px solid #333333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.end span {
+  color: #888888;
+}
+
+.social-media {
+  display: flex;
+  gap: 20px;
+}
+
+.social-media i {
+  display: flex;
+  color: #888888;
+}
+
+.scroll-to-top {
+  width: 48px;
+  height: 48px;
+  background: #30a57b;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  position: fixed;
+  bottom: 100px;
+  right: 50px;
+}
+
+.footer li a {
+  text-decoration-line: none;
+  color: #ffffff;
+}
+
+.footer li :hover {
+  color: #30a57b;
+}
+
+div#footer {
+  background-color: black;
+}
+
+.footer li a {
+  text-decoration-line: none;
+  color: #ffffff;
+}
+
+.footer li :hover {
+  color: #30a57b;
+}
+
+.end a {
+  text-decoration-line: none;
+}

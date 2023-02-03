@@ -130,7 +130,7 @@ async function teacherResult(json) {
       )
       .join("");
 
-    const teacherDivs = [...document.querySelectorAll(".inner-column")];
+    const teacherDivs = document.querySelectorAll(".inner-column");
     for (const teacherDiv of teacherDivs) {
       if (checkLoginRes.result && checkLoginRes.users.role_id == 2) {
         teacherDiv

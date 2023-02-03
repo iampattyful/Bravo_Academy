@@ -4,8 +4,7 @@ export const removeBookmarkRoutes = express.Router();
 import { client } from "./client";
 
 //express session
-import { expressSessionRoutes } from "./expressSessionRoutes";
-removeBookmarkRoutes.use("/", expressSessionRoutes);
+import "./expressSessionRoutes";
 
 removeBookmarkRoutes.delete(
   "/bookmark/:id",

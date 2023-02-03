@@ -1,7 +1,6 @@
 let checkLoginRes;
 // window onload
 window.onload = async function () {
-  //await checkLogin();
   checkLoginRes = await checkLogin();
   const urlParams = new URLSearchParams(window.location.search);
   const userId = urlParams.get("id");
@@ -9,7 +8,7 @@ window.onload = async function () {
     method: "GET",
   });
   let json = await res.json();
-  await studentLoginResult(json);
+  /*const user = */ await studentLoginResult(json);
   await bookmarkedResult(json);
   await appointmentResult(json);
   // update student profile settings
@@ -125,7 +124,7 @@ async function studentLoginResult(json) {
           `${
             student.image === null
               ? studentLoginTemplate(
-                  `./assets/profile_image_placeholder.jpg" alt=""`,
+                  `/assets/profile_image_placeholder.jpg" alt=""`,
                   student.user_id,
                   student.username,
                   student.email,
@@ -187,7 +186,7 @@ const bookmarkedTemplate = (
 async function bookmarkedResult(json) {
   const bookmarkedContent = document.querySelector("#bookmarkTeacher");
   if (json.result) {
-    bookmarkedContent.innerHTML = "";
+    //bookmarkedContent.innerHTML = "";
 
     bookmarkedContent.innerHTML = json.bookmarked
       .map(
@@ -342,6 +341,9 @@ async function appointmentResult(json) {
     appointmentContent.innerHTML = "";
   }
 }
+
+//Plain Text : JSON -> req.body
+//File Attachment : FormData -> form.parse
 
 // submit user comment
 const submitUserCommentRes = document

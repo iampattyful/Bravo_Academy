@@ -4,8 +4,7 @@ export const bookmarkRoutes = express.Router();
 import { client } from "./client";
 
 //express session
-import { expressSessionRoutes } from "./expressSessionRoutes";
-bookmarkRoutes.use("/", expressSessionRoutes);
+import "./expressSessionRoutes";
 
 bookmarkRoutes.post("/bookmark/:id", async (req: Request, res: Response) => {
   let bookmarkResult = await client.query(
