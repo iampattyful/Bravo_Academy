@@ -28,6 +28,7 @@ window.onload = async function () {
     if (json.result) {
       //   document.querySelectr(".userProfile").innerHTML = json.student.username;
       window.location.reload();
+
       return;
     } else {
       alert("格式錯誤！");

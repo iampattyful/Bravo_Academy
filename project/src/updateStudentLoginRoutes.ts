@@ -44,13 +44,9 @@ updateStudentLoginRoutes.put(
           ]
         );
 
-        // let result = await client.query(
-        //   "SELECT username FROM users WHERE user_id = $1",
-        //   [req.params.id]
-        // );
-
-        // console.log(result.rows);
-
+        if (req.session.user) {
+          req.session.user.username = fields.username as string;
+        }
         res.status(200).json({
           result: true,
           message: "success",
@@ -67,7 +63,6 @@ updateStudentLoginRoutes.put(
   }
 );
 
-
 // submit user comment
 updateTeacherSettingsRoutes.post(
   "/submitUserComment/:id",
@@ -81,20 +76,20 @@ updateTeacherSettingsRoutes.post(
       // );
 
       if (req.body.content) {
-      await client.query(
-        "INSERT INTO user_comment_table (user_id, content) VALUES ($1,$2)",
-        [req.body.userId, req.body.content]
-      );
-      res.status(200).json({
-        result: true,
-        message: "success",
-      });
-    } else {
-      res.status(200).json({
-        result: false,
-        message: "fail",
-      });
-    }
+        await client.query(
+          "INSERT INTO user_comment_table (user_id, content) VALUES ($1,$2)",
+          [req.body.userId, req.body.content]
+        );
+        res.status(200).json({
+          result: true,
+          message: "success",
+        });
+      } else {
+        res.status(200).json({
+          result: false,
+          message: "fail",
+        });
+      }
     } catch (err) {
       console.log(err);
       res.status(500).json({

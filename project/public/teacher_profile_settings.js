@@ -33,6 +33,7 @@ window.onload = async function () {
     const json = await res.json();
     if (json.result) {
       window.location = `/teacher_profile_settings.html?id=${checkLoginRes.users.id}`;
+      // document.querySelector(".userProfile").innerHTML = json.users.username;
       return;
     } else {
       alert("格式錯誤！");
@@ -74,8 +75,8 @@ submitUserComment.addEventListener("submit", async (event) => {
 
   const content = await submitUserCommentRes.json();
   if (content.result) {
-    console.log(content.result)
-    submitUserComment.reset();    
+    console.log(content.result);
+    submitUserComment.reset();
     alert("已成功提交用戶評價！");
     // window.location = `/teacher_profile_settings.html?id=${checkLoginRes.users.id}`;
   } else {
