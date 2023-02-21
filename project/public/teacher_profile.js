@@ -74,10 +74,8 @@ const teacherProfileSettingsTemplate = (
                     </div> -->
                 <!-- Trigger/Open The Modal -->
                 <button id="contactBtn" data-id=${userId}><a href="#">預約諮詢</a></button>
-
                 <!-- The Modal -->
                 <div id="myModal" class="modal">
-
                     <!-- Modal content -->
                     <div class="modal-content">
                         <span class="close">&times;</span>
