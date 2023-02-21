@@ -3,8 +3,6 @@ import http from "http";
 import { Server as SocketIO } from "socket.io";
 
 const app = express();
-app.use(express.urlencoded());
-app.use(express.json());
 const server = new http.Server(app);
 export const io = new SocketIO(server);
 
@@ -16,6 +14,8 @@ io.on("connection", function (socket) {
     io.emit("new-contactus");
   });
 });
+app.use(express.urlencoded());
+app.use(express.json());
 
 //express session
 import { expressSessionRoutes } from "./src/expressSessionRoutes";
@@ -36,6 +36,10 @@ app.use("/", logoutRoutes);
 //check login
 import { checkLoginRoutes } from "./src/checkLoginRoutes";
 app.use("/", checkLoginRoutes);
+
+//load user comments
+import { loadUserCommentRoutes } from "./src/loadUserCommentRoutes";
+app.use("/", loadUserCommentRoutes);
 
 app.use(express.static("public"));
 app.use(express.static("uploads"));
@@ -75,18 +79,6 @@ app.use("/", removeBookmarkRoutes);
 //contact us
 import { contactUsRoutes } from "./src/contactUsRoutes";
 app.use("/", contactUsRoutes);
-
-// load user comment
-import { loadUserCommentRoutes } from "./src/loadUserCommentRoutes";
-app.use("/", loadUserCommentRoutes);
-
-// contact teacher
-import { contactTeacherRoutes } from "./src/contactTeacherRoute";
-app.use("/", contactTeacherRoutes);
-
-//uncontact teacher
-import { removeAppointmentRoutes } from "./src/removeAppointmentRoutes";
-app.use("/", removeAppointmentRoutes);
 
 //admin login
 const isLoggedIn = (
