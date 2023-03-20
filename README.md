@@ -6,7 +6,7 @@
 
 *Tech Stack*:	TypeScript, JavaScript, HTML, CSS, Bootstrap, Node.js, Express.js, bcrypt.js, formidable, Socket.IO, PostgreSQL, AJAX, Async Await, RESTful API
 
-> *My contribution in this project:*
+> ### *My contribution in this project:*
 >     
 > **Front-end Development**
 >- public/teacher_profile.html, public/teacher_profile.css, public/teacher_profile.js
