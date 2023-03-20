@@ -6,11 +6,15 @@
 
 *Tech Stack*:	TypeScript, JavaScript, HTML, CSS, Bootstrap, Node.js, Express.js, bcrypt.js, formidable, Socket.IO, PostgreSQL, AJAX, Async Await, RESTful API
 
-> My contribution in this project:  
-- public/teacher_profile.html, public/teacher_profile.css, public/teacher_profile.js
-- public/teacher_profile_settings.html, public/teacher_profile_settings.css, public/teacher_profile_settings.js
-- public/user_comment.html, public/user_comment.css, public/user_comment.js
-- src/loadTeacherIndividualPageRoutes.ts
-- src/loadTeacherSettingsRoutes.ts
-- src/loadUserCommentRoutes.ts
-- src/updateTeacherSettingsRoutes.ts
+> *My contribution in this project:*
+>     
+> **Front-end Development**
+>- public/teacher_profile.html, public/teacher_profile.css, public/teacher_profile.js
+>- public/teacher_profile_settings.html, public/teacher_profile_settings.css, public/teacher_profile_settings.js
+>- public/user_comment.html, public/user_comment.css, public/user_comment.js  
+>
+>  **Back-end Development**
+>- src/loadTeacherIndividualPageRoutes.ts
+>- src/loadTeacherSettingsRoutes.ts
+>- src/loadUserCommentRoutes.ts
+>- src/updateTeacherSettingsRoutes.ts
