@@ -6,13 +6,13 @@
 
 *Tech Stack*:	
 >
->- TypeScript, JavaScript, HTML, CSS, and Bootstrap for frontend development
->- Node.js and Express.js for backend development
->- bcrypt.js for user authentication
->- Formidable for form data processing
->- Socket.IO for real-time communication
->- PostgreSQL for database management
->- AJAX, Async Await, and RESTful API for data exchange
+- TypeScript, JavaScript, HTML, CSS, and Bootstrap for frontend development
+- Node.js and Express.js for backend development
+- bcrypt.js for user authentication
+- Formidable for form data processing
+- Socket.IO for real-time communication
+- PostgreSQL for database management
+- AJAX, Async Await, and RESTful API for data exchange
 
 
 > ### *My contribution in this project:*
